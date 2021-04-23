@@ -1,0 +1,125 @@
+\documentclass[a4paper,10pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+ \setlength{\oddsidemargin}{-5mm}
+ \setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\date{}
+\begin{document}
+\maketitle
+\section{項目分析}
+\subsection{信頼性}
+テストで測られる学力や性格、技能は真の得点呼ばれ、無視できない誤差を伴ってしか測定できないものである。そこで、テスト得点$\displaystyle x$を、真の得点$\displaystyle t$と誤差$\displaystyle e$の和
+\begin{eqnarray}
+\displaystyle x = t+ e
+\end{eqnarray}
+として表現する。
+
+ここで誤差$\displaystyle e$と$\displaystyle t$に関する期待値を
+  \begin{itembox}[l]{仮定１：  $\displaystyle E[e] = 0$}
+    $\displaystyle +$の誤差の人、$\displaystyle -$の誤差の人がそれぞれ存在するが平均すれば$\displaystyle 0$になるだろうという仮定。
+  \end{itembox}  
+\begin{itembox}[l]{仮定2：   $\displaystyle E[et] = 0$}
+    真の点数が高いほど誤差が大きくなるなどのような関連性はなく、誤差はに無相関に散らばるという仮定。
+  \end{itembox}
+
+これら$2$の仮定の下で、テスト得点$\displaystyle x$の母平均は
+\begin{eqnarray}
+  \displaystyle \mu_{x}=E[x]=E[e+t]=E[t]=\mu_{t}
+\end{eqnarray}
+となり真の得点の母平均に一致する。また、テスト得点$\displaystyle x$分散は、
+\begin{eqnarray}
+  \displaystyle {\sigma_{x}}^2={\sigma_{e}}^2 + {\sigma_{t}}^2
+\end{eqnarray}
+のように真の得点の分散と、誤差の分散の単純な和に分解される。このとき、真の得点の分散とテスト得点の分散の比を信頼性係数という。
+\begin{itembox}[l]{テスト得点$\displaystyle x$の信頼性係数}
+   \begin{eqnarray}
+\displaystyle \rho=\frac{ {\sigma_{t}}^2}{{\sigma_{e}}^2 + {\sigma_{t}}^2}=1-\frac{{\sigma_{e}}^2}{{\sigma_{x}}^2}=\frac{{\sigma_{t}}^2}{{\sigma_{x}}^2}
+   \end{eqnarray}
+\end{itembox}
+
+\subsubsection{タウ等価測定}
+テスト得点$\displaystyle x$だけでなく、項目得点$\displaystyle x_{i}$もまた、
+\begin{eqnarray}
+  \displaystyle x_{i} = t_{i}+e_{i}
+\end{eqnarray}
+というように古典的テストモデルに従っているものとし、項目$i$と項目$j$に関して、\\
+\\
+\begin{enumerate}
+  \item  $E[e_{i}] = 0$
+  \item  $E[t_{i}e_{i}] = 0$ ($i$=$j$のときを含む)
+  \item  $E[e_{i}e_{j}] = 0$ ($i$ $\neq$ $j$の場合のみ) 
+\end{enumerate}
+を仮定する。この仮定を満たしているとき、項目を互いに同族測定という。
+
+また、
+\begin{eqnarray}
+  \displaystyle t_{1}-\mu_{t_{1}}=\cdots=t_{i}-\mu_{t_{i}}=\cdots=t_{n}-\mu_{t_{n}}=t^{\ast}
+\end{eqnarray}
+が、成り立つとき項目は互いにタウ等価測定であるという。言い換えると、タウ等価測定とは、
+\begin{eqnarray}
+  \displaystyle t-\mu_{t}=nt^{\ast}
+\end{eqnarray}
+であり、すべての項目は同じ真の得点を測っているという仮定である。したがって、タウ等価測定のもとでは
+\begin{eqnarray}
+  \displaystyle {\sigma_{t_{1}}}^2=\cdots={\sigma_{t_{i}}}^2=\cdots={\sigma_{t_{n}}}^2={\sigma_{t^\ast}}^2
+\end{eqnarray}
+のように、真の得点の分散は添え字によらず一定値$\displaystyle  {\sigma_{t^\ast}}^2$となる。さらに任意の$2$つの項目得点の共分散も
+\begin{eqnarray}
+  \displaystyle C[x_{i},x_{j}]={\sigma_{t^\ast}}^2
+\end{eqnarray}
+となる。
+\subsubsection{クロンバックの$\displaystyle \alpha$係数}
+タウ等価測定が成り立てば、信頼係数は
+\begin{eqnarray}
+  \displaystyle \rho=\frac{V[t]}{{\sigma_{x}}^2}=\frac{V[nt^{\ast}]}{{\sigma_{x}}^2}
+\end{eqnarray}
+
+
+
+
+\end{document}
