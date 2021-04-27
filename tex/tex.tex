@@ -78,7 +78,7 @@
 のように真の得点の分散と、誤差の分散の単純な和に分解される。このとき、真の得点の分散とテスト得点の分散の比を信頼性係数という。
 \begin{itembox}[l]{テスト得点$\displaystyle x$の信頼性係数}
    \begin{eqnarray}
-    \label{07}
+    \label{nana}
     \displaystyle \rho=\frac{ {\sigma_{t}}^2}{{\sigma_{e}}^2 + {\sigma_{t}}^2}=1-\frac{{\sigma_{e}}^2}{{\sigma_{x}}^2}=\frac{{\sigma_{t}}^2}{{\sigma_{x}}^2}
    \end{eqnarray}
 \end{itembox}
@@ -117,15 +117,15 @@
 \subsubsection{クロンバックの$\displaystyle \alpha$係数}
 タウ等価測定が成り立てば、信頼係数は
 \begin{eqnarray}
-  \label{02}
+  \label{01}
   \displaystyle \rho=\frac{V[t]}{{\sigma_{x}}^2}=\frac{V[nt^{\ast}]}{{\sigma_{x}}^2}
 \end{eqnarray}
 項目$i$と項目$j$の標本共分散$s_{ij}$はすべて$\displaystyle  {\sigma_{t^\ast}}^2$の推定量に使用できる。今回は精度を上げるために、$n(n-1)$個の標本共分散の平均
 \begin{eqnarray}
-  \label{01}
+  \label{02}
   \displaystyle \hat{\sigma}_{t^\ast}^2=\frac{1}{n(n-1)}\sum_{i=1}^{n} \sum_{i\neq j,j-1}^{n} s_{ij}
 \end{eqnarray}
-を推定量として利用する。式(\ref{01})を式(\ref{02})に代入して${s_{x}}^2$を${\sigma_{x}}^2$の推定量に利用すると
+を推定量として利用する。式(\ref{02})を式(\ref{01})に代入して${s_{x}}^2$を${\sigma_{x}}^2$の推定量に利用すると
 \begin{eqnarray}
   \displaystyle \alpha=\frac{n}{n-1} \frac{\sum_{i=1}^{n} \sum_{i\neq j,j-1}^{n} s_{ij}}{{s_{x}}^2}=\frac{n}{n-1} \left(\frac{1-\sum_{i=1}^{n} {s_{i}}^2} {{s_{x}}^2}\right)
 \end{eqnarray}
@@ -141,13 +141,13 @@
 \end{screen}
 これより
 \begin{eqnarray}
-  \label{06}
+  \label{six}
   \displaystyle {\sigma_{e}}^2=\sum_{i=1}^{n} {\sigma_{ei}}^2
 \end{eqnarray}
-を得る。式(\ref{06})を式(\ref{07})に代入した式
+を得る。式(\ref{six})を式(\ref{nana})に代入した式
 \begin{eqnarray}
   \label{08}
 \displaystyle \Omega=1-\frac{\sum_{i=1}^{n} {\sigma_{ei}}^2}{{\sigma_{x}}^2}
 \end{eqnarray}
-をマクドナルドの\Omega係数という。
+をマクドナルドの$\Omega$ 係数という。
 \end{document}
