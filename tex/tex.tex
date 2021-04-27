@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{jarticle}
+\documentclass{jarticle}
 \usepackage{a4wide}
 \usepackage{amsmath}%数学記号
 \usepackage{amssymb}%数学記号
@@ -62,7 +62,7 @@
 ここで誤差$\displaystyle e$と$\displaystyle t$に関する期待値を
   \begin{itembox}[l]{仮定１：  $\displaystyle E[e] = 0$}
     $\displaystyle +$の誤差の人、$\displaystyle -$の誤差の人がそれぞれ存在するが平均すれば$\displaystyle 0$になるだろうという仮定。
-  \end{itembox}  
+  \end{itembox}
 \begin{itembox}[l]{仮定2：   $\displaystyle E[et] = 0$}
     真の点数が高いほど誤差が大きくなるなどのような関連性はなく、誤差はに無相関に散らばるという仮定。
   \end{itembox}
@@ -78,7 +78,8 @@
 のように真の得点の分散と、誤差の分散の単純な和に分解される。このとき、真の得点の分散とテスト得点の分散の比を信頼性係数という。
 \begin{itembox}[l]{テスト得点$\displaystyle x$の信頼性係数}
    \begin{eqnarray}
-\displaystyle \rho=\frac{ {\sigma_{t}}^2}{{\sigma_{e}}^2 + {\sigma_{t}}^2}=1-\frac{{\sigma_{e}}^2}{{\sigma_{x}}^2}=\frac{{\sigma_{t}}^2}{{\sigma_{x}}^2}
+    \label{07}
+    \displaystyle \rho=\frac{ {\sigma_{t}}^2}{{\sigma_{e}}^2 + {\sigma_{t}}^2}=1-\frac{{\sigma_{e}}^2}{{\sigma_{x}}^2}=\frac{{\sigma_{t}}^2}{{\sigma_{x}}^2}
    \end{eqnarray}
 \end{itembox}
 
@@ -92,7 +93,7 @@
 \begin{enumerate}
   \item  $E[e_{i}] = 0$
   \item  $E[t_{i}e_{i}] = 0$ ($i$=$j$のときを含む)
-  \item  $E[e_{i}e_{j}] = 0$ ($i$ $\neq$ $j$の場合のみ) 
+  \item  $E[e_{i}e_{j}] = 0$ ($i$ $\neq$ $j$の場合のみ)
 \end{enumerate}
 を仮定する。この仮定を満たしているとき、項目を互いに同族測定という。
 
@@ -116,10 +117,38 @@
 \subsubsection{クロンバックの$\displaystyle \alpha$係数}
 タウ等価測定が成り立てば、信頼係数は
 \begin{eqnarray}
+  \label{02}
   \displaystyle \rho=\frac{V[t]}{{\sigma_{x}}^2}=\frac{V[nt^{\ast}]}{{\sigma_{x}}^2}
 \end{eqnarray}
-
-
-
+項目$i$と項目$j$の標本共分散$s_{ij}$はすべて$\displaystyle  {\sigma_{t^\ast}}^2$の推定量に使用できる。今回は精度を上げるために、$n(n-1)$個の標本共分散の平均
+\begin{eqnarray}
+  \label{01}
+  \displaystyle \hat{\sigma}_{t^\ast}^2=\frac{1}{n(n-1)}\sum_{i=1}^{n} \sum_{i\neq j,j-1}^{n} s_{ij}
+\end{eqnarray}
+を推定量として利用する。式(\ref{01})を式(\ref{02})に代入して${s_{x}}^2$を${\sigma_{x}}^2$の推定量に利用すると
+\begin{eqnarray}
+  \displaystyle \alpha=\frac{n}{n-1} \frac{\sum_{i=1}^{n} \sum_{i\neq j,j-1}^{n} s_{ij}}{{s_{x}}^2}=\frac{n}{n-1} \left(\frac{1-\sum_{i=1}^{n} {s_{i}}^2} {{s_{x}}^2}\right)
+\end{eqnarray}
+のようにテスト得点$x$の信頼性係数の推定量を構成することができる。またこれをクロンバックの$\alpha$係数という。
+\subsubsection{マクドナルドの$\displaystyle \Omega$係数}
+クロンバックの$\alpha$係数はタウ等価測定を仮定して導出した。しかし、実際のテストにおいては$t$に対して等価であるとは言い難い場面が多い。そこで、同族測定の仮定だけで信頼性を推定してみる。最初の仮定を確認すると
+\begin{screen}
+  \begin{enumerate}
+    \item  $E[e_{i}] = 0$
+    \item  $E[t_{i}e_{i}] = 0$ ($i$=$j$のときを含む)
+    \item  $E[e_{i}e_{j}] = 0$ ($i$ $\neq$ $j$の場合のみ)
+  \end{enumerate}
+\end{screen}
+これより
+\begin{eqnarray}
+  \label{06}
+  \displaystyle {\sigma_{e}}^2=\sum_{i=1}^{n} {\sigma_{ei}}^2
+\end{eqnarray}
+を得る。式(\ref{06})を式(\ref{07})に代入した式
+\begin{eqnarray}
+  \label{08}
+\displaystyle \Omega=1-\frac{\sum_{i=1}^{n} {\sigma_{ei}}^2}{{\sigma_{x}}^2}
+\end{eqnarray}
+をマクドナルドの$\Omega$係数という。
 
 \end{document}
