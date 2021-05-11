@@ -1,0 +1,98 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+ \setlength{\oddsidemargin}{-5mm}
+ \setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\date{}
+\begin{document}
+\maketitle
+\section{項目反応モデル}
+\subsection{古典的モデルの限界}
+テストの性質は、項目の性質に依存する。項目の特性は、縦軸に正答確率、横軸にテスト得点を記述した項目特性図によって示された。しかし、項目特性図は受験者の分布に大きく依存しているという欠点がある。これでは実社会におけるテストの運用には耐えることができない。
+
+TOEICを例に考える。年に数回開催され、世界中で実施される。同一の人物が複数回受験する可能性があるため、同じ項目の集まりで構築されたテストは2度と使用できない。このため、平均点や通過率はテストごとに毎回異なる。開催される地域も英語力もそれぞれバラバラであるため、特性分布もバラバラである。したがって、前述した項目分析や単純な偏差値などでは、TOEICを運用することはできない。
+\subsection{正規累積モデル}
+上記の困難を克服するには、受験者集団に依存しない特性$\theta$を導入する。これは、直接観測はできない潜在特性と呼ばれる。横軸に潜在特性、縦軸に正答確率を配する。横軸は直接観測できないため、具体的な関数形は一通りには決定できない。そこで、標準正規分布の密度関数
+\begin{eqnarray}
+  \displaystyle \phi(z) = \frac{1}{\sqrt{2\pi}}\exp\left(\frac{-1}{2}z^2\right)
+\end{eqnarray}
+の累積分布関数
+\begin{eqnarray}
+  \label{01}
+  \displaystyle \Phi(f(\theta)) = \int_{-\infty}^{f(\theta)} \phi(z)dz
+\end{eqnarray}
+を利用する。このように横軸に潜在特性、縦軸に項目への正答確率を配した関数を項目特性曲線($ICC$)、または項目反応関数という。特に、式(\ref{01})を正規累積モデルという。
+\subsubsection{1母数正規累積モデル}
+項目$j$の性質として大切なのはその項目が易しいのか、難しいのかである。この性質を表現するためには、式(\ref{01})中の$\theta$の関数を
+\begin{eqnarray}
+  \displaystyle f(\theta) = a(\theta - b_{j})
+\end{eqnarray}
+とし、項目$j$の$ICC$を
+\begin{eqnarray}
+  \displaystyle　p_{j}(\theta) = \Phi(a(\theta-b_{j}))
+\end{eqnarray}
+と表現する。$b_{j}$は項目$j$の難易度を決める母数である。$a$はすべての項目に
+共通の値である。母数とは、統計的モデルの性質を決める数指標であり。ここでは$b_{j}$という単一の母数によって$ICC$の統計的性質が決まる。
+
+困難度は数学的には$-\infty$から$\infty$で定義されるが、特性分布が標準化され、平均が$0$分散が$1$であるときは、困難度はおよそ$-2$から$2$の間で推定される。$2$に近いほど難しい。
+\begin{itembox}[l]{通過率と困難度の本質的な違い}
+  通過率は、特定の被験者集団に対しての正答者の割合という形で項目の難易度を表現している。集団が異なれば通過率が異なるのは自然である。
+
+  一方、困難度は被験者集団に依存しない尺度地に対する正答確率という形で難易度を表現している。
+\end{itembox}
+
+
+
+
+
+
+
+
+
+
+\end{document}
