@@ -1,0 +1,102 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+ \setlength{\oddsidemargin}{-5mm}
+ \setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\section{ロジスティックモデル}
+\subsection{1母数ロジスティクスモデル}
+正規累積モデルは、積分を含んでいるため扱いが複雑になる。そこで、ロジスティック分布の分布関数を利用した$ICC$
+\begin{eqnarray}
+  \label{00}
+  \displaystyle \int_{-\infty}^{f(\theta)} \phi(z)dz \simeq \frac{1}{1+\exp(-Df(\theta))}
+\end{eqnarray}
+を提案した。ここで$D$は尺度因子であり、$D=1.7$のときに$\theta$の全域にわたって誤差が$0.01$になるといわれている。(別紙にて検証してみる。)
+
+ここで
+\begin{eqnarray}
+  \label{01}
+  \displaystyle p_j(\theta) = \frac{1}{1+\exp(-Da(\theta - b_j))}
+\end{eqnarray}
+を$1$母数ロジスティックモデルという。$b_j$は困難度を表している。
+\subsection{2母数ロジスティックモデル}
+\begin{eqnarray}
+  \label{03}
+  \displaystyle p_j(\theta) = \frac{1}{1+\exp(-Da_j(\theta - b_j))}
+\end{eqnarray}
+を2母数ロジスティックモデルという。ここで、$a_j$と$b_j$をそれぞれ、項目$j$の識別力、困難度を表す。ここで、$a_j$について考察する。数学的には、$-\infty$から$\infty$で定義されるが、$a_j$が負の値をとると、
+\begin{eqnarray}
+  \displaystyle f(\theta) = a_j(\theta - b_{j})
+\end{eqnarray}
+が単調減少関数になる。これは、特性(能力)が高いほど正当確率が低くなることを意味しているが、そのような項目は項目自身に問題があるとして判断され、削除される。したがって、実質的には識別力は正の値だけを扱う。
+\subsection{3母数ロジスティックモデル}
+\begin{eqnarray}
+  \label{04}
+  \displaystyle p_j(\theta) = c_j + \frac{1-c_j}{1+\exp(-Da_j(\theta - b_j))}
+\end{eqnarray}
+を$3$母数ロジスティックモデルという。$2$母数ロジスティックモデルに加えて、下方漸近母数$c_j$が追加されたモデルである。これは、当て推量といわれることもある。簡単に言えば、被験者が選択肢の中から偶然に答えを当ててしまう確率のことである。例えば、$4$つの選択肢があるとすると、$\displaystyle \frac{1}{4}=0.25$となる。しかし、実際の問題は選択肢の中で絶対に選ばないであろうものもあると考えられるので、選択肢の逆数より大きいものとして考えることが多い。$2$母数までは、正答確率は$0$から$1$までで定義されていたが、ここでは$c_j$から$1$までとなる。
+$2$母数ロジスティックモデルを$p_{(2)}(\theta)$とすると、
+\begin{eqnarray}
+  \displaystyle p_{j}(\theta) = c_j + (1-c_j)p_{(2)}(\theta)= p_{(2)}(\theta) + c_j(1-p_{(2)}(\theta))
+\end{eqnarray}
+と表すことができ、本来の正答確率と、本来の誤答確率と当て推量の積の和で表すことができる。
+\subsection{4母数ロジスティックモデル}
+\begin{eqnarray}
+  \label{05}
+  \displaystyle p_j(\theta) = c_j + \frac{d_j-c_j}{1+\exp(-Da_j(\theta - b_j))}
+\end{eqnarray}
+を$4$母数ロジスティックモデルという。項目の中には、どんなに特性の高い被験者がいたとしても正答確率が$1.0$に鳴らないものもあるだろう。$4$母数ロジスティックモデルはそのような状況を取り扱う。パラメータ$d_j$は、上方漸近線を表しており、$ICC$では$d_j$以上の値をとらない。ただし、これは実用的に使われた実績はあまりない。
+\subsection{モデル間の比較}
+1母数ロジスティックモデルでは、すべての項目の識別力は等しく、かつ当て推量はないものと仮定している。2母数ロジスティックモデルでは、すべての項目に当て推量はないものと仮定している。したがって、モデルの表現力という観点では3母数ロジスティックモデルが優れているといえる。しかしながら、1母数ロジスティックモデルには多くの被験者を必要としないのに対して、3母数ロジスティックモデルでは多くの被験者を必要とする。常に、3母数ロジスティックモデルが優れているとは言い切ることはできない。
+
+
+
+
+
+\end{document}

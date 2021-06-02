@@ -1,0 +1,575 @@
+\documentclass[11pt,ascmac]{jsarticle}
+
+\usepackage{amsmath,amssymb}
+\usepackage[dvips,dvipdfm]{graphicx}
+\usepackage[dvips]{graphicx,color}
+\usepackage{makeidx}
+\usepackage{fancybox}
+\usepackage{ascmac}
+
+\setlength{\textheight}{23.5cm}
+\setlength{\textwidth}{15cm}
+\setlength{\topmargin}{-1.8cm}
+\setlength{\oddsidemargin}{-0.3cm}
+
+\pagestyle{myheadings}
+
+\makeatletter
+ \renewcommand{\theequation}{%
+      \thesection.\arabic{equation}}
+ \@addtoreset{equation}{section}
+\makeatother
+\makeatletter
+ \renewcommand{\thetable}{%
+      \thesection.\arabic{table}}
+ \@addtoreset{table}{section}
+\makeatother
+
+\newtheorem{df}{\bf 定義}[section]
+\newtheorem{ex}{\bf 例}[section]
+\newtheorem{thm}{\bf 定理}[section]
+\newtheorem{lm}{\bf 補題}[section]
+\newtheorem{co}{\bf 系}[section]
+\newtheorem{pr}{\bf 問題}[section]
+
+\def\phantom#1{#1} % 幽霊の化けの皮を剥いで #1 の正体を晒す
+%\def\eng#1{#1} % 英単語を晒す
+\def\eng#1{} % 英単語を隠す
+
+\def\Hako#1{~\fbox{\Large　\hspace{-2mm}\phantom{\normalsize #1}　}~}
+\def\hako#1{~\fbox{\Large　\hspace{-4mm}\phantom{\normalsize #1}\hspace{-2mm}　}~}
+\def\koha#1{~\fbox{\Large　\hspace{-5mm}\phantom{\normalsize #1}\hspace{-3mm}　}~}
+\def\commet#1{{\bf [#1]}}
+\def\nuki#1{\phantom{\begin{minipage}{17cm}#1\end{minipage}}}
+
+\def\bunsu#1#2{\frac{\,#1\,}{\,#2\,}}
+\def\pf{　\vspace{-8mm}\\{\bf (証明)　}}
+\def\fig#1{ (cf.{\bf 図#1})}
+\def\ov#1{\overline{#1}}
+\def\qed{~~\mbox{(終)}\vspace{2mm}}
+%\def\bullet{\mbox{{\tiny $\bullet$}}}
+
+\newcommand{\R}{\mbox{${\mathbb R}$}}
+\newcommand{\sR}{\mbox{\footnotesize${\mathbb R}$}}
+\newcommand{\bu}{\mbox{{\tiny $\bullet$}}}
+\newcommand{\vx}{\mbox{{\boldmath $x$}}}
+\newcommand{\vX}{\mbox{{\boldmath $X$}}}
+\newcommand{\vH}{\mbox{{\boldmath $H$}}}
+\newcommand{\vy}{\mbox{{\boldmath $y$}}}
+\newcommand{\vY}{\mbox{{\boldmath $Y$}}}
+\newcommand{\vz}{\mbox{{\boldmath $z$}}}
+\newcommand{\vo}{\mbox{{\boldmath $o$}}}
+\newcommand{\va}{\mbox{{\boldmath $a$}}}
+\newcommand{\vb}{\mbox{{\boldmath $b$}}}
+\newcommand{\vc}{\mbox{{\boldmath $c$}}}
+\newcommand{\vh}{\mbox{{\boldmath $h$}}}
+\newcommand{\vp}{\mbox{{\boldmath $p$}}}
+\newcommand{\vd}{\mbox{{\boldmath $d$}}}
+\newcommand{\vv}{\mbox{{\boldmath $v$}}}
+\newcommand{\vw}{\mbox{{\boldmath $w$}}}
+\newcommand{\vep}{\mbox{{\boldmath $\varepsilon$}}}
+\newcommand{\vmu}{\mbox{{\boldmath $\mu$}}}
+\newcommand{\valpha}{\mbox{{\boldmath $\alpha$}}}
+\newcommand{\vbeta}{\mbox{{\boldmath $\beta$}}}
+\newcommand{\vgamma}{\mbox{{\boldmath $\gamma$}}}
+\newcommand{\vdelta}{\mbox{{\boldmath $\delta$}}}
+\newcommand{\vlam}{\mbox{{\boldmath $\lambda$}}}
+\newcommand{\ep}{\mbox{{$\varepsilon$}}}
+
+\def\retsukan#1{\renewcommand{\arraycolsep}{#1}}
+\def\tabretsukan#1{\setlength{\tabcolsep}{#1}}
+\def\gyokan#1{\renewcommand{\arraystretch}{#1}}
+\def\dsp{\displaystyle}
+\def\phm{\phantom}
+
+\everymath{\displaystyle}
+
+\begin{document}
+
+\markright{岩佐研B4ゼミノート（4/20配布）}%{統計科学特論 I 講義ノート（2021年度版）}
+\markboth{岩佐研B4ゼミノート（4/20配布）}{岩佐研B4ゼミノート（4/20配布）}
+
+%\begin{center}
+%\Large
+%統計科学特論 I 講義ノート（2021年度版）
+%\end{center}
+
+\begin{shadebox}
+まず，この資料では(ベクトルを含む) 行列$A$ の転置を$A^{\rm T}$で表す．
+また，特に断らない限り，実数値は斜体の小文字(例えば$x$)，
+ベクトルは太字の小文字($\vx$)，行列は斜体の大文字($X$) を用いて表す．
+さらに，確率変数は，1次元は斜体の大文字($X$)，ベクトルは太字の大文字($\vX$)を用いる．
+表記の使い分けに注意しよう．
+\end{shadebox}
+
+\section{実対称行列の対角化と二次形式}
+
+以下の議論では必ずしも$A$が$n$次実対称行列である必要はない部分があるが，
+簡単のため$A$は$n$次実対称行列であると仮定する．
+
+\begin{df}
+$A$について零ベクトルでないベクトル$\vx$とスカラー$\lambda$に対して
+\begin{equation}
+A\vx=\lambda\vx
+\end{equation}
+が成り立つとき，$\lambda$を$A$の固有値，$\vx$を$\lambda$に対する$A$の固有ベクトルという．
+\end{df}
+
+\begin{pr}
+実対称行列$A$の固有値は実数になることを示せ．
+\end{pr}
+
+\begin{pr}
+実対称行列$A$の異なる固有値に対する固有ベクトルは直交することを示せ．
+\end{pr}
+
+\begin{pr}
+$A$の固有値$\lambda_1,\cdots,\lambda_k$とそれぞれに対する固有ベクトル$\vh_1,\cdots,\vh_k$に対して，
+\begin{equation}
+AH=HD
+\end{equation}
+が成り立つことを示せ．ただし，
+$H=(\vh_1~\cdots~\vh_k)$で$D$は$\lambda_1,\cdots,\lambda_k$を対角成分にもつ対角行列である．
+\end{pr}
+
+\begin{thm}
+実対称行列$A$に対して，(1.2)を満たす$H$を直交行列となるように選ぶことができ，
+\begin{equation}
+H^{\rm T}AH=D
+\end{equation}
+と対角化できる．
+\end{thm}
+
+\begin{pr}
+実対称行列$A$は固有値$\lambda_1,\cdots,\lambda_n$とれぞれに対する固有ベクトル$\vh_1,\cdots,\vh_k$により
+次のように分解されることを示せ．
+\begin{equation}
+A=\sum_{i=1}^n \lambda_i \vh_i\vh_i^{\rm T}
+\end{equation}
+\end{pr}
+
+
+\begin{pr}
+実対称行列$A$の$n$個の固有値が$\lambda_1,\cdots,\lambda_n$のとき次が成り立つことを示せ．\\
+(1)~${\rm tr}A=\lambda_1+\cdots+\lambda_n$\\
+(2)~$|A|=\lambda_1\cdots\lambda_n$
+\end{pr}
+
+\begin{df}
+$n$次実対称行列$A=(a_{ij})$と$n$次元ベクトル$\vx=(x_1,\cdots,x_n)^{\rm T}$に対して
+\begin{equation}
+\vx^{\rm T}A\vx=\sum_{i=1}^n\sum_{j=1}^n a_{ij}x_ix_j
+\end{equation}
+を$A$によって定まる二次形式という．
+\end{df}
+
+\begin{pr}
+$n$次実対称行列$A$について(1.3)を満たす直交行列$H$に対して，$\vy=H^{\rm T}\vx$と置くとき
+$\vx^{\rm T}A\vx=\sum_{i=1}^n \lambda_{i}y_i^2$と標準化されることを示せ．
+ただし$\vy=(y_1,\cdots,y_n)^{\rm T}$である．
+\end{pr}
+
+\begin{pr}
+$n$次実対称行列$A$がすべての$\vx \in \R^n$に対して$\vx^{\rm T}A\vx\geq0$を満たすための
+必要十分条件は，すべての$i =1,\cdots,n$に対して$\lambda_i\geq 0$であることを示せ．
+\end{pr}
+
+\begin{df}
+実対称行列$A$の固有値が全て正のとき，$A$を正定値行列といい，
+実対称行列$A$の固有値が全て非負のとき，$A$を非負定値行列という．
+\end{df}
+
+\begin{pr}
+$A$が非負定値行列であるとき，
+$\tilde{A}=HD^{\frac12}H^{\rm T}$と定めるとき，
+$\tilde{A}$は非負定値行列であり，$\tilde{A}^2=A$が成り立つことを示せ．
+ただし，$D^{\frac12}$は$\sqrt{\lambda_1},\cdots,\sqrt{\lambda_n}$を対角成分にもつ対角行列である．
+\end{pr}
+
+\begin{pr}
+$A$が零行列でない非負定値行列であるとき，$\vx \in \R^n$が$x_1^2+\cdots+x_n^2=1$を満たすときの
+$\vx^{\rm T}A\vx$の最大値が$\lambda_1,\cdots,\lambda_n$の最大値に等しいことを示せ．
+\end{pr}
+
+\section{多次元確率変数の基礎}
+
+
+統計的推測では，各手法の精度などについて確率的な評価が必要であり，
+そのためデータの背景にある確率分布(母集団分布とみなせる) を考える．
+ベクトル値変数では，正規分布を多次元化した多変量正規分布を使うことが多いが，
+今回はそれには触れない．
+
+\subsection{多次元確率変数の平均分散}
+
+まず，多次元の連続型
+\footnote{簡単のために連続型のみを考えることとする．}
+確率変数の密度関数や平均・分散などの定義などについてまとめておこう．
+
+\begin{df}[密度関数]
+$d$次元連続型確率変数ベクトル$\vX = (X_1, \cdots,X_d)^{\rm T}$ に対して
+$k$ 変数関数$f(x_1,\cdots, x_d)$ ($= f(\vx)$ と略記) が存在して，
+任意の事象$\{\vX \in A\}$ $(A \subset \R^d)$ の確率が
+\begin{equation}
+P(\vX \in A) = \int_A f(\vx)d\vx
+\end{equation}
+で求まるとき，$f(x_1, \cdots, x_d)$ を$\vX$ の(同時) 密度関数という．また，
+\begin{equation}
+f_i(x_i) = \int_{\sR^{d-1}} f(\vx)d\vx^{(i)}
+\end{equation}
+を満たす$f_i(x_i)$ を$X_i$ の(周辺) 密度関数という．
+ここで，$d\vx$ は$d$ 個の変数$x_1, \cdots, x_d$ での$d$ 重積分を表し，
+$d\vx^{(i)}$ は$x_1, \cdots, x_d$ から$x_i$ のみを除いた$d-1$ 個の変数での$d-1$ 重積分を表す．
+\end{df}
+
+\begin{df}[平均(期待値)]
+$\vX$ の関数$g(\vX)$ の平均$E[g(\vX)]$ を
+\begin{equation}
+E[g(\vX)] = \int_{\sR^d}g(\vx)f(\vx)d\vx
+\end{equation}
+で定義する．
+\end{df}
+
+$g(\vX) = X_i$ のとき，
+\begin{equation}
+E[X_i] = \int_{\sR^d}x_if(\vx)d\vx 
+= \int_{\sR}x_i \Bigl(\int_{\sR^{d-1}}f(\vx)d\vx^{(i)}\Bigr)d\vx_i 
+= \int_{\sR}x_if_i(x_i)dx_i
+\end{equation}
+が成り立つので，$E[X_i]$ は$X_i$ の周辺分布に関する平均に他ならない．
+
+\begin{df}
+ベクトル値（行列値の場合もある）確率変数$\vX = (X_1,X_2, \cdots,X_d)^{\rm T}$ ($\vX = (X_{ij})_{i,j}$)
+の平均$E[\vX]$ は成分毎の期待値で定義する．すなわち
+$$E[\vX] =(E[X_1],E[X_2], \cdots ,E[X_d])^{\rm T}\quad
+(E[\vX] =(E[X_{ij} ])_{i,j})$$
+\end{df}
+
+\begin{df}
+ベクトル値確率変数$\vX = (X_1,X_2, \cdots,X_d)^{\rm T}$ に対して
+$$V [\vX] = E [(\vX − E[\vX])(\vX − E[\vX])^{\rm T}] =
+(E [(X_i − E[X_i])(X_j − E[X_j])])_{i,j}$$
+で定義される行列を$\vX$ の分散共分散行列という(転置の位置に注意).
+\end{df}
+
+$V [\vX]$は行列でその$(i, j)$ 成分は$X_i$ と$X_j$ の共分散
+($i = j$ であれば$X_i$ の分散) である.
+1 次元確率変数$X$ の場合，定数$c, d$ に対して期待値と分散に関して
+\begin{align*}
+E[cX + d] &= cE[X] + d \qquad \mbox{(期待値の線形性)}\\
+V [cX + d] &= c^2V [X]
+\end{align*}
+が成り立つが，これらはベクトル値確率変数の場合に次のように拡張される.
+
+\begin{thm}
+ベクトル値(行列値)確率変数$\vX$, 行列$A$, ベクトル$\vb$ に対して
+\begin{align}
+&E[A\vX] = AE[\vX], E[\vX A] = E[\vX]A, E[\vX + \vb] = E[\vX] +\vb\\
+&V [A\vX + \vb] = AV [\vX]A^{\rm T}
+\end{align}
+\end{thm}
+%(証明)
+%期待値に関する3つの公式は各自確認しておくこと.
+%分散に関する公式(3.5) は
+%\begin{align*}
+%V [A\vX + b] 
+%&= E[\{A\vX + \vb − E[A\vX + \vb]\}\{A\vX + \vb − E[A\vX + \vb]\}']\\
+%&= E[(A\vX − A\vmu)(A\vX − A\vmu)'] = E[A(\vX − \vmu)(\vX − \vmu)'A']\\
+%&= AE[(\vX − \vmu)(\vX − \vmu)']A'= AV [\vX]A'\qquad\qquad(終)
+%\end{align*}
+
+分散の公式(2.6) では，右から転置したものを掛けていることに注意する. 
+これが1 次元であれば，転置したものを右からかけることと
+そのまま左から掛けることが同じ事となるので，1 変数の場合の一般化となっている.
+
+\begin{pr}
+$A=(a_{ij})$を$k\times d$行列，$\vX=(X_1,\cdots,X_d)^{\rm T}$を$d$次元確率変数ベクトルとして，$E[A\vX]=AE[\vX]$を示せ．ただし，
+$\vX=(X_1,\cdots,X_d)^{\rm T}$の同時密度関数は$f(\vx)$とせよ．
+\end{pr}
+
+\begin{pr}
+(2.5)の関係を用いて(2.6)を示せ．
+\end{pr}
+
+\section{多次元ベクトルデータのハンドリング}
+
+この資料で扱うデータは原則，$d$ 次元のベクトルが$n$ 個集まったもの
+$$\vx_1, \vx_2, \cdots , \vx_n$$
+と考える．$\vx_i$ は$d$ 次元ベクトルであるから，$\vx_i =
+\begin{pmatrix}x_{1i}\\\vdots\\x_{di}\end{pmatrix}$
+と表せる．
+$n$ 個をまとめて$d \times n$ 行列
+$$X =\begin{pmatrix}\vx_1&\cdots&\vx_n\end{pmatrix}
+=\begin{pmatrix}
+x_{11}&\cdots&x_{1n}\\
+\vdots&&\vdots\\
+x_{d1}&\cdots&x_{dn}
+\end{pmatrix}$$
+とおく．$X$ をデータ行列と呼ぶ．
+
+この節では，データ処理の上で基本となる，
+平均，分散（より一般には線形変換と二次形式）の
+計算に関する，代数的な表現や性質について整理する．
+
+\subsection{標本平均と標本分散の表現}
+
+データ$\vx_1, \vx_2,\cdots, \vx_n$ に対して，
+\begin{equation}
+\overline{\vx} =\frac1n\sum_{i=1}^n \vx_i
+\end{equation}
+を標本平均ベクトルという．
+$\overline{\vx}$ の第$i$成分はデータ行列$X$ の第$i$行の成分の平均値
+$\overline{x}_i=\frac1n\sum_{i=1}^n x_{ij}$に等しい．また，
+\begin{equation}
+S_X =\frac1n\sum_{i=1}^n (\vx_i-\overline{\vx})(\vx_i-\overline{\vx})^{\rm T}
+\end{equation}
+を標本分散共分散行列という．
+
+$S_X$ の$(i, j)$ 成分$s_{ij}$ は
+$s_{ij} =\frac1n\sum_{k=1}^n(x_{ik} − \overline{x}_i)(x_{jk} − \overline{x}_j)$ に等しく，
+これはデータ行列$X$ の第$i$ 行と第$j$ 行の標本共分散を表している．
+
+\begin{pr}
+$S_X$ の$(i, j)$ 成分$s_{ij}$ は
+$s_{ij} =\frac1n\sum_{k=1}^n(x_{ik} − \overline{x}_i)(x_{jk} − \overline{x}_j)$ 
+に等しいことを確認せよ．
+\end{pr}
+
+\begin{pr}
+$\vx_i$ が$k$ 次元ベクトルのとき$(\vx_i − \overline{\vx})(\vx_i − \overline{\vx})^{\rm T}$ 
+および$(\vx_i − \overline{\vx})^{\rm T}(\vx_i − \overline{\vx})$  の(行列としての) サ
+イズを答えよ．(転置${}^{\rm T}$ の位置の違いに注意する．)
+\end{pr}
+
+以上の計算をベクトル・行列の演算として表そう．まず，$(3.1)$ は$n$ 次元ベクトル
+$\vp =\frac1n\begin{pmatrix}1\\\vdots\\1\end{pmatrix}$
+を使って，
+$$\overline{\vx} =\begin{pmatrix}\vx_1&\cdots&\vx_n\end{pmatrix}\vp=X\vp
+\qquad\mbox{($\overline{\vx} = \vp X$
+ではない)}$$
+と表すことができるので，$\overline{\vx}$ を$n$ 列並べた行列（標本平均行列と呼ぶ）は
+
+\begin{equation}
+\overline{X} =\begin{pmatrix}
+\overline{\vx}&\cdots&\overline{\vx}\end{pmatrix}
+=\begin{pmatrix}\vx_1&\cdots&\vx_n\end{pmatrix}\begin{pmatrix}\vp&\cdots&\vp\end{pmatrix}
+=XP
+\end{equation}
+と表せる．ただし，$P$ はすべての成分が$\frac1n$の$n$ 次正方行列
+$\frac1n\begin{pmatrix}1&\cdots&1\\\vdots&\ddots&\vdots\\1&\cdots&1\end{pmatrix}$
+である．一方，$(3.2)$ については，
+\begin{align}
+S_X &=\frac1n
+\begin{pmatrix}\vx_1-\overline{\vx}&\cdots&\vx_n-\overline{\vx}\end{pmatrix}
+\begin{pmatrix}\vx_1-\overline{\vx}&\cdots&\vx_n-\overline{\vx}\end{pmatrix}^{\rm T}
+=(X-\overline{X})(X-\overline{X})^{\rm T}\nonumber\\
+&=(X-XP)(X-XP)^{\rm T}
+= X(I − P)(I − P)^{\rm T}X^{\rm T}
+= X(I − P)X^{\rm T}
+\end{align}
+と表すことができる．
+
+\begin{pr}
+$I −P$ は対称行列かつべき等行列である，すなわち$(I −P)^{\rm T}= I −P，(I −P)^2 = I −P$
+が成り立つことを示せ．
+\end{pr}
+
+このようにデータの平均や分散共分散は，データ行列$X$ と単位行列$I$，そして$P$ を用いて簡潔にあ
+らわされることが分かる．
+
+\begin{thm}
+データ行列$X$ で与えられるデータについて，
+平均行列$\overline{X}$ と分散共分散行列$S_X$ はそれぞれ
+\begin{equation}
+\overline{X} = XP, ~~S_X = X(I − P)X^{\rm T}
+\end{equation}
+で与えられる．
+\end{thm}
+
+\subsection{データの線形変換}
+
+$d$ 次元ベクトル$\vx_1,\cdots, \vx_n$ を
+$p$ 次元ベクトル$\vy_1,\cdots, \vy_n$ に変換する一次関係
+$$\vy_i = A\vx_i + \vb \qquad (i = 1, \cdots , n)$$
+を考える．ただし，$A$ は$p\times d$ 行列，$\vb$ は$p$ 次元ベクトルである．
+データ行列
+$Y =\begin{pmatrix}\vy_1&\cdots&\vy_n\end{pmatrix}$
+ついて
+\begin{equation}
+Y =\begin{pmatrix}
+A\vx_1 + \vb&\cdots&A\vx_n + \vb\end{pmatrix}
+= A\begin{pmatrix}\vx_1&\cdots&\vx_n\end{pmatrix}
++\begin{pmatrix}\vb&\cdots&\vb\end{pmatrix}
+= AX + B
+\end{equation}
+と表される．
+ただし，$B$ はすべての列がベクトル$\vb$ の$p\times n$ 行列である．
+\
+変換後のデータ行列$Y$ に対して平均$\overline{Y}$，分散共分散行列$S_Y$ を
+定理2.1 より求めると
+\begin{align*}
+Y &= Y P = (AX + B)P = AXP + BP = AX + B\\
+S_Y &= (AX + B)(I − P)(AX + B)^{\rm T}= (AX + B)(I − P)(X^{\rm T}A^{\rm T}+ B^{\rm T})\\
+&= AX(I − P)X^{\rm T}A^{\rm T}+ AX(I − P)B^{\rm T}+ B(I − P)X^{\rm T}A^{\rm T}+ B(I − P)B^{\rm T}\\
+&= AX(I − P)X^{\rm T}A^{\rm T}
+= AS_XA^{\rm T}
+\end{align*}
+を得る．
+
+\begin{pr}
+$BP = B,B(I − P) = O$ が成り立つことを確認せよ．
+\end{pr}
+
+\begin{thm}
+データ行列の変換$Y = AX + B$ を考えるとき，
+変換前後の平均および分散共分散行列について次が成り立つ．
+\begin{equation}
+\overline{Y} = A\overline{X}, ~~S_Y = AS_XA^{\rm T}
+\end{equation}
+\end{thm}
+
+
+\end{document}
+
+
+
+\subsection{$k$ 次元正規分布$N_k(\vmu, \Sigma)$}
+
+\begin{df}[$N_k(\vmu, \Sigma)$ の密度関数]
+次の密度関数$\varphi_k(\vx,\vmu,\Sigma)$ をもつ$k$ 次元ベクトル値確率分布を
+平均ベクトル$\mu$，分散共分散行列$\Sigma$ の$k$ 次元正規分布といい，
+$N_k(\vmu,\Sigma)$ で表す．
+\begin{equation}
+\varphi_k(\vx,\vmu,\Sigma) 
+=\frac{1}{\sqrt{(2\pi)^k|\Sigma|}}\exp\Bigl\{
+-\frac12(\vx-\vmu)'\Sigma^{-1}(\vx-\vmu)\Bigr\}
+\end{equation}
+ただし，$\vmu$ は$k$ 次元ベクトル，$\Sigma$ は$k$ 次の正定値行列とし，
+$|\Sigma|$ は$\Sigma$ の行列式を表す．
+\end{df}
+
+\begin{ex}
+ 1 次元の場合，$\vmu，\Sigma$ はそれぞれ実数値$\mu, \sigma^2$と考えられるので，
+正規分布$N(\mu, \sigma^2)$
+\footnote{1 次元の場合，添え字の1 は省略する．}
+と同一視できる．(3.6) は$N(\mu, \sigma^2)$ の密度関数
+$\frac1{\sqrt{2\pi\sigma^2}}\exp
+\Bigl\{−\frac1{2\sigma^2}(x − \mu)^2\Bigr\}$
+に他ならない．
+\end{ex}
+
+\begin{ex}
+$\Sigma = \sigma^2I_k$ ($I_k$ は$k$ 次の単位行列) の場合，
+$\vmu = (\mu_1, \cdots , \mu_k)'$ と表せば，
+$|\sigma^2I_k| = (\sigma^2)^k,\Sigma^{−1} =
+\frac1{\sigma^2}I_k$より
+\begin{equation}
+\varphi_k(\vx,\vmu, \Sigma) =
+\frac1{\sqrt{(2\pi\sigma^2)^k}}\exp
+\Bigl\{−\frac1{2\sigma^2}\sum_{i=1}^k(x_i − \mu_i)^2\Bigr\}
+=\prod_{i=1}^k\frac1{\sqrt{2\pi\sigma^2}}\exp
+\Bigl\{−\frac{(x_i − \mu_i)^2}{2\sigma^2}\Bigr\}
+\end{equation}
+と変形できる．右辺の関数形により，
+$X_i \sim N(\mu_i, \sigma^2)$ かつ$X_1, \cdots ,X_k$ が独立であることが分かる．
+\end{ex}
+
+\begin{lm}
+$X_1, \cdots,X_k$ が独立でそれぞれが$N(\mu, \sigma^2)$ に従うことと，
+$\vX = (X_1, \cdots ,X_k)'$が$N_k((\mu, \cdots, \mu)', \sigma^2I_k)$ 
+に従うことは同値である．
+\end{lm}
+
+多次元の正規分布の理論は，ベクトル値の確率変数，
+データを扱う上で基本となるものである．以下では，
+ベクトル値の確率変数の一次変換に関する再生性の性質について確認しておこう．
+$\vX \sim N_k(\vmu, \Sigma)$ のとき，$A$ が正則であれば$A^{−1}$ が存在するので，
+$\vY = A\vX + \vb，S \subset \R^k$ に対して，
+\begin{align}
+Pr\{\vY \in S\} 
+&= Pr\{A\vX + \vb \in S\}\nonumber\\
+&= Pr\{\vX \in A^{−1}(S − \vb)\}\quad
+\mbox{(ただし$A^{−1}(S − \vb) = \{A^{−1}(\vy − \vb)|\vy \in S\}$)}\nonumber\\
+&=\int_{A^{−1}(S−\vb)}
+\frac1{\sqrt{(2\pi)^n|\Sigma|}}
+\exp\Bigl\{−\frac12(\vx − \vmu)'\Sigma^{-1}(\vx − \vmu)\Bigr\}d\vx\nonumber\\
+&=\int_S \frac1{\sqrt{(2\pi)^2|A\Sigma A'|}}
+\exp\Bigl\{−\frac12(\vy − A\vmu − \vb)'(A\Sigma A')^{−1}(\vy − A\vmu − \vb)\Bigr\}
+d\vy 
+\end{align}
+が成り立つから, 
+$\vY \sim N_k(A\vmu + \vb,A\Sigma A')$ である. 
+(最後の等式は$\vx = A^{−1}(\vy − \vb)$ という変数変換に
+対して，重積分の変数変換公式を使う. ヤコビアンは
+$\frac{\partial \vx}{\partial \vy}
+= |A^{−1}| =\frac1{|A|} =\frac1{\sqrt{|A||A'|}}$である. )
+
+以後，特に断わらない限り行列$A$ は階数(ランク) が$p$ の$p \times k$ 行列とする. 
+(ランクの条件より必然的に$p \leq k $が成り立つ. ) 
+一般に，$A$ が正方行列でなくても(正則でなくても), 次の定理が成り立つ:
+
+\begin{thm}
+$\vX \sim N_k(\vmu, \Sigma)$ のとき，$p \times k$ 定数行列$A$, 
+$p$ 次元定数ベクトル$\vb$ に対して
+\begin{equation}
+A\vX + \vb \sim N_p(A\vmu +\vb,A\Sigma A')
+\end{equation}
+が成り立つ．( 変換後の正規分布確率変数の次元が$p$ に変っていることに注意する. )
+\end{thm}
+
+\subsection{$N_k(\mu,\Sigma)$ の平均と分散}
+
+\begin{lm}
+$\vY = (Y_1, Y_2, \cdots, Y_k)' \sim N_k(\vo, I_k)$ のとき，
+$\vY$ の平均ベクトル，分散共分散行列はそれぞれ
+$$E[\vY ] = \vo, V [\vY ] = I_k$$
+である. ($\vo$ は零ベクトル)
+\end{lm}
+(証明)　補題3.1 より，$Y_1, Y_2, \cdots, Y_k$ は独立に$N(0, 1)$ に従うから，
+$E[Y_i] =0, V[Y_i] =1, {\rm Cov}[Y_i, Y_j ] = 0~(i\neq  j)$ である. (終)
+
+Σ が正定値行列のとき, $AA'= \Sigma$を満たす対称な正則行列$A$ が存在する
+\footnote{次回講義資料参照．}．
+この行列$A$ を$\Sigma$ の平方根といい，
+$\sqrt{\Sigma}$で表す. このとき，
+
+\begin{co}
+$\Sigma$が正則のとき，次が成り立つ.
+\begin{equation}
+\vX \sim N_k(\vmu,\Sigma) \Longleftrightarrow
+(\sqrt{\Sigma})^{-1})(\vX − \vmu) \sim N_k(\vo, I_k)
+\end{equation}
+\end{co}
+(証明) 　定理3.2 において, 
+$A = (\sqrt{\Sigma})^{−1}, \vb = −(\sqrt{\Sigma})^{−1}\mu$ とすればよい. (終)
+
+補題3.2 と系3.1 より，
+$$I_n = V [(\sqrt{\Sigma})^{−1}(\vX − \vmu)] 
+= (\sqrt{\Sigma})^{−1}V [\vX]((\sqrt{\Sigma})^{−1})'$$
+すなわち，$V [\vX] =\sqrt{\Sigma}(\sqrt{\Sigma})'= \Sigma$ となる.
+
+\begin{thm}
+$\vX \sim N_k(\vmu, \Sigma)$ のとき，$E[\vX] = \vmu, V [\vX] = \Sigma$ である．
+\end{thm}
+
+$\vX \sim N_k(\vmu, \Sigma)$ のとき，$\va, \vb \in \R^k$ に対して
+$${\rm Cov}[\va'\vX, \vb'\vX] = E[(\va'\vX − a'\vmu)(\vb'\vX − \vb'\vmu)']
+= \va'E[(\vX − \vmu)(\vX − \vmu)']\vb = \va'V [\vX]\vb$$
+が成り立つから，
+
+\begin{lm}[線形統計量の独立性]
+$\vX \sim N_k(\vmu, \Sigma)$ のとき，$\va, \vb \in \R^k$ に対して
+$${\rm Cov}[\va'\vX, \vb'\vX] = 0 \Longleftrightarrow
+\va'\Sigma \vb = 0$$
+\end{lm}
+(注意) $\va'\vX, \vb'\vX$ は共に正規確率変数であるから
+無相関であるということは，$\va'\vX, \vb'\vX$ が互いに独立
+である事を意味している. つまり，確率変数$\va'\vX$ と$\vb'\vX$ 
+が互いに「独立」である事とベクトル$\va$ と$\vb$ 
+が「直交」することが同値であることになる.
+
+\end{document}
+
+
+\end{document}
+
+

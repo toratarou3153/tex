@@ -1,0 +1,140 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+ \setlength{\oddsidemargin}{-5mm}
+ \setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\section{ロジスティックモデル}
+\subsection{オッズ・ロジットと1母数・2母数モデル}
+あるサッカーチーム$i$とサッカーチーム$j$の試合の賭けを募集したとする。この時に発表されるのが、オッズと呼ばれ払戻金倍率の逆数のことである。例えば、オッズが$0.25$なら、その逆数の$4$倍の金額が払い戻される。$1000$円を賭けていたら、その元金にプラスして$4000$円を手に入れることができる。
+オッズは
+\begin{eqnarray}
+  \label{00}
+  \displaystyle odds = \frac{p_j(\theta_i)}{1 - p_j(\theta_i)}
+\end{eqnarray}
+と表現される。オッズが$0.25$のとき、式は$\displaystyle \frac{0.2}{1 - 0.2} =\frac{0.2}{0.8}$となっている。これは、チーム$i$が$0.2$の確率で勝つと評価されている。
+
+逆にこの式を$p_j(\theta_i)$について解くと、
+\begin{eqnarray}
+  \label{01}
+  \displaystyle  p_j(\theta_i) = \frac{odds_i}{1 + ddds_i}
+\end{eqnarray}
+となる。この式に合わせて、$1$母数モデルと$2$母数モデルの$ICC$を書き換えると、
+\begin{eqnarray}
+  \label{02}
+  \displaystyle  p_j(\theta_i) &=& \frac{\exp(Da(\theta_i - b_j))}{1 + \exp(Da(\theta_i - b_j))} \\
+  p_j(\theta_i) &=& \frac{\exp(Da_j(\theta_i - b_j))}{1 + \exp(Da_j(\theta_i - b_j))}
+\end{eqnarray}
+となり、$\exp(Da_j(\theta_i - b_j))$は被験者$i$が項目$j$に正答するオッズである。
+\begin{itembox}[l]{オッズについての考察}
+  自分のチームが弱い場合と強い場合について考える。
+  \begin{itemize}
+  \item $1$勝$8$敗のとき
+  \begin{eqnarray}
+    \label{03}
+    \displaystyle \frac{\frac{1}{9}}{1 - \frac{1}{9}} = 0.125
+  \end{eqnarray}
+  \item $1$勝$16$敗のとき
+  \begin{eqnarray}
+    \label{04}
+    \displaystyle \frac{\frac{1}{17}}{1 - \frac{1}{17}} = 0.062
+  \end{eqnarray}
+  \item $8$勝$1$敗のとき
+  \begin{eqnarray}
+    \label{05}
+    \displaystyle \frac{\frac{8}{9}}{1 - \frac{8}{9}} = 8
+  \end{eqnarray}
+  \item $16$勝$1$敗のとき
+  \begin{eqnarray}
+    \label{06}
+    \displaystyle \frac{\frac{16}{17}}{1 - \frac{16}{17}} = 16
+  \end{eqnarray}
+\end{itemize}
+負けが重なっても、式の性質上値が$0$を下回ることがないが、価値が重なるときの値は、上にどこまでも伸びる。尺度の違いからうまく判定できないところに注意する必要がある。
+\end{itembox}
+
+上記の尺度の問題を解決する方法として、オッズの対数をとる操作を行う。式にすると
+\begin{eqnarray}
+  \label{07}
+  \displaystyle logit_i = log(odds_i) = log(\frac{p_j(\theta_i)}{1 - p_j(\theta_i)})
+\end{eqnarray}
+と表され、これをロジットという。上記を例に考えると、
+  \begin{itemize}
+  \item $1$勝$8$敗のとき
+  \begin{eqnarray}
+    \label{08}
+    \displaystyle log \left(\frac{\frac{1}{9}}{1 - \frac{1}{9}}\right) \fallingdotseq -0.903
+  \end{eqnarray}
+  \item $1$勝$16$敗のとき
+  \begin{eqnarray}
+    \label{09}
+    \displaystyle log \left(\frac{\frac{1}{17}}{1 - \frac{1}{17}}\right) \fallingdotseq -1.207
+  \end{eqnarray}
+  \item $8$勝$1$敗のとき
+  \begin{eqnarray}
+    \label{10}
+    \displaystyle log \left(\frac{\frac{8}{9}}{1 - \frac{8}{9}}\right) \fallingdotseq 0.903
+  \end{eqnarray}
+  \item $16$勝$1$敗のとき
+  \begin{eqnarray}
+    \label{11}
+    \displaystyle log \left(\frac{\frac{16}{17}}{1 - \frac{16}{17}}\right) \fallingdotseq 1.204
+  \end{eqnarray}
+\end{itemize}
+このように尺度をそろえることができる。
+
+
+
+
+
+
+
+\end{document}
