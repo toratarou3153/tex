@@ -12,6 +12,7 @@
 \usepackage{ascmac}
 \usepackage{systeme}
 \usepackage{amsmath,cases}
+\usepackage{float}
 \pagestyle{plain}
 
 \newtheorem{theorem}{定理}[section]
@@ -65,8 +66,9 @@
   \label{01}
   \displaystyle L(u_{i}|\theta_i) =\prod_{j = 1}^{n} p_{j}(\theta_i)^{u_{ij}} q_{j}(\theta_i)^{1 - u_{ij}}
 \end{eqnarray}
-と定義しなおす。尤度関数を、グラフ化したとき面積は$1$とはならない。このとき、母数を調整して尤度が最大になるときの値を、母数の推定値として利用する。このような推定法を最尤推定法という。つまり、この推定法は実際のデータがもっとも得られやすいような母数の値を決める方法である。
-\subsubsection{対数尤度関数}
+と定義しなおす。
+尤度関数を、グラフ化したとき面積は$1$とはならない。このとき、母数を調整して尤度が最大になるときの値を、母数の推定値として利用する。このような推定法を最尤推定法という。つまり、この推定法は実際のデータがもっとも得られやすいような母数の値を決める方法である。
+\subsubsection{尤度対数関数}
 具体的に式(\ref{01})を最大化する$\hat{\theta_i}$を考える。そこで、式(\ref{01})の対数をとり、
 \begin{eqnarray}
   \label{02}
@@ -98,6 +100,46 @@
   \displaystyle  -4 \times \theta +4 = 0
 \end{eqnarray}
 を解くと$\theta = 1$のときに最大値をとることがわかる。
+
+尤度対数関数の最大化も同様に行う。多変数関数であるため、偏微分を用いる。式は、
+\begin{eqnarray}
+  \label{06}
+  \displaystyle LL^{\prime} (\theta_i) = \dfrac{\partial}{\partial \theta_i}log L(u_i|\theta_i)
+\end{eqnarray}
+となり、具体的には$1$、$2$、$3$母数の各ロジスティックモデルで
+\begin{eqnarray}
+  \label{07}
+  \displaystyle \dfrac{\partial}{\partial \theta_i}log L(u_i|\theta_i) &=& Da \sum_{j = 1}^{n} (u_{ij} - p_j (\theta_i))  \\
+  \dfrac{\partial}{\partial \theta_i}log L(u_i|\theta_i) &=& D \sum_{j = 1}^{n} a_j(u_{ij} - p_j (\theta_i)) \\
+  \dfrac{\partial}{\partial \theta_i}log L(u_i|\theta_i) &=& D \sum_{j = 1}^{n} \frac{a_j(u_{ij} - p_j (\theta_i))(p_j (\theta_i) - c_j)}{p_j (\theta_i)(1 - c_j)}
+\end{eqnarray}
+となる。これもまた$LL^{\prime} (\theta_i) = 0$とおいて導かれる。この式は、尤度方程式と呼ばれ、$\theta_i$に関して尤度方程式を解いた値が被験者$i$の尺度地の最尤推定値$\hat{\theta_i}$である。\\
+\\
+\\
+\\
+\\
+\begin{figure}[H]
+  \includegraphics[bb = 50 250 1 1,scale = 0.45]{1.jpg}
+\end{figure}
+\begin{figure}[H]
+  \includegraphics[bb = -500 150 1 1,scale = 0.45]{2.jpg}
+\end{figure}
+\begin{figure}[H]
+  \includegraphics[bb = 50 520 1 1,scale = 0.5]{3.jpg}
+\end{figure}
+\begin{figure}[H]
+  \includegraphics[bb = -150 820 1 1,scale = 0.5]{4.jpg}
+\end{figure}
+\newpage
+\begin{figure}[H]
+  \includegraphics[bb = 50 500 1 1,scale = 0.45]{5.jpg}
+\end{figure}
+\begin{figure}[H]
+  \includegraphics[bb = -500 400 1 1,scale = 0.45]{6.jpg}
+\end{figure}
+
+
+
 
 
 
