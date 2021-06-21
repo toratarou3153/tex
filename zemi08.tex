@@ -83,5 +83,27 @@
   \item[10.] (7) $\displaystyle |LL^{\prime}(-1.80859)| \leq 0.00001$なので、$\hat{\theta}_i = -1.80859$で計算終了。
 \end{itemize}
 \subsubsection{ニュートン法}
+前述した挟み撃ち法は、正と負の値である$\theta_U$と$\theta_D$の間には$0$となる値が存在する、ある種の中間値の定理のような性質を利用している。関数の具体的な形状に依存せず方程式を解く方法に、ニュートン法を紹介する。これは、初期値を更新しながら解に近づく方法である。
+
+ニュートン法は、区分を狭めれば滑らかな関数は直線に近づいていく、という性質を利用した数値解法である。まず、初期値$_{0}\theta$を設ける。関数に対して$_{0}\theta$から接線を引く。初めのほうは関数も直線ではないため解には遠いものとなるが、次に初めの接線と$0$の交点を$_{1}\theta$とする。これを繰り返すことで、限りなく解に近似することができる。では、どのようにして$_{0}\theta$から$_{1}\theta$を求めることができるのだろうか。
+
+$_{0}\theta$から引いた接線の傾きは
+\begin{align}
+  \label{00}
+  \displaystyle LL^{\prime\prime}(_{0}\theta) = \frac{LL^{\prime}(_{0}\theta)}{_{0}\theta - _{1}\theta} \tag{3.17}
+\end{align}
+のように表現することができる。この式を$_{1}\theta$に関して解くと、
+\begin{align}
+  \label{01}
+  \displaystyle _{1}\theta = _{0}\theta - \frac{LL^{\prime}(_{0}\theta)}{LL^{\prime\prime}(_{0}\theta)} \tag{3.18}
+\end{align}
+となり$_{0}\theta$から$_{1}\theta$を求めることができる。$_{2}\theta$を求められることから、一般化して
+\begin{align}
+  \label{02}
+  \displaystyle _{k+1}\theta = _{k}\theta - \frac{LL^{\prime}(_{k}\theta)}{LL^{\prime\prime}(_{k}\theta)} \tag{3.19}
+\end{align}
+と表すことができる。
+
+
 
 \end{document}
