@@ -1,0 +1,87 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\setcounter{section}{2}
+
+\section{尺度地の推定}
+\setcounter{subsection}{2}
+\subsection{数値解法}
+\setcounter{subsubsection}{1}
+\subsubsection{挟み撃ち法}
+前回は方程式を解く解析的解法を紹介した。しかし、解析的に解くことが困難な場合には、関数の具体的な形状に依存しない解法が求められる。数値解法の$1$種である挟み撃ち法を紹介する。以下のアルゴリズムで方程式を解く。
+\begin{itemize}
+  \item[(1)] 正の値をとる収束精度$\displaystyle\epsilon$を定める。
+  \item[(2)] $LL^{\prime}(\theta_D) > 0$なる下限値$\displaystyle\theta_D$を定める。
+  \item[(3)] $LL^{\prime}(\theta_D) < 0$なる上限値$\displaystyle\theta_U$を定める。
+  \item[(4)] $\displaystyle \theta_M = \frac{(\theta_D + \theta_U )}{2}$
+  \item[(5)] $\displaystyle LL^{\prime}(\theta_M) > \epsilon$なら$\displaystyle\theta_D=\theta_M$として$(4)$に戻る。
+  \item[(6)]  $\displaystyle LL^{\prime}(\theta_M) < -\epsilon$なら$\displaystyle\theta_U=\theta_M$として$(4)$に戻る。
+  \item[(7)] $\displaystyle |LL^{\prime}(\theta_M)| \leq \epsilon$なら尺度地の推定値$\hat{\theta}_i = \theta_M$として計算終了。
+\end{itemize}
+[具体例]
+\begin{itemize}
+  \item[1.] (1)収束精度を$\displaystyle\epsilon = 0.00001$と定める。
+  \item[2.] (2)$LL^{\prime}(-20.0) = 1.64388$で正になる下限値$\displaystyle\theta_D = -20.0$を定める。
+  \item[3.] (3)$LL^{\prime}(10.0) = -1.50686$なる上限値$\displaystyle\theta_U$を定める。
+  \item[4.] (4)$\displaystyle \frac{-20.0 + 10.0}{2} = -5.0$
+  \item[5.] (5)$\displaystyle LL^{\prime}(-5.0) = 1.39742$なので$\displaystyle\theta_D=\theta_M$として$(4)$に戻る。
+  \item[6.]  (4)$\displaystyle \frac{(-5.0 + 10.0)}{2} = 2.5$
+  \item[7.] (5)$\displaystyle LL^{\prime}(2.5) = -0.34504$なので$\displaystyle\theta_U=\theta_M$として$(4)$に戻る。
+  \item[8.] $\cdots$$\cdots$
+  \item[9.] (3)  $\displaystyle \frac{(-1.8087 + (-1.8085))}{2} = -1.80859$
+  \item[10.] (7) $\displaystyle |LL^{\prime}(-1.80859)| \leq 0.00001$なので、$\hat{\theta}_i = -1.80859$で計算終了。
+\end{itemize}
+\subsubsection{ニュートン法}
+
+\end{document}
