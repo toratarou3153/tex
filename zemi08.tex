@@ -12,6 +12,7 @@
 \usepackage{ascmac}
 \usepackage{systeme}
 \usepackage{amsmath,cases}
+\usepackage{here}
 \pagestyle{plain}
 
 \newtheorem{theorem}{定理}[section]
@@ -103,7 +104,33 @@ $_{0}\theta$から引いた接線の傾きは
   \displaystyle _{k+1}\theta = _{k}\theta - \frac{LL^{\prime}(_{k}\theta)}{LL^{\prime\prime}(_{k}\theta)} \tag{3.19}
 \end{align}
 と表すことができる。
+\subsubsection{数値例と解法の比較}
+挟み撃ち法では、アルゴリズムの$(1)$と$(2)$を満たすような区間を見つけることができれば、収束が保証される。区間は、行程を繰り返すごとに、狭くなっていくので$3$回か$4$回繰り返されると解の精度は確実に上がっていく。このことから挟み撃ち法は堅実な数値解法と言える。
 
-
-
+一方で、ニュートン法はどうであろうか。ニュートン法による最適化の行程を表に示した。$k = 3$の時点で、小数第$3$位までは信用できる解に達していることがわかる。挟み撃ち法が$k = 17$までかかっていることを考えると圧倒的に早い。ニュートン法は、収束スピードが最大の特徴である。
+\begin{table}[H]
+  \centering
+    \caption{ニュートン法による最適化の過程(初期値$_{0}\theta = 0.0$)}
+    \begin{tabular}{|l||c|r|c|}  \hline
+      繰り返し & $_{k}\theta$ & $LL^{\prime}(_{k}\theta)$ &  $LL^{\prime\prime}(_{k}\theta)$\\ \hline \hline
+      $0$ & $0.00000$ & $-0.93821$ & $-0.35382$ \\ \hline
+      $1$ & $-2.65164$ & $0.52808$ & $-0.58870$ \\ \hline
+      $2$ & $-1.75462$ & $-0.03441$ & $-0.63630$ \\ \hline
+      $3$ & $-1.80869$ & $0.00006$ & $-0.63852$ \\ \hline
+      $4$ & $-1.80860$ & $0.00000$ & $-0.63852$ \\ \hline
+    \end{tabular}
+  \end{table}
+  \begin{table}[H]
+    \centering
+      \caption{ニュートン法による最適化の過程初期値($_{0}\theta = -5.0$)}
+      \begin{tabular}{|l||c|r|c|}  \hline
+        繰り返し & $_{k}\theta$ & $LL^{\prime}(_{k}\theta)$ &  $LL^{\prime\prime}(_{k}\theta)$\\ \hline \hline
+        $0$ & $-5.0$ & $1.39742$ & $-0.17300$ \\ \hline
+        $1$ & $3.08$ & $-1,43191$ & $-004991$ \\ \hline
+        $2$ & $-25.61$ & $1.64390$ & $-0.00000$ \\ \hline
+        $3$ & $2903062$ & $-1.50790$ & $0.00000$ \\ \hline
+        $4$ & 発散 & 計算不能 & 計算不能 \\ \hline
+      \end{tabular}
+    \end{table}
+ただし、ニュートン法には欠点もある。初期値$_{0}\theta$が収束点$\hat{\theta}_i$に近傍になくてはならない。ニュートン法では初期値によって、収束に成功する場合と失敗する場合がある。これを初期値依存性という。先に述べたように、項目母数は標準正規分布に従っている仮定の下で推定したものである。したがって、$_{0}\theta = -5.0$はあまり適していない初期値ともいえる。
 \end{document}
