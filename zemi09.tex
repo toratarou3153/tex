@@ -1,0 +1,134 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\usepackage{here}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\setcounter{section}{2}
+\section{尺度値の推定}
+\setcounter{subsection}{3}
+\subsection{ベイズ推定法}
+最尤推定法では、全問正答全問誤答の場合は、推定することができなかった。尺度値の分布を利用した推定方法に、ベイズ推定法がある。これは、全問正答、誤答の尺度値を推定することができる。
+\subsubsection{ベイズの定理}
+\begin{itembox}[l]{ベイズの定理}
+  ある確率事象を$A$、$B$とする。$f(B)$は事象$B$が起こる確率であり。$f(A|B)$は事象$B$が起こる仮定の上で、事象$A$が起こる確率とする。二つの積は、二つの事象が両方とも観察される確率とし$f(A,B)$とする。これらの関係を式にすると、
+  \begin{align}
+    \label{00}
+    \displaystyle f(A,B) = f(B)f(A|B) \tag{3.24}
+  \end{align}
+  となる。両辺を$f(B)$で割ると、
+  \begin{align}
+    \label{01}
+    \displaystyle f(A|B) = \frac{f(A,B)}{f(B)} \tag{3.25}
+  \end{align}
+  となる。ここで$A$と$B$は一般的な事象を表しているので、式(\ref{00})の$A$と$B$を入れ替えると、
+  \begin{align}
+    \label{02}
+    \displaystyle f(A,B) = f(A)f(B|A) \tag{3.26}
+  \end{align}
+  である。これを式(\ref{01})に代入すると、
+  \begin{align}
+    \label{03}
+    \displaystyle f(A|B) = \frac{f(A)f(B|A)}{f(B)} \tag{3.27}
+  \end{align}
+  となり、この式をベイズの定理という。
+\end{itembox}
+\newpage
+$<具体例>$
+
+同じ形の赤い壺、青い壺、緑の壺に碁石がそれぞれ$10$個入っており、そのうち黒い碁石がそれぞれ$3$個、$4$個、$5$個入っている。目をつぶって壺を選び、そのまま碁石を一つ取り出す試行を考える。
+
+ここで、$B$を碁石の色、$A$を壺の色とする。例えば、$f(赤|黒)$というのは、碁石を確認したら黒色だったとき壺の色が赤である確率を表している。それぞれの壺が選ばれる確率はどうよに確からしく、$\displaystyle\frac{1}{3}$とする。このことを考慮して、式のすると、
+\begin{align}
+  \label{04}
+  \displaystyle f(赤|黒) = \frac{f(赤)f(黒|赤)}{f(黒)} = \frac{\frac{1}{3} \times \frac{3}{10}}{\frac{4}{10}} = \frac{1}{4} \tag{3.28}
+\end{align}
+となり、赤い壺である確率は$2$割$5$分であることが分かった。
+\subsubsection{MAP推定}
+式(\ref{03})において、$A$を被験者母数$\theta_i$とし、$B$の反応パタン$\displaystyle \bf u_i$とする。これらの関係を式にすると、
+\begin{align}
+  \label{05}
+  \displaystyle f(\theta_i|\bf{u_i}) = \frac{g(\theta_i)L(\bf{u_i}|\theta_i)}{f(\bf{u_i})} \tag{3.29}
+\end{align}
+となる。式(\ref{05})は、$\bf{u_i}$が観察されたときの$\theta_i$の事後分布と呼ばれる。また、$\theta_i$の分布$g(\theta_i)$を事前分布という。ここでの事前事後とはデータを観測する前と後である。式(\ref{05})を最大にしたときの被験者母数の値をベイズモーダル値あるいは事後確率最大推定値(MAP)という。最大化を考えるために、対数変換を行い、
+\begin{align}
+  \label{06}
+  \displaystyle log f(\theta_i|\boldsymbol u_i) = log g(\theta_i) + log L(\boldsymbol u_i|\theta) - log f(\boldsymbol u_i) \tag{3.30}
+\end{align}
+変数である$\theta_i$で偏微分すると、第$3$項は$0$になり消えり
+\begin{align}
+  \label{07}
+  \displaystyle \dfrac{\partial }{\partial \theta_i} log f(\theta_i|\boldsymbol u_i) = \dfrac{\partial }{\partial \theta_i} log g(\theta_i) + \dfrac{\partial }{\partial \theta_i} log L(\boldsymbol u_i|\theta)  \tag{3.31}
+\end{align}
+となる。これを$0$とおき$\theta_i$に関して方程式を解くと、被験者母数のベイズ推定値を得る。
+
+被験者母数には標準正規分布を仮定しているので、それを事前分布として用いる。標準正規分布の密度関数の対数を計算し、
+\begin{align}
+  \label{08}
+  \displaystyle log g(\theta_i) = log \left(\frac{1}{\sqrt{2\pi}}\right) + \left(\frac{-1}{2} {\theta_i}^2\right)  \tag{3.32}
+\end{align}
+$\theta_i$で偏微分すると、
+\begin{align}
+  \label{09}
+  \displaystyle   \dfrac{\partial }{\partial \theta_i} log g(\theta_i) = -\theta_i \tag{3.33}
+\end{align}
+となる。これを式(\ref{07})に代入して、値を$0$とおくと、
+\begin{align}
+  \label{10}
+  \displaystyle  \dfrac{\partial }{\partial \theta_i}log L(\bf u_i) - \theta_i  = LL^{\prime}(\theta_i) - \theta_i = 0 \tag{3.34}
+\end{align}
+となる。
+
+
+
+
+\end{document}
