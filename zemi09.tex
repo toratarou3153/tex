@@ -126,9 +126,19 @@ $\theta_i$で偏微分すると、
   \label{10}
   \displaystyle  \dfrac{\partial }{\partial \theta_i}log L(\bf u_i) - \theta_i  = LL^{\prime}(\theta_i) - \theta_i = 0 \tag{3.34}
 \end{align}
-となる。
+となる。ここで$LL^{\prime}(\theta_i)$の具体的な関数は、
+\begin{eqnarray*}
+  \label{11}
+  \displaystyle  LL^{\prime}(\theta_i) &=& Da \sum_{j = 1}^{n} (u_{ij} - p_j (\theta_i)) \\
+  LL^{\prime}(\theta_i) &=& D \sum_{j = 1}^{n} a_j(u_{ij} - p_j (\theta_i)) \\
+  LL^{\prime}(\theta_i) &=& D \sum_{j = 1}^{n} \frac{a_j(u_{ij} - p_j (\theta_i))(p_j(\theta_i) - c_j)}{p_j(\theta)(1 - c_j)}
+\end{eqnarray*}
+である。つまり事前分布に標準正規分布を仮定したベイズ推定法のための方程式は、尤度方程式から$\theta_i$を引いたものである。
 
-
-
+ここでベイズ推定法と最尤推定法を比較してみる。
+\begin{itemize}
+  \item[1] 項目数$n$が増えると、最尤推定法ベイズ推定値は似たようなものになる。
+  \item[2] ベイズ推定法が有効であるか否かは、被験者母数の事前分布適切であるか否かに依存している。
+\end{itemize}
 
 \end{document}
