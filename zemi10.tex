@@ -52,8 +52,59 @@
 \title{項目反応理論}
 \begin{document}
 \maketitle
-\section{}
-\subsection{}
+\setcounter{section}{2}
+\section{尺度値の推定}
+\setcounter{subsection}{3}
+\subsection{ベイズ推定法}
+\setcounter{subsubsection}{2}
+\subsubsection{EAP推定法}
+ベイズ推定法はMAP推定法ばかりではなくEAP法も利用される。これは、$\theta_i$の事後分布の$\theta_i$に関する期待値を推定値とする推定法である。式にすると、
+\begin{align*}
+  \label{00}
+  \displaystyle \theta_i &= \int_{-\infty}^{+\infty} \theta_i \frac{g(\theta_i)L(\boldsymbol{u}_i|\theta)}{f(\boldsymbol{u}_i)}  d\theta_i  \\
+  &= \frac{\displaystyle\int_{-\infty}^{+\infty} \theta_i g(\theta_i)L(\boldsymbol{u}_i|\theta) d\theta_i}{f(\boldsymbol{u}_i)} \\
+  &= \frac{\displaystyle\int_{-\infty}^{+\infty} \theta_i g(\theta_i)L(\boldsymbol{u}_i|\theta) d\theta_i}{\displaystyle\int_{-\infty}^{+\infty}  g(\theta_i)L(\boldsymbol{u}_i|\theta) d\theta_i}\tag{3.35}
+\end{align*}
+となる。式中の積分は区分求積法によって求めることができる。
+
+ある区間$[a,b]$を$N$等分した点$(幅は\Delta \theta)$を$\theta_n(n = 1,2,\cdots ,N,N+1)$とすると
+\begin{align}
+  \label{01}
+  \displaystyle \int_{b}^{a} f(\theta) d\theta \simeq \sum_{n=1}^{N} f(\theta) \times \Delta \theta  \tag{3.36}
+\end{align}
+によって$N$個の長方形の和によって近似することができる。式(\ref{00})中の区間は$[-\infty,\infty]$であるが、$g(\theta)$は標準正規分布を仮定しているので、積分区間は$[-3,3]$や$[-4,4]$などで十分であると考えられる。式にすると、
+\begin{align}
+  \label{02}
+  \displaystyle \hat{\theta}_i \simeq \frac{\displaystyle\sum_{n=1}^{N} \theta_{in} L(\boldsymbol{u}_i | \theta_{in})g(\theta_{in})\Delta \theta}{\displaystyle\sum_{n=1}^{N} L(\boldsymbol{u}_i | \theta_{in})g(\theta_{in})\Delta \theta}  \tag{3.37}
+\end{align}
+と近似できる。これまでの方法と違って、直接求めることができるので、反復計算の必要のないEAP推定法は計算時間を短縮することができる。
+\section{項目母数の推定}
+第$3$章では項目母数は既知であると仮定したうえで進めてきた。今回からは、反応パタン$\boldsymbol U$から項目母数を推定する方法について考える。
+\subsection{同時最尤推定法}
+本節では$\boldsymbol U$から項目母数と被験者母数を同時に推定する方法を紹介する。第$3$章で導入したように、被験者母数$\theta_i$が与えられたとき、$u_{ij}$の分布は、
+\begin{align}
+  \label{03}
+  \displaystyle f(u_{ij}|\theta_i) = p_j(\theta_i)^{u_{ij}}q_j(\theta_i)^{1-u_{ij}} \tag{4.1}
+\end{align}
+であった。ただし、これまでと違って今回は項目母数も未知であるので、
+\begin{align}
+  \label{04}
+  \displaystyle f(u_{ij}|\theta_i,a_j,b_j,c_j) = p_j(\theta_i)^{u_{ij}}q_j(\theta_i)^{1-u_{ij}} \tag{4.2}
+\end{align}
+と書き直す。ここでは$3$母数モデルを用いて説明していく。局所独立の仮定から、$n$個の項目に関する被験者$i$の反応パタンベクトル$\boldsymbol u_i$が観察される確率は、
+\begin{align}
+  \label{05}
+  \displaystyle f(\boldsymbol u_i|\theta_i,\boldsymbol a,\boldsymbol  b,\boldsymbol  c) = \prod_{j = 1}^{n} f(u_{ij}|\theta_i,a_j,b_j,c_j) \tag{4.3}
+\end{align}
+と表現される。ここで、
+\begin{align}
+  \label{06}
+  \displaystyle \boldsymbol{a}&=(a_1,a_2,\cdots,a_n)^{\prime} \tag{4.4}\\
+  \boldsymbol{b}&= (b_1,b_2,\cdots,b_n)^{\prime}\tag{4.5}\\
+  \boldsymbol{c}&= (c_1,c_2,\cdots,c_n)^{\prime}\tag{4.6}
+\end{align}
+である。
+
 
 
 
