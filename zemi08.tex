@@ -1,0 +1,136 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\usepackage{here}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\setcounter{section}{2}
+
+\section{尺度地の推定}
+\setcounter{subsection}{2}
+\subsection{数値解法}
+\setcounter{subsubsection}{1}
+\subsubsection{挟み撃ち法}
+前回は方程式を解く解析的解法を紹介した。しかし、解析的に解くことが困難な場合には、関数の具体的な形状に依存しない解法が求められる。数値解法の$1$種である挟み撃ち法を紹介する。以下のアルゴリズムで方程式を解く。
+\begin{itemize}
+  \item[(1)] 正の値をとる収束精度$\displaystyle\epsilon$を定める。
+  \item[(2)] $LL^{\prime}(\theta_D) > 0$なる下限値$\displaystyle\theta_D$を定める。
+  \item[(3)] $LL^{\prime}(\theta_D) < 0$なる上限値$\displaystyle\theta_U$を定める。
+  \item[(4)] $\displaystyle \theta_M = \frac{(\theta_D + \theta_U )}{2}$
+  \item[(5)] $\displaystyle LL^{\prime}(\theta_M) > \epsilon$なら$\displaystyle\theta_D=\theta_M$として$(4)$に戻る。
+  \item[(6)]  $\displaystyle LL^{\prime}(\theta_M) < -\epsilon$なら$\displaystyle\theta_U=\theta_M$として$(4)$に戻る。
+  \item[(7)] $\displaystyle |LL^{\prime}(\theta_M)| \leq \epsilon$なら尺度地の推定値$\hat{\theta}_i = \theta_M$として計算終了。
+\end{itemize}
+[具体例]
+\begin{itemize}
+  \item[1.] (1)収束精度を$\displaystyle\epsilon = 0.00001$と定める。
+  \item[2.] (2)$LL^{\prime}(-20.0) = 1.64388$で正になる下限値$\displaystyle\theta_D = -20.0$を定める。
+  \item[3.] (3)$LL^{\prime}(10.0) = -1.50686$なる上限値$\displaystyle\theta_U$を定める。
+  \item[4.] (4)$\displaystyle \frac{-20.0 + 10.0}{2} = -5.0$
+  \item[5.] (5)$\displaystyle LL^{\prime}(-5.0) = 1.39742$なので$\displaystyle\theta_D=\theta_M$として$(4)$に戻る。
+  \item[6.]  (4)$\displaystyle \frac{(-5.0 + 10.0)}{2} = 2.5$
+  \item[7.] (5)$\displaystyle LL^{\prime}(2.5) = -0.34504$なので$\displaystyle\theta_U=\theta_M$として$(4)$に戻る。
+  \item[8.] $\cdots$$\cdots$
+  \item[9.] (3)  $\displaystyle \frac{(-1.8087 + (-1.8085))}{2} = -1.80859$
+  \item[10.] (7) $\displaystyle |LL^{\prime}(-1.80859)| \leq 0.00001$なので、$\hat{\theta}_i = -1.80859$で計算終了。
+\end{itemize}
+\subsubsection{ニュートン法}
+前述した挟み撃ち法は、正と負の値である$\theta_U$と$\theta_D$の間には$0$となる値が存在する、ある種の中間値の定理のような性質を利用している。関数の具体的な形状に依存せず方程式を解く方法に、ニュートン法を紹介する。これは、初期値を更新しながら解に近づく方法である。
+
+ニュートン法は、区分を狭めれば滑らかな関数は直線に近づいていく、という性質を利用した数値解法である。まず、初期値$_{0}\theta$を設ける。関数に対して$_{0}\theta$から接線を引く。初めのほうは関数も直線ではないため解には遠いものとなるが、次に初めの接線と$0$の交点を$_{1}\theta$とする。これを繰り返すことで、限りなく解に近似することができる。では、どのようにして$_{0}\theta$から$_{1}\theta$を求めることができるのだろうか。
+
+$_{0}\theta$から引いた接線の傾きは
+\begin{align}
+  \label{00}
+  \displaystyle LL^{\prime\prime}(_{0}\theta) = \frac{LL^{\prime}(_{0}\theta)}{_{0}\theta - _{1}\theta} \tag{3.17}
+\end{align}
+のように表現することができる。この式を$_{1}\theta$に関して解くと、
+\begin{align}
+  \label{01}
+  \displaystyle _{1}\theta = _{0}\theta - \frac{LL^{\prime}(_{0}\theta)}{LL^{\prime\prime}(_{0}\theta)} \tag{3.18}
+\end{align}
+となり$_{0}\theta$から$_{1}\theta$を求めることができる。$_{2}\theta$を求められることから、一般化して
+\begin{align}
+  \label{02}
+  \displaystyle _{k+1}\theta = _{k}\theta - \frac{LL^{\prime}(_{k}\theta)}{LL^{\prime\prime}(_{k}\theta)} \tag{3.19}
+\end{align}
+と表すことができる。
+\subsubsection{数値例と解法の比較}
+挟み撃ち法では、アルゴリズムの$(1)$と$(2)$を満たすような区間を見つけることができれば、収束が保証される。区間は、行程を繰り返すごとに、狭くなっていくので$3$回か$4$回繰り返されると解の精度は確実に上がっていく。このことから挟み撃ち法は堅実な数値解法と言える。
+
+一方で、ニュートン法はどうであろうか。ニュートン法による最適化の行程を表に示した。$k = 3$の時点で、小数第$3$位までは信用できる解に達していることがわかる。挟み撃ち法が$k = 17$までかかっていることを考えると圧倒的に早い。ニュートン法は、収束スピードが最大の特徴である。
+\begin{table}[H]
+  \centering
+    \caption{ニュートン法による最適化の過程(初期値$_{0}\theta = 0.0$)}
+    \begin{tabular}{|l||c|r|c|}  \hline
+      繰り返し & $_{k}\theta$ & $LL^{\prime}(_{k}\theta)$ &  $LL^{\prime\prime}(_{k}\theta)$\\ \hline \hline
+      $0$ & $0.00000$ & $-0.93821$ & $-0.35382$ \\ \hline
+      $1$ & $-2.65164$ & $0.52808$ & $-0.58870$ \\ \hline
+      $2$ & $-1.75462$ & $-0.03441$ & $-0.63630$ \\ \hline
+      $3$ & $-1.80869$ & $0.00006$ & $-0.63852$ \\ \hline
+      $4$ & $-1.80860$ & $0.00000$ & $-0.63852$ \\ \hline
+    \end{tabular}
+  \end{table}
+  \begin{table}[H]
+    \centering
+      \caption{ニュートン法による最適化の過程初期値($_{0}\theta = -5.0$)}
+      \begin{tabular}{|l||c|r|c|}  \hline
+        繰り返し & $_{k}\theta$ & $LL^{\prime}(_{k}\theta)$ &  $LL^{\prime\prime}(_{k}\theta)$\\ \hline \hline
+        $0$ & $-5.0$ & $1.39742$ & $-0.17300$ \\ \hline
+        $1$ & $3.08$ & $-1,43191$ & $-004991$ \\ \hline
+        $2$ & $-25.61$ & $1.64390$ & $-0.00000$ \\ \hline
+        $3$ & $2903062$ & $-1.50790$ & $0.00000$ \\ \hline
+        $4$ & 発散 & 計算不能 & 計算不能 \\ \hline
+      \end{tabular}
+    \end{table}
+ただし、ニュートン法には欠点もある。初期値$_{0}\theta$が収束点$\hat{\theta}_i$に近傍になくてはならない。ニュートン法では初期値によって、収束に成功する場合と失敗する場合がある。これを初期値依存性という。先に述べたように、項目母数は標準正規分布に従っている仮定の下で推定したものである。したがって、$_{0}\theta = -5.0$はあまり適していない初期値ともいえる。
+\end{document}
