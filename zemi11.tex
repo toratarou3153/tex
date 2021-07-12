@@ -1,0 +1,76 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\setcounter{section}{3}
+\section{項目母数の推定}
+\setcounter{subsection}{1}
+\subsection{周辺最尤推定法}
+同時最尤推定法では、最大化する尤度関数が多くなってしまうという欠点がある。最大化する尤度関数の中から、被験者母数をなくすことができれば、最大化に関する母数を大幅に減らすことができる。また被験者を追加してデータを増やしても未知数が増えることはないので推定値が安定するというメリットもある。つまり、反応パタンが与えられたときの項目母数だけの尤度関数を構成すればよい。この考えを周辺最尤推定法と呼ぶ。$n$個の項目に対する被験者$i$の反応パタンベクトル$\boldsymbol{u}_i$が観察される確率は$f(\boldsymbol{u}_i|\boldsymbol{\theta},\boldsymbol{a,b,c})$であった。目標はここから被験者母数$\theta_i$を消すことである。
+\subsubsection{周辺化}
+同じ形の赤い壺、青い壺、緑の壺に碁石がそれぞれ$10$個入っておりそのうち黒い碁石がそれぞれ$3$個、$4$個、$5$個入っている。目を閉じたまま碁石をとる思考を考える。ここで選んだ壺から黒い石が取り出される確率は、壺の色が与えられたときに決定されるから確率表記は$\displaystyle p(黒|壺の色)$であり、「壺の色」は母数である。式にすると、
+\begin{align*}
+  \label{00}
+  \displaystyle 0.3 &= p(黒|赤) \tag{4.15}\\
+  0.4 &= p(黒|青) \tag{4.16} \\
+  0.5 &=  p(黒|緑)\tag{4.17}
+\end{align*}
+である。ここで壺の色は考えないことにする。つまり、壺の色という母数を消去して、黒の石が取り出される確率を考える。このとき、考える対象ではない母数を局外母数という。これを考えるためには、「壺の色」自身の確率分布$p(壺の色)$を利用する。
+
+例えば、赤い壺、青い壺、緑の壺が選ばれる確率が問う確率ならば、黒い石が取り出される確率は、
+\begin{align}
+  \label{01}
+  \displaystyle p(黒) = \frac{1}{3}(p(黒|赤) + p(黒|青) +p(黒|緑) ) = \frac{1}{4} \tag{4.18}
+\end{align}
+である。
+\end{document}
