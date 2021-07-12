@@ -107,8 +107,37 @@
 被験者の反応は互いに独立であるから、被験者母数と項目母数が与えられた条件の下で、$n$個の項目に対する$N$人の被験者の反応パタン行列$\boldsymbol{U}$が観察される確率は、
 \begin{align}
   \label{07}
-  \displaystyle \boldsymbol{f}(\boldsymbol{U}|)&=(a_1,a_2,\cdots,a_n)^{\prime} \tag{4.7}
+  \displaystyle f(\boldsymbol{U}|\theta_i,\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) = \prod_{i = 1}^{N} f(\boldsymbol{u}_i,|\theta_i,\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) = \prod_{i = 1}^{N}\prod_{j = 1}^{n} f(u_{ij}|\theta_i,a_j,b_j,c_j)     \tag{4.7}
 \end{align}
+と表現される。ここで、
+\begin{align}
+  \label{08}
+  \displaystyle \boldsymbol{\theta} = (\theta_1,\theta_2,\cdots,\theta_i,\cdots,\theta_N)^{\prime} \tag{4.8}
+\end{align}
+である。式(\ref{07})は$\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}$は定数であり、$\boldsymbol{U}$が変数である。ところが、現実を考えると手元にあるのは被験者の反応パタン$\boldsymbol{U}$だけであり、その他の項目母数は未知のままである。したがって、同じ式を定数と変数を逆にみなし、
+\begin{align}
+  \label{09}
+  \displaystyle L(\boldsymbol{U}|\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) = f(\boldsymbol{U}|\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) \tag{4.9}
+\end{align}
+のように尤度とする。この尤度を最大にする母数ベクトルの値が最尤推定値である。またこのような方法を最尤推定法と言った。ここで最大値を求めるために、対数変換を行うと
+\begin{align}
+  \label{10}
+  \displaystyle \log L(\boldsymbol{U}|\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) = \sum_{i = 1}^{N} \sum_{j = 1}^{n} [u_{ij} \log p_j{\theta_i} + (1 - u_{ij} \log q_j(\theta_i))]     \tag{4.10}
+\end{align}
+となる。この関数の最大化を考える。尤度関数を最大化する母数の値と、対数尤度関数を最大化する母数の値は等しい。
+
+対数尤度関数を最大化する解は、前章であったように変数で微分して$0$とおいた方程式を変数に関して解くことによって求まった。
+今回は変数が複数あるので、各変数$\theta_i,a_j,b_j,c_j$で偏微分した結果を$0$とおき、
+\begin{align}
+  \label{11}
+  \displaystyle \dfrac{\partial }{\partial \theta_i} \log L(\boldsymbol{U}|\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) &= D\sum_{j = 1}^{n} \frac{a_j(p_j(\theta_i) - c_j)(u_ij - p_j(\theta_i))}{(1 - c_j)p_j(\theta_i)}=0    \tag{4.11} \\
+  \displaystyle \dfrac{\partial }{\partial a_j} \log L(\boldsymbol{U}|\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) &= \frac{D}{1 - c_j}\sum_{i = 1}^{N} \frac{(\theta_i - b_j)(p_j(\theta_i) - c_j)(u_ij - p_j(\theta_i))}{p_j(\theta_i)}=0    \tag{4.12}\\
+  \displaystyle \dfrac{\partial }{\partial a_j} \log L(\boldsymbol{U}|\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) &= \frac{-Da_j}{1 - c_j}\sum_{i = 1}^{N} \frac{(p_j(\theta_i) - c_j)(u_ij - p_j(\theta_i))}{p_j(\theta_i)}=0    \tag{4.13} \\
+  \displaystyle \dfrac{\partial }{\partial a_j} \log L(\boldsymbol{U}|\boldsymbol{\theta},\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}) &= \frac{1}{1 - c_j}\sum_{i = 1}^{N} \frac{(u_ij - p_j(\theta_i))}{p_j(\theta_i)}=0    \tag{4.13}
+\end{align}
+の連立方程式を解いた値が最尤推定値となる。この方法は被験者母数と項目母数を同時に推定するという意味で特に同時最尤推定法と呼ぶ。
+
+
 
 
 \end{document}
