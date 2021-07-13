@@ -84,8 +84,10 @@
 ここでは、説明変数は離散型として$4$つの値$\displaystyle \theta = 1.0,0.5,-0.5,-1.0$しかとらないと仮定する。例えば、それらを「優」、「良」、「可」、「不可」とみなしそのような学生が大学の中に$0.3,0.2,0.2,0.3$の確率で存在しているものとする。このとき、母集団から被験者を選び出し、受験させある反応パタン$\boldsymbol{u}_i$を得る。$f(\boldsymbol{u}|\theta,
 \boldsymbol{a,b,c})$の被験者母数に具体的な尺度値を代入して、$g(\theta)$との積和を求める。式は、
 \begin{align}
+  \begin{split}
   \label{03}
-  \displaystyle f(\boldsymbol{u}|\theta,\boldsymbol{a,b,c}) &= g(1.0)f(\boldsymbol{u}_i|1.0,\boldsymbol{a,b,c}) + g(0.5)f(\boldsymbol{u}_i|0.5,\boldsymbol{a,b,c})\\ + g(-0.5)f(\boldsymbol{u}_i|-0.5,\boldsymbol{a,b,c}) + g(-1.0)f(\boldsymbol{u}_i|-1.0,\boldsymbol{a,b,c})\\ &= 0.3f(\boldsymbol{u}_i|1.0,\boldsymbol{a,b,c}) + 0.2f(\boldsymbol{u}_i|0.5,\boldsymbol{a,b,c})\\ + 0.2f(\boldsymbol{u}_i|-0.5,\boldsymbol{a,b,c}) + 0.3f(\boldsymbol{u}_i|-1.0,\boldsymbol{a,b,c})
+  \displaystyle f(\boldsymbol{u}|\theta,\boldsymbol{a,b,c}) &= g(1.0)f(\boldsymbol{u}_i|1.0,\boldsymbol{a,b,c}) + g(0.5)f(\boldsymbol{u}_i|0.5,\boldsymbol{a,b,c})\\&\quad + g(-0.5)f(\boldsymbol{u}_i|-0.5,\boldsymbol{a,b,c}) + g(-1.0)f(\boldsymbol{u}_i|-1.0,\boldsymbol{a,b,c})\\ &= 0.3f(\boldsymbol{u}_i|1.0,\boldsymbol{a,b,c}) + 0.2f(\boldsymbol{u}_i|0.5,\boldsymbol{a,b,c})\\&\quad + 0.2f(\boldsymbol{u}_i|-0.5,\boldsymbol{a,b,c}) + 0.3f(\boldsymbol{u}_i|-1.0,\boldsymbol{a,b,c})
+  \end{split}
 \end{align}
 のように導く。周変化によって被験者母数を消去することができた。
 
@@ -101,8 +103,19 @@
   \label{05}
   \displaystyle g(\theta) = \frac{1}{\sqrt{2\pi}}\exp(-\frac{1}{2}\theta^2)   \tag{4.21}
 \end{align}
-を仮定してみる。
+を仮定してみる。連続変数であるから、階級幅を無限に小さくして和の代わりに積分を用いる。母集団から$1$人の被験者を抽出して受験させ、反応$\boldsymbol{u}_i$を得る確率は、
+\begin{align}
+  \label{06}
+  \displaystyle f(\boldsymbol{u}_i|\boldsymbol{a,b,c}) &= \int_{-\infty}^{\infty} g(\theta)f(\boldsymbol{u}_i|\theta,\boldsymbol{a,b,c})   \tag{4.22} \\
+  &= \int_{-\infty}^{\infty} g(\theta) \prod_{j = 1}^{n} f(u_{ij}|\theta,a_j,b_j,c_j) d\theta \tag{4.23}
+\end{align}
+と表現することができる。
 
-
-
+被験者の反応は互いに独立であるから、被験者母数と項目母数が与えられた条件下で、$n$個の項目に対する$N$人の被験者の反応パタン行列$\boldsymbol{U}$が観察される確率は
+\begin{align}
+  \label{07}
+  \displaystyle f(\boldsymbol{U}|\boldsymbol{a,b,c}) &= \prod_{i = 1}^{N} f(\boldsymbol{u}_i|\boldsymbol{a,b,c})   \tag{4.22} \\
+  &= \prod_{j = 1}^{n}  \int_{-\infty}^{\infty} g(\theta)  f(u_{ij}|\theta,a_j,b_j,c_j) d\theta \tag{4.23}
+\end{align}
+である。この式に関して、$\boldsymbol{U}$を定数、$\boldsymbol{a,b,c}$を変数とみた式が周辺尤度関数である。しかし、積の連なりで表現された式の最大化は求めにくいので一般には対数をとり最大化を考える。この方法を周辺最尤推定法という。
 \end{document}
