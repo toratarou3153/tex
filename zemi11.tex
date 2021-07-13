@@ -82,10 +82,26 @@
 本節では、被験者母数を局外母数として確率分布から、$\displaystyle\theta$を消去する。$\displaystyle\theta$自身の分布を$\displaystyle g(\theta)$とする。
 
 ここでは、説明変数は離散型として$4$つの値$\displaystyle \theta = 1.0,0.5,-0.5,-1.0$しかとらないと仮定する。例えば、それらを「優」、「良」、「可」、「不可」とみなしそのような学生が大学の中に$0.3,0.2,0.2,0.3$の確率で存在しているものとする。このとき、母集団から被験者を選び出し、受験させある反応パタン$\boldsymbol{u}_i$を得る。$f(\boldsymbol{u}|\theta,
-\boldsymbol{a,b,c})$の被験者母数に具体的な尺度値を代入して、$g(\theta)$との積和を求める。
+\boldsymbol{a,b,c})$の被験者母数に具体的な尺度値を代入して、$g(\theta)$との積和を求める。式は、
+\begin{align}
+  \label{03}
+  \displaystyle f(\boldsymbol{u}|\theta,\boldsymbol{a,b,c}) &= g(1.0)f(\boldsymbol{u}_i|1.0,\boldsymbol{a,b,c}) + g(0.5)f(\boldsymbol{u}_i|0.5,\boldsymbol{a,b,c})\\ + g(-0.5)f(\boldsymbol{u}_i|-0.5,\boldsymbol{a,b,c}) + g(-1.0)f(\boldsymbol{u}_i|-1.0,\boldsymbol{a,b,c})\\ &= 0.3f(\boldsymbol{u}_i|1.0,\boldsymbol{a,b,c}) + 0.2f(\boldsymbol{u}_i|0.5,\boldsymbol{a,b,c})\\ + 0.2f(\boldsymbol{u}_i|-0.5,\boldsymbol{a,b,c}) + 0.3f(\boldsymbol{u}_i|-1.0,\boldsymbol{a,b,c})
+\end{align}
+のように導く。周変化によって被験者母数を消去することができた。
 
+ここでは、離散的な説明変数を考えたが連続型はどのように考えるのだろうか。これは、階級の幅を狭めることができれば実質離散型として扱うことができる。例えば、小学$1$年生の体重を記録する際に、$10kg$から$35kg$までを$0.2kg$刻みの離散変数として扱うことができる。そこで、$K$個の値をとる階級地$\displaystyle \theta_k$の分布$\displaystyle g(\theta_k)$を考える。これを、多項分布という。添え字$k$は被験者ではなくヒストグラムの階級値についていることに注意。このとき、母集団から$1$人の被験者を抽出し受験させ$\displaystyle \boldsymbol{u}_i$という結果を得る確率は、
+\begin{align}
+  \label{04}
+  \displaystyle  f(\boldsymbol{u}_i|\boldsymbol{a,b,c}) = \sum_{k = 1}^{K} g(\theta_k)f(\boldsymbol{u}_i|\theta_k,\boldsymbol{a,b,c}) \tag{4.20}
+\end{align}
+と表現され、被験者母数は消去される。ただしこの場合は被験者母数の母集団におけるヒストグラムが既知であることが必要である。
 
-
+先に述べたように、連続変数を細かい階級幅で近似することは問題ない。しかし、実際にはその分布が既知であることは期待できないことが多くそれでは、式$\ref{04}$は利用できない。被験者母数を本来のモデルとおりに連続変数として扱うためにその分布に標準正規分布、
+\begin{align}
+  \label{05}
+  \displaystyle g(\theta) = \frac{1}{\sqrt{2\pi}}\exp(-\frac{1}{2}\theta^2)   \tag{4.21}
+\end{align}
+を仮定してみる。
 
 
 
