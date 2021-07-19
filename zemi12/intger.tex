@@ -1,0 +1,120 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{解法の考え方}
+\date{}
+\begin{document}
+\maketitle
+積分問題の解法を考えながら解法の考え方についての考察していく。今回考えていく問題は次の式である。
+\begin{align*}
+  \label{01}
+  \displaystyle \int_0^{\pi} \frac{x\sin{x}}{8 + \sin^{2}{x}} dx \tag*{(1)}
+\end{align*}
+いかにもな積分問題であり何から手を付けていいものか考え込んでしまいそうな問題である。最終的には、今回考察していく解法の考え方ですべての積分問題が、あるいは数学の問題が解けるようになるとよいと考える。
+\section{歴史}
+まず初めにこの問題の歴史を考えてみよう。歴史といっても世界史や日本史のような類ではないので安心してほしい。この問題がどのように出現してきたのかを考える。つまり、歴史というよりは、出現の歴史的背景というのが近いような気もする。$1$番初めにどんな積分を学習したかを考えると、
+\begin{align*}
+  \label{02}
+  \displaystyle \int 2x + 1 dx \tag*{(2)}
+\end{align*}
+のような変数$x$の簡単な$1$次式ではなかっただろうか。これの難易度が徐々に上がると、$2$次式、$3$次式といった具合になる。これを表すと、
+\begin{align*}
+  \label{03}
+  \displaystyle \int f(x)  dx\tag*{(3)}
+\end{align*}
+となる。数$3$の学習でついに三角関数の積分が出てくる。式にすると、
+\begin{align*}
+  \label{04}
+  \displaystyle \int \sin{x} dx \ \ or \int \cos{x} dx   \tag*{(4)}
+\end{align*}
+である。そして、これの難易度が上がると次のようになるのではないだろうか。
+\begin{align*}
+  \label{05}
+  \displaystyle \int f(\sin{x})dx \ \ or \int f(\cos{x})dx  \tag*{(5)}
+\end{align*}
+これが絶対ではないだろうが大まかにはこのような感じであろう。このレベルまで来るとほとんどは置換を用いることになりだんだん解法も複雑になってくる。ここまできても、今回の問題はどこにも出現していないように思える。今回の問題を一般的に表すとするならば、
+\begin{align*}
+  \label{06}
+  \displaystyle \int xf(\sin{x}) dx \tag*{(6)}
+\end{align*}
+となりそうである。このように問題の歴史を考えると問題を難しくしている要因が見えてくる。
+\subsection{歴史から考えるはじめの一歩}
+先に考えた歴史を最初から見たときに自分は式\ref{02}から式\ref{05}の中でどこまで理解しているのかを考える。今回は式\ref{05}まではできるものと仮定する。すると、今回の問題を解くうえで邪魔をしているものは何かを考える。そう、$xf(\sin{x})$の中の"$x$"である。この一文字があることで難易度は劇的に上がる。では、考えるべきは、"$x$"の消去の仕方である。
+\section{解法}
+このレベルでは置換を用いて解くことが多くあるので、今回も置換の線で考える。まず、よく見る方法として$\sin{x}$を$t$とでも置き消していく方法である。では、$ \displaystyle t = \sin{x}$として考えてみる。
+\begin{align*}
+  \label{07}
+  \displaystyle t &= \sin{x}とおくと\\
+  \frac{dt}{dx} &= \cos{x}となりこれらを式に代入すると\\
+  &\Rightarrow\int \frac{xt}{8 + t^{2}}\cos{x} dtとなる
+\end{align*}
+この方法では変数が混在し余計にぐちゃぐちゃしてしまう結果となった。三角関数の積分で多く用いられる必殺技$\displaystyle t = \tan{\frac{\pi}{2}}x$で置換しても先ほどの結果とほとんど変わらないものとなる。どうしようか。ここで考える。$\displaystyle \sin{x}$を置換しても$\displaystyle x$を消去できないようだ。そうなると、注目すべきは、$\displaystyle x$のほうである。こっちを置換する発想に至る。$\displaystyle x$は単独でも存在しているが、$\displaystyle \sin$の中にも存在していることに気づく。三角関数の中身は$\displaystyle \pi$や$\displaystyle \frac{\pi}{2}$との相性がとても良い。$\pi - \theta$や$\pi + \theta$によって相互に変換することが可能である。$\pi - \theta$を用いると$\displaystyle \sin$は$\displaystyle \sin$のままに変換することができるので$\displaystyle x$だけの消去に便利そうである。では、$\displaystyle x = \pi - t$として考えてみよう。いきなり本題の問題で考えるのは難しそうなので一般化した式で考えてみる。
+\begin{align*}
+  \displaystyle \int xf(sin{x})dx &= (\pi - t)f(\sin(\pi - t)) dt \\
+  &= \pi \int f(\sin{t}) dt - \int tf(\sin{t}) dt \\
+  &= \pi \int f(\sin{x}) dt - \int xf(\sin{x}) dt
+\end{align*}
+となる。左辺と右辺の第$2$項は等しいことから、
+\begin{align*}
+  \displaystyle \int xf(sin{x})dx =\frac{\pi}{2} \int f(\sin{x}) dt \tag*{(7)}
+\end{align*}
+となり、ここで$\displaystyle x$を消去することに成功した。これを実際に本題に使用してみよう。積分範囲には注意して置換してみる。
+\begin{align*}
+  \displaystyle \int_0^{\pi} xf(sin{x})dx &= \int_0^{\pi} \frac{x\sin{x}}{8 + \sin^{2}{x}} \\
+  &=\frac{\pi}{2}\int_0^{\pi} \frac{\sin{x}}{8 + \sin^{2}{x}}
+\end{align*}
+これで最大の問題$\displaystyle x$を消去できた。あとは$\displaystyle \int_0^{\pi} \frac{\sin{x}}{8 + \sin^{2}{x}}$について解いていく。これは$\displaystyle \int f(\sin{x}) dx$の形である。微分系の接触について考える。ここの回答については省略する。
+\section{まとめ}
+この問題を扱うにあたって解法の最初の一歩は考えればたどり着けることが示唆された。テストでいきなりこれと同じ事をしろと言われてもできないかもしれない。普段の練習問題から今回の流れを意識することが大切であると感じた。また、積分問題だけでなくほかの問題についても何が回答の邪魔をしていて自分がどこまでわかっているのかを考えると解法の最初の一歩は踏み出せそうである。普段、無意識にやっていたことを言語化することで自分の中で整理することもできた。
+
+
+
+\end{document}
