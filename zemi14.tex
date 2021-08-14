@@ -1,0 +1,77 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\setcounter{section}{3}
+\setcounter{subsection}{3}
+\subsection{ベイズ推定法}
+本節では$3.4$節で導入したベイズ推定法を項目母数の推定に利用する方法を論じていく。周辺推定法では、被験者が全員正答、全員誤答した項目の項目母数は推定することができなかったが、ベイズ推定法なら可能である。それ自体が問題になるわけではないが、事前分布が適切である場合にはベイズ推定法は実用的には便利な方法である。ここでベイズの公式を再掲したものが以下である。
+\begin{align}
+  \label{00}
+  \displaystyle f(A|B) = \frac{f(A)f(B|A)}{f(B)}\tag{4.29}
+\end{align}
+ここでは、反応パタンが与えられたときの母数に事後分布を求めるので、$A$は$\boldsymbol{\theta,a,b,c}$に相当し、$B$は、$\boldsymbol{U}$に相当する。
+\subsubsection{同時尤度による方法}
+はじめに、$f(A)$に相当する事前分布を導く。ここでは、全ての母数は独立しており、ある確率分布$g(\cdot)$に従ってランダムに分布していることを仮定している。独立の仮定の下で、複数の母数の事前分布はその総積で
+\begin{align}
+  \label{01}
+  \displaystyle
+  g(\boldsymbol{\theta,a,b,c}) = \prod_{i = 1}^{N}g(\theta_i) \prod_{j = 1}^{n} g(a_i)g(b_i)g(c_i)  \tag{4.30}
+\end{align}
+と表現される。これを同時事前分布という。
+
+
+%未完
+
+
+\end{document}
