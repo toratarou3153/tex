@@ -53,7 +53,7 @@
 \begin{document}
 \maketitle
 \section{特性値の推定}
-項目反応理論では項目特性曲線などでその項目への正答率が求められるが項目が複数ある場合は、特性値$\theta$を固定した場合、異なる項目への反応が互いに独立になる局所独立性が仮定されていた。これより、
+項目反応理論では項目特性曲線などでその項目への正答率が求められる。しかし、項目が複数あるとき、特性値$\theta$を固定した場合、異なる項目への反応が互いに独立になる局所独立性が仮定されていた。これより、
 \begin{eqnarray}
   \label{00}
   \displaystyle P(u_{i}|\theta) =\prod_{j = 1}^{n} p_{j}(\theta)
@@ -61,12 +61,12 @@
 と表すことができる。実際のテストでこの仮定が満たされるためには、項目同士で反応が出ないように作るだけでなく、すべての問題がある特性値$\theta$を測定しているのが必須であるため、かなり強い仮定と言える。局所独立を仮定できるとすると、ある被験者の$p$個の反応を、
 \begin{eqnarray}
   \label{01}
-  \displaystyle u_{jk} =\left\{\begin{array}{l}1 \ 第j番目の項目点数がk点(正答)\\ 0 \ それ以外(誤答)\end{array}\right.,k = 0,1,2,\cdots,m_{j}, \ \ j = 1,2,\cdots,p
+  \displaystyle u_{jk} =\left\{\begin{array}{l}1 \ 第j番目の項目点数がk点(正答)\\ 0 \ それ以外(誤答)\end{array}\right. k = 0,1,2,\cdots,m_{j} \ \ j = 1,2,\cdots,p
 \end{eqnarray}
 とすると、この特定の項目反応を得る確率は、
 \begin{eqnarray}
   \label{02}
-  \displaystyle P(u_{i}|\theta) = \prod_{j = 1}^{p} \prod_{k = 0}^{m_j} P^{u_{jk}}_{jk}(\theta)
+  \displaystyle P(u_{jk}|\theta) = \prod_{j = 1}^{p} \prod_{k = 0}^{m_j} P^{u_{jk}}_{jk}(\theta)
 \end{eqnarray}
 と書き表せる。これは、$2$値項目($\bigcirc$か$\times$など)の場合、
 \begin{eqnarray}
@@ -92,7 +92,7 @@
 この形から、対数尤度関数の極致は、識別力で重みをつけた重み付き正答数得点、
 \begin{align}
   \label{06}
-  \displaystyle x^{\ast} &= \sum_{j = 1}^{p} a_ju_j \tag{8}
+  \displaystyle x^{\ast} &= \sum_{j = 1}^{p} a_j b_j u_j \tag{8}
 \end{align}
 のみに依存していることがわかる。つまり、$x^{\ast}$が同じ値の被験者の$\theta$の推定量は同じといえる。これを$\theta$の推定に際する十分統計量と呼ぶ。ただし、尤度関数自体は、項目反応パタンに依存し、例えば$1$母数ロジスティックモデルの場合は、難易度の高い$5$項目のみに正解した人の尤度は、難易度の低い$5$項目のみに正解した人の尤度より低くなる。(難易度が高い問題$5$項目に全問正解するほうが難しいから)
 また、$\theta$の事前分布を$h(\theta)$としベイズ推定を用いれば$\theta$の事後分布は、項目反応が得あられる確率に事前分布をかけたもの
