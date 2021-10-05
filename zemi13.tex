@@ -66,7 +66,7 @@
 とすると、この特定の項目反応を得る確率は、
 \begin{eqnarray}
   \label{02}
-  \displaystyle P(u_{jk}|\theta) = \prod_{j = 1}^{p} \prod_{k = 0}^{m_j} P^{u_{jk}}_{jk}(\theta)
+  \displaystyle P(u_{jk}|\theta) = \prod_{j = 1}^{p} \prod_{k = 0}^{m_j} \left\{P_{jk}(\theta)\right\}^{u_{jk}}
 \end{eqnarray}
 と書き表せる。これは、$2$値項目($\bigcirc$か$\times$など)の場合、
 \begin{eqnarray}
@@ -89,13 +89,20 @@
   &= \sum_{j = 1}^{p} u_j  Da_j(\theta - b_j) + \ln(1-P_j(\theta)) \\
   &= D(\sum_{j = 1}^{p}a_ju_j)\theta  + \sum_{j = 1}^{p} \ln (1 - P_j(\theta)) - D(\sum_{j = 1}^{p} a_jb_ju_j) \tag{7}
 \end{align*}
+\[
+  \left(
+  \begin{tabular}{l}
+    $\displaystyle\because \frac{P_j(\theta)}{1 - P_j(\theta)} = \frac{1}{\exp(-D a_j (\theta - b_j))}$  \\  $\displaystyle\ln \frac{P_j(\theta)}{1 - P_j(\theta)} = Da_j(\theta - b_j)$
+  \end{tabular}
+  \right)
+\]
 この形から、対数尤度関数の極致は、識別力で重みをつけた重み付き正答数得点、
 \begin{align}
   \label{06}
   \displaystyle x^{\ast} &= \sum_{j = 1}^{p} a_j b_j u_j \tag{8}
 \end{align}
 のみに依存していることがわかる。つまり、$x^{\ast}$が同じ値の被験者の$\theta$の推定量は同じといえる。これを$\theta$の推定に際する十分統計量と呼ぶ。ただし、尤度関数自体は、項目反応パタンに依存し、例えば$1$母数ロジスティックモデルの場合は、難易度の高い$5$項目のみに正解した人の尤度は、難易度の低い$5$項目のみに正解した人の尤度より低くなる。(難易度が高い問題$5$項目に全問正解するほうが難しいから)
-また、$\theta$の事前分布を$h(\theta)$としベイズ推定を用いれば$\theta$の事後分布は、項目反応が得あられる確率に事前分布をかけたもの
+また、$\theta$の事前分布を$h(\theta)$としベイズ推定を用いれば$\theta$の事後分布は、項目反応が得られる確率に事前分布をかけたもの
 \begin{align*}
   \label{07}
   \displaystyle h(\theta|\boldsymbol{u})&=\prod_{j = 1}^{p} \prod_{k = 0}^{m_j} {P_{jk}}^{u_{jk}}(\theta)\times h(\theta)\\
@@ -103,4 +110,8 @@
   h(\theta|\boldsymbol{u}) &= \prod_{j = 1}^{p} (1 - P_j(\theta))^{1 - u_j}P_j(\theta)^{u_j} \times h(\theta) \tag{9}
 \end{align*}
 となり、その事後平均が$\theta$の推定値、その事後標準偏差が推定値の精度の悪さを表すことになる。母集団が$1$つしかない場合通常は、事前分布に標準正規分布を仮定するため、$h(\theta) = h(\theta|\mu)$とすることが多い。
+
+$2PLM$の場合、最尤解と同様に$x^{\ast}$が十分統計量となる。また、同じ$x^{\ast}$を持つ人の事後分布は同一のものとなる。
+
+
 \end{document}
