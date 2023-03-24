@@ -1,0 +1,85 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\usepackage{float}
+\usepackage{here}
+\usepackage{mathrsfs}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\section{$3$つの方法で比較}
+\subsection{問題数$:10$,人数$:10$}
+$a:$識別力については、$a1$の一つだけ、ずれてはいるもののある程度は初期値に沿っていることがわかる。$3$つの中でも$bayesian2$はほかの$2$つに比べて、推定値が安定せず初期値からも少し遠い。
+
+$b:$困難度についても、やはり$b1$の一つだけ大きくずれているものがある。識別力に比べて$3$つの方法に特に差はないように見える。
+
+$theta:$能力値については、$3$つの方法にほとんど差はない。$10$つの中で、$theta9$だけがそれぞれの推定値がずれている。
+
+問題数、人数それぞれ$10$でも能力値はある程度正確に推定することができた。
+
+
+\subsection{問題数$:10$,人数$:100$}
+$a:$識別力については、問題数$:10$,人数$:10$の時に比べて初期値との差は開いたように感じるが、推定値が初期値のグラフと平行気味になっているから規模感の問題であると感じる。数カ所は初期値とほぼ同じ値をとっている。
+
+$b:$困難度については、問題数$:10$,人数$:10$に比べてより正確に初期値に近い推定値を出力していることがわかる。
+
+$theta:$能力値については、$IRT$だけところどころ値が大きくずれていることがあるが、それ以外の推定値は安定していて、そのほかの方法もかなり正確に初期値を近似できていることがわかる。
+\subsection{問題数$:100$,人数$:100$}
+$a:$識別力については、
+\subsection{問題数$:500$,人数$:10$}
+\subsection{問題数$:500$,人数$:500$}
+
+
+
+
+
+\end{document}

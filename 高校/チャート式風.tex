@@ -1,0 +1,58 @@
+\documentclass[12pt]{jarticle}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{ascmac}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{tasks}
+\usepackage{ifthen}
+\usepackage[top=28mm, bottom=28mm, left=17mm,right=17mm]{geometry} %%%%%%%%%%%%%%設定色々%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\columnseprule}{0.5pt}
+\setlength{\columnwidth}{5mm}
+\newcommand{\tanngenn}[1]{\lhead{\framebox[176mm][l]{#1}}}
+\newenvironment{reidai}[1]{\noindent{\Large\colorbox[gray]{0.8}{基}\fcolorbox{white}{gray}{\textcolor{white}{本}}\colorbox[gray]{0.8}{例}\fcolorbox{white}{gray}{\textcolor{white}{題}}} {\large \hspace{2mm} #1 \hspace{2mm}}\hrulefill\\ \par }{\par \noindent\hrulefill\\}
+\newcommand{\sisinn}[1]{\noindent{\bf 指針} #1}
+\newcommand{\rennsyuu}{\noindent\fcolorbox{white}{gray}{\textcolor{white}{練}}\colorbox[gray]{0.8}{習}\fcolorbox{white}{gray}{\textcolor{white}{問}}\colorbox[gray]{0.8}{題}}
+\newenvironment{kaitou}{\noindent{\bf 解答} \dotfill}{\noindent\dotfill\\}
+%%%%%%%%%%%%%%ここから本文開始%%%%%%%%%%%%%%%
+\begin{document}
+\tanngenn{ここに単元名を記入}
+\begin{reidai}{ここにタイトル} %タイトルがない場合空欄にしておく
+\noindent ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。ここに基本例題を記入。
+\end{reidai}
+
+\sisinn{ここに指針タイトルを記入}
+\begin{itemize}
+\item 指針を記入
+\item 指針を記入\\
+\end{itemize}
+
+\begin{kaitou}
+\begin{multicols}{2}
+\noindent ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。ここに解答を記入。
+
+\columnbreak %右ページに移動
+
+\noindent ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。ここに解説を記入。
+\end{multicols}
+
+\begin{itembox}[l]{{\bf 検討} ここにタイトル}
+ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。ここに関連知識を記入。
+\end{itembox}
+
+\end{kaitou}
+
+\rennsyuu
+
+ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。ここに練習問題を記入。
+\end{document}

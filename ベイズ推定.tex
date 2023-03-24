@@ -1,0 +1,98 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\section{ベイズ推定}
+\subsection{MAP推定法}
+$\theta_1$(被験者$1$の能力値)の値が$a$以上$b$以下である確率を
+\begin{align*}
+  \label{00}
+  \displaystyle P(a \leq \theta_1 \leq b) &= \int_{a}^{b} \pi(x) dx \\ &= P(a \leq X \leq b)
+  \tag{1}
+\end{align*}
+とする。ここでは、
+\begin{align*}
+  \label{01}
+  \displaystyle \pi(x) = \frac{1}{\sqrt{2\pi}}\exp\left(- \frac{x^2}{2}\right)
+  \tag{2}
+\end{align*}と仮定する。
+式$(\ref{01})$を対数に変換すると、
+\begin{align}
+  \label{02}
+  \displaystyle \log \pi(x) = \log\frac{1}{\sqrt{2\pi}} - \frac{x^2}{2} \tag{3}
+\end{align}
+ここで確率変数が連続型である時にベイズの定理を適応すると、
+\begin{align}
+  \label{03}
+  \displaystyle \pi(x|\boldsymbol{u}_1) = \frac{L(\boldsymbol{u}_1)\pi(x)}{\int_{-\infty}^{\infty}L(\boldsymbol{u}_1)\pi(x)dx}
+  \tag{4}
+\end{align}となり、これを対数変換したものを最大にする$x$の値をMAP推定値という。
+\begin{align}
+  \label{04}
+  \displaystyle  \log \pi(x|\boldsymbol{u}_1) &= \log L(\boldsymbol{u}_1) + \log \pi(x) - \log\int_{-\infty}^{\infty}L(\boldsymbol{u}_1)\pi(x)dx \notag\\
+  &= \log L(\boldsymbol{u}_1) -\frac{x^2}{2} + C
+  \tag{5}
+\end{align}
+\subsection{アルゴリズム}
+\begin{itemize}
+  \item[\textbf{step1}] それぞれの尤度関数を求める。
+  \item[\textbf{step2}] 事前分布$\pi(x)$を定める。
+  \item[\textbf{step3}] $\pi(x|\boldsymbol{u}_1)$を求める。
+  \item[\textbf{step4}] $\log\pi(x|\boldsymbol{u}_1)$を最大にする$x$を求める。
+\end{itemize}
+
+
+
+
+
+\end{document}

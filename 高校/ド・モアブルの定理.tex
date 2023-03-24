@@ -1,0 +1,134 @@
+\documentclass[12pt]{jarticle}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{ascmac}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{tasks}
+\usepackage{ifthen}
+\usepackage[top=10mm, bottom=28mm, left=17mm,right=17mm]{geometry} %%%%%%%%%%%%%%設定色々%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\columnseprule}{0.5pt}
+\setlength{\columnwidth}{5mm}
+\newcommand{\tanngenn}[1]{\lhead{\framebox[176mm][l]{#1}}}
+\newenvironment{reidai}[1]{\noindent{\Large\colorbox[gray]{0.8}{基}\fcolorbox{white}{gray}{\textcolor{white}{本}}\colorbox[gray]{0.8}{例}\fcolorbox{white}{gray}{\textcolor{white}{題}}} {\large \hspace{2mm} #1 \hspace{2mm}}\hrulefill\\ \par }{\par \noindent\hrulefill\\}
+\newcommand{\sisinn}[1]{\noindent{\bf 指針} #1}
+\newcommand{\rennsyuu}{\noindent\fcolorbox{white}{gray}{\textcolor{white}{練}}\colorbox[gray]{0.8}{習}\fcolorbox{white}{gray}{\textcolor{white}{問}}\colorbox[gray]{0.8}{題}}
+\newenvironment{ouyou}[1]{\noindent{\Large\colorbox[gray]{0.8}{応}\fcolorbox{white}{gray}{\textcolor{white}{用}}\colorbox[gray]{0.8}{例}\fcolorbox{white}{gray}{\textcolor{white}{題}}} {\large \hspace{2mm} #1 \hspace{2mm}}\hrulefill\\ \par }{\par \noindent\hrulefill\\}
+\newenvironment{kaitou}{\noindent{\bf 解答} \dotfill}{\noindent\\}
+%%%%%%%%%%%%%%ここから本文開始%%%%%%%%%%%%%%%
+\begin{document}
+\begin{reidai}{ド・モアブルの定理}
+\noindent $\displaystyle \left(\cos\frac{\pi}{3} + i \sin\frac{\pi}{3}\right)^4$や$\displaystyle \left(\cos\frac{\pi}{6} + i \sin\frac{\pi}{6}\right)^{-6}$を求めなさい。
+\end{reidai}
+\sisinn{ド・モアブルの定理}
+\begin{itemize}
+  \item[]
+  \item[]
+  \item[]
+\end{itemize}
+\begin{kaitou}
+\begin{multicols}{2}
+\noindent
+\begin{itemize}
+  \item[]
+  \item[]
+  \item[]
+  \item[]
+  \item[]
+  \item[]
+\end{itemize}
+\columnbreak %右ページに移動
+\begin{itemize}
+  \item[]
+  \item[]
+  \item[]
+  \item[]
+  \item[]
+  \item[]
+\end{itemize}
+\noindent
+\end{multicols}
+\end{kaitou}
+\begin{reidai}{複素数の$n$乗根}
+$1$の$6$乗根を表す複素数を求めなさい。
+\end{reidai}
+\sisinn{$1$の$n$乗根}
+\begin{itemize}
+  \item[]
+  \item[]
+  \item[]
+\end{itemize}
+\begin{kaitou}
+  \begin{multicols}{2}
+  \noindent
+  \begin{itemize}
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+  \end{itemize}
+  \columnbreak %右ページに移動
+  \begin{itemize}
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+  \end{itemize}
+  \noindent
+  \end{multicols}
+\end{kaitou}
+\begin{ouyou}{}
+方程式$z^3 = 8i$を解きなさい。
+\end{ouyou}
+\sisinn{}
+\begin{itemize}
+  \item[]
+  \item[]
+  \item[]
+\end{itemize}
+\begin{kaitou}
+  \begin{multicols}{2}
+  \noindent
+  \begin{itemize}
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+  \end{itemize}
+  \columnbreak %右ページに移動
+  \begin{itemize}
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+  \end{itemize}
+  \noindent
+  \end{multicols}
+\end{kaitou}
+
+\rennsyuu
+\subsection*{次の式を計算しなさい。}
+\begin{itemize}
+  \item[(1)] $\displaystyle \left(\sqrt{3} + i \right)^6$
+  \item[(2)] $\displaystyle \left(1 + \sqrt{3}i \right)^5$
+  \item[(3)] $\displaystyle \left(1 -  i \right)^8$
+  \item[(4)] $\displaystyle \left(1 - \sqrt{3}i \right)^{-6}$
+\end{itemize}
+\subsection*{$1$の$8$乗根を求めなさい。}
+\end{document}

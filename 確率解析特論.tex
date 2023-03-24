@@ -1,0 +1,63 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{確率統計論}
+\begin{document}
+\maketitle
+\section{P59の続き}
+\begin{align*}
+  \label{00}
+  \displaystyle &E\left[\exp\left\{i \sum_{j = 1}^n \lambda_j (B_{t_j} - B{t_{j-1}})\right\}\right] \\ &= E\left[\exp\left\{i\left(\lambda_1(B_{t_1} - B_{t_0}) + \lambda_2(B_{t_2} - B_{t_1}) + \cdots + \lambda_n(B_{t_n} - B_{t_{n-1}})\right)\right\}\right]\\ &= E\left[\exp \left\{ -i \sum_{j = 1}^n (\lambda_{j+1} - \lambda_j)B_{t_j} \right\}\right](\because B_{t_0}は0なので消える) \\ &= \exp\left\{-\sum_{j = 1}^{n-1} \sum_{i = j + 1}^n (\lambda_{j+1} - \lambda_j)(\lambda_{i+1} - \lambda_i)t_j - \frac{1}{2}\sum_{j=1}^n (\lambda_{j+1} - \lambda_j)^2 t_j\right\} \\ &=\exp\left\{-\sum_{j =1}^{n-1}(\lambda_{j+1} - \lambda_j)(-\lambda_{j+1})t_j - \frac{1}{2}\sum_{j=1}^n (\lambda_{j+1} - \lambda_j)^2t_j\right\}\\ &= \exp\left\{-\sum_{j=1}^{n-1} (\lambda_{j+1} - \lambda_j)(-\lambda_{j+1})t_j-\frac{1}{2}\sum_{j=1}^{n-1}(\lambda_{j+1} - \lambda_j)^2-\frac{1}{2}(\lambda_{n+1}-\lambda_n)^2 t_n\right\}\\ &=\exp\left\{\frac{1}{2}\sum_{j=1}^{n-1} \left\{2(\lambda_{j+1} - \lambda_j)(\lambda_{j+1}) - (\lambda_{j+1} - \lambda_j)^2\right\}t_j-\frac{1}{2}(\lambda_{n+1}-\lambda_n)^2 t_n\right\}\\ &= \exp\left\{\frac{1}{2}\sum_{j=1}^{n-1}\left\{2(\lambda_{j+1})^2 - 2(\lambda_{j+1} \lambda_j) -(\lambda_{j+1})^2 + 2(\lambda_{j+1} \lambda_j) - (\lambda_j)^2\right\}t_j-\frac{1}{2}(\lambda_n)^2  t_n\right\}(\because \lambda_{n+1} = 0)\\ &= \exp\left\{\frac{1}{2}\sum_{j =1}^{n-1}({\lambda_{j+1}}^2 - {\lambda_{j}}^2)t_j - \frac{1}{2}{\lambda_n}^2 t_n\right\} \\ &= \exp\left\{\frac{1}{2}({\lambda_2}^2 - {\lambda_1}^2) t_1 + \frac{1}{2}({\lambda_3}^2 - {\lambda_2}^2) t_2 + \cdots + \frac{1}{2}({\lambda_n}^2 - {\lambda_{n -1}}^2) t_{n - 1} - \frac{1}{2}{\lambda_n}^2 t_n\right\}\\ &= \prod_{j=1}^{n} \exp\left\{-\frac{1}{2} {\lambda_j}^2(t_j - t_{j-1})\right\}\\&(\because 展開して括り方を変えて、\exp の指数部分の和なので、\exp 自体の積の形になる)
+\end{align*}
+
+
+
+\end{document}

@@ -1,0 +1,149 @@
+\documentclass[twocolumn, 25pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+\setlength{\columnsep}{5mm}
+
+\title{数列重要事項}
+\begin{document}
+\columnseprule=0.2mm
+\date{}
+\maketitle
+\vspace{-2cm}
+\section{数列}
+\subsection{等差数列}
+\begin{itemize}
+  \item 初項$a_1$、等差$d$とする
+  \item 等差数列の一般項  $\displaystyle a_n = a_1 + (n - 1)d$
+  \item 等差数列の和 $\displaystyle S_n = \frac{1}{2} \times n \times (a_1 + a_n)$
+  \item 言い換えると$\displaystyle S_n = \frac{1}{2} \times (項数) \times (初項 + 末項)$
+\end{itemize}
+\subsection{等比数列}
+\begin{itemize}
+  \item 初項$a_1$、等比$r$とする
+  \item 等比数列の一般項  $\displaystyle a_n = a_1 \times r^{n - 1}$
+  \item 等比数列の和 $\displaystyle S_n = \frac{a_1 (1 - r^n)}{1 - r}$
+  \item 言い換えると$\displaystyle S_n = \frac{初項 (1 - 公比^{項数})}{1 - 公比}$
+\end{itemize}
+\subsection{階差数列}
+\begin{itemize}
+  \item 注意・・・元の数列が階差数列ではない。階差数列$\{b_n\}$をもつ数列$\{a_n\}$である。
+  \item 初項$a_1$、階差数列$\{b_n\}$とする
+  \item 等差数列の一般項  $\displaystyle n \geqq 2 のとき a_n = a_1 + \sum_{k = 1}^{n - 1} b_k$
+  \item {\LARGE$n = 1$のときもちゃんと確かめる!!!もし$n = 1$のときに値が違っていたら$n = 1$のときと$n \geqq 2$のときで場合分けして答えを書く}
+  \item テストではしっかり$n \geqq 2$のときで計算してないと減点になるので注意
+  \item $n \geqq 2$のとき$a_n = S_n - S_{n - 1}$が成り立つ
+  \item また$n \geqq 2$のとき$a_{n + 1} = S_{n + 1} - S_{n}$が成り立つ
+\end{itemize}
+\subsection{シグマの計算}
+\begin{itemize}
+  \item $\displaystyle \sum_{k = 1}^{n} (定数) = (定数)\times n$
+  \item $\displaystyle \sum_{k = 1}^{n} k = \frac{1}{2}n(1 + n)$
+  \item $\displaystyle \sum_{k = 1}^{n} k^2 = \frac{1}{6}n(1 + n)(2n+1)$
+  \item $\displaystyle \sum_{k = 1}^{n} k^3 = \left\{\frac{1}{2}n(1 + n)\right\}^2$
+\end{itemize}
+\subsection{群数列}
+\begin{itemize}
+  \item 問題を解き始める前に以下の$3$つを最初に求めておくと解きやすくなることが多い
+  \item 第n群の項数
+  \item 第n群までの項数の和・・・第n群の最後の項が前から何番目なのかが分かる
+  \item 第n群の最初の項と最後の項の値
+  \item 群数列は元の数列と項数の数列が重なっているから難しく感じるので自分が元の数列の一般項を考えているのか、項数の数列を考えているのかをしっかり考えながら解く
+\end{itemize}
+\subsection{部分分数分解}
+\begin{itemize}
+  \item $\displaystyle \frac{1}{k} - \frac{1}{k + 1}$の通分ができるのかの確認から
+  \item $\displaystyle \frac{1}{k} - \frac{1}{k + 1} = \frac{1}{k(k + 1)}$
+  \item 部分分数分解はこの逆を使う
+  \item $\displaystyle \sum_{k = 1}^{n} \frac{1}{k(k + 1)} = \sum_{k = 1}^{n} (\frac{1}{k} - \frac{1}{k + 1}) $ \\ $\displaystyle= (\frac{1}{1} - \frac{1}{2}) + (\frac{1}{2} - \frac{1}{3}) + (\frac{1}{3} - \frac{1}{4}) + \cdots + (\frac{1}{n} - \frac{1}{n + 1}) $\\ $\displaystyle \frac{1}{1} - \frac{1}{n + 1} = \frac{n}{n + 1}$
+  \item $3$つの部分分数分解
+  \item $\displaystyle \sum_{k = 1}^{n}\frac{1}{k(k+1)(k + 2)}$
+  \item $\displaystyle \frac{1}{k(k+1)(k + 2)} = \frac{1}{2}(\frac{1}{k(k + 1)} - \frac{1}{(k+1)(k + 2)})$\\を利用する。あとは並べて残る部分だけ計算する。
+\end{itemize}
+\subsection{漸化式}
+\begin{itemize}
+  \item 漸化式は基本$3$パターンに集約される。その$3$パターンは以下
+  \item {\LARGE 等差型 \\ $a_{n + 1} = a_n + d$ \\ 数列$\{a_n\}$は初項$a_1$、等差$d$の等差数列}
+  \item {\LARGE 等比型 \\ $a_{n + 1} = r \times a_n$ \\ 数列$\{a_n\}$は初項$a_1$、等差$r$の等差数列}
+  \item {\LARGE 階差型 \\ $a_{n + 1} = a_n + (nの式)$ \\ 数列$\{a_n\}$は初項$a_1$、階差数列$\{b_n = (nの式)\}$をもつ数列}
+  \item それ以外の漸化式は上の$3$つのどれかに変形する
+\end{itemize}
+\subsection{漸化式\\ $a_1 = 2, a_{n + 1} = 3a_n - 2$}
+\begin{itemize}
+  \item $a_{n + 1}$と$a_n$を$\alpha$とおくと\\ $\alpha = 3\alpha - 2$となり$\alpha = 1$が求まる。
+  \item $a_{n + 1} - \alpha = 3(a_n - \alpha)$に$\alpha = 1$を代入して\\ $a_{n + 1} - 1 = 3(a_n - 1)$を得る。
+  \item ここで$b_n = a_n - 1$とすると$b_{n + 1} = a_{n + 1}$となるので$a_{n + 1} - 1 = 3(a_n - 1)$は$b_{n + 1} = 2b_n$となる。
+  \item $b_{n + 1} = 2b_n$は初項$b_1 = a_1 - 1 = 1$、等比$2$の等比数列なので一般項は$b_n = 1 \times 2^{n - 1}$となる。
+  \item $b_n = a_n - 1$より$a_n - 1 = 2^{n - 1}$なので$a_n = 2^{n - 1} + 1$
+\end{itemize}
+\subsection{隣接$3$項間漸化式\\ $a_1 = 1,a_2 = 1, a_{n + 2} = 5a_{n + 1} -6 a_n $}
+\begin{itemize}
+  \item $a_{n + 1}$を${\alpha}^2$と、$a_{n}$を${\alpha}$とおくと\\ ${\alpha}^2 = 5\alpha - 6$となり$\alpha = 2, 3$が求まる。
+  \item 元の式が\\ $a_{n + 2} -2a_{n + 1} = 3(a_{n + 1} -2a_n)$ または\\$a_{n + 2} -3a_{n + 1} = 2(a_{n + 1} -3a_n)$と変形できる。
+  \item $a_{n + 2} -2a_{n + 1} = 3(a_{n + 1} -2a_n)$について\\ $ b_ n =a_{n + 1} -2a_n$とおくと$b_{n + 1} = 3b_n$となり、\\ 数列$\{b_n\}$は初項$b_1 = a_2 - 2a_1=-1$、公比$3$の等比数列なので$b_n = -3^{n - 1}$つまり$a_{n + 1} -2a_n = -3^{n - 1}$
+  \item $a_{n + 2} -3a_{n + 1} = 2(a_{n + 1} -3a_n)$について\\ $ c_ n =a_{n + 1} -3a_n$とおくと$c_{n + 1} = 2c_n$となり、\\ 数列$\{c_n\}$は初項$c_1 = a_2 - 3a_1=-2$、公比$2$の等比数列なので$c_n = -2^{n}$つまり$a_{n + 1} -3a_n = -2^{n}$
+  \item $a_{n + 1} -2a_n = -3^{n - 1}$から$a_{n + 1} -3a_n = -2^{n}$を引くと$a_n = -3^{n - 1} + 2^n$
+  \item ここからは興味のある人だけ
+  \item なぜいきなり$a_{n + 1}$を${\alpha}^2$と、$a_{n}$を${\alpha}$とおき${\alpha}^2 = 5\alpha - 6$が出てくるのかを考える
+  \item モチベーションは、「与えられた漸化式をある文字$m, n$を使って\\ $a_{n + 2} -ma_{n + 1} = n(a_{n + 1} -ma_n)$\\ のような形にして等比型のような形にしたい」
+  \item $a_{n + 2} -ma_{n + 1} = n(a_{n + 1} -ma_n)$を変形すると$a_{n + 2} = (m + n)a_{n + 1} - mna_n$となる。
+  \item もとの漸化式に戻すには$m + n = 5,mn = -6$となるような$m, n$を見つければよい
+  \item 解と係数の関係より$m, n$は文字$\alpha$を使った方程式${\alpha}^2 - 5\alpha  + 6= 0 \rightleftarrows {\alpha}^2 = 5\alpha  - 6$の解となる。
+  \item これが最初に出てきた方程式となる。
+\end{itemize}
+\subsection{漸化式に変形}
+漸化式は数列の最大で最難の課題である。しかし、漸化式はいろいろな形で出題されるので基本$3$パターンに落とし込む変形の仕方がその分だけある。テストだけでなく漸化式の勉強するときはその変形の仕方を自分なりに見つけて行くことが大事である。
+\subsection{数学的帰納法}
+\begin{itemize}
+  \item $n = 1$のとき成立しているか
+  \item $n = k$のとき成り立っていると仮定する
+  \item $n = k + 1$のとき成り立っているかを証明して完了。このとき使えるのは$n = k$では成り立っているという事実
+  \item 「神は存在するのか」の問いに対して「神は存在するよ。だって、神の言葉をつづった聖書に書いてあるからね」は文章としておかしい。神が存在するという結論を根拠に使ってしまっている。これを循環論法という。
+  \item 数学的帰納法の問題では循環論法になりやすいので注意しよう。結論を根拠に使わないように。
+\end{itemize}
+\end{document}

@@ -1,0 +1,91 @@
+\documentclass[twocolumn, 20pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+\setlength{\columnsep}{5mm}
+
+\title{図形と方程式}
+\begin{document}
+\columnseprule=0.2mm
+\date{}
+\maketitle
+\subsection*{線分上の内分点・外分点}
+\begin{itemize}
+  \item[(1)]$A(a)$と$B(b)$を結ぶ線分$AB$を$m:n$に内分する点$P$の座標は{\Large{$\displaystyle \frac{na+mb}{m+n}$}}
+  \item[(2)] $A(a)$と$B(b)$を結ぶ線分$AB$を$m:n$に外分する点$Q$の座標は{\Large{$\displaystyle \frac{-na+mb}{m-n}$}}
+  \item[(3)]中点は{\Large{$\displaystyle \frac{a+b}{2}$}}
+\end{itemize}
+\subsection*{座標平面上の点}
+\begin{itemize}
+  \item[(1)]$2$点$A(x_1, y_1)$と$B(x_2, y_2)$の間の距離$AB$は\\ {\Large{$\displaystyle AB = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$}}
+  \item[(2)] $2$点$A(x_1, y_1)$と$B(x_2, y_2)$を結ぶ線分$AB$を$m:n$に内分する点$P$の座標は{\Large{$\displaystyle P(\frac{nx_1 + mx_2}{m+n},\frac{ny_1 + my_2}{m+n})$}}
+  \item[(3)]$2$点$A(x_1, y_1)$と$B(x_2, y_2)$を結ぶ線分$AB$を$m:n$に外分する点$Q$の座標は{\Large{$\displaystyle Q(\frac{-nx_1 + mx_2}{m-n},\frac{-ny_1 + my_2}{m-n})$}}
+  \item[(3)]特に中点の座標は{\Large{$\displaystyle (\frac{x_1 + x_2}{2},\frac{y_1 + y_2}{2})$}}
+  \item[(4)]$3$点$A(x_1, y_1)$と$B(x_2, y_2)$と$C(x_3 , y_3)$を頂点とする三角形の重心の座標は{\Large{$\displaystyle (\frac{x_1 + x_2 + x_3}{3}, \frac{y_1 + y_2 + y_3}{3})$}}
+\end{itemize}
+\newpage
+\subsection*{直線の方程式}
+\begin{itemize}
+  \item[(1)]点$(x_1,y_1)$を通り、傾きが$m$の直線の方程式は\\{\Large{$y - y_1 = m(x-x_1)$}}
+  \item[(2)]異なる2点$(x_1, y_1),\ (x_2, y_2)$を通る直線の方程式は$x_1 \neq x_2$のとき、{\Large{$\displaystyle y - y_1 = \frac{y_2 - y_1}{x_2 - x_1}(x - x_1)$}}
+  \item[(3)] $x_1 = x_2$のときは{\Large{$x=x_1$}}
+\end{itemize}
+\subsubsection*{$2$直線の関係}
+\begin{itemize}
+  \item[(1)]異なる$2$直線が{\Large{平行$\Leftrightarrow$$2$直線の傾きが同じ}}
+  \item[(2)]異なる$2$直線が{\Large{垂直$\Leftrightarrow$傾き$\times$ 傾き $=-1$}}
+  \item[(3)]$2$点$A, B$が対称$\Leftrightarrow [1]直線$AB$は直線$l$に垂直$
+  \item[(4)] $2$点$A, B$が対称$\Leftrightarrow[2]線分$AB$の中点はl$上にある。
+\end{itemize}
+\subsection*{点と直線の距離}
+\begin{itemize}
+  \item[(1)]点$(x_1, y_1)$と直線$ax^2 + by^2 + c=0$の距離$d$は\\ {\LARGE{$d = \frac{|ax_1 + by_1 + c|}{\sqrt{a^2 + b^2}}$}}
+  \item[(2)]原点との距離は$x_1=0,y_1=0$のとき
+\end{itemize}
+
+\end{document}

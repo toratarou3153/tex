@@ -1,0 +1,155 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\usepackage{float}
+\usepackage{here}
+\usepackage{enumitem}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+
+\title{卒業論文}
+\begin{document}
+\tableofcontents
+\date{}
+\maketitle
+\section{第$2$の証明}
+ガウスの補題を使用せず、有限体で$\boldsymbol{ガウス和}$と呼ばれるものを使用する。
+\\
+\\
+まず、有限体に関して以下のこと$A, B$を示す。
+\begin{description}
+  \item[A.] $p$と$q$を異なる奇素数とする。$q^{p-1}$個の要素を持つ有限体$F$について考える。素体は$\mathbb{Z}_q$であり、$\forall a∈F$について$qa=0$が成り立つ。
+
+  ここで
+  \begin{align*}
+    \label{}
+    \displaystyle
+    (a+b)^q=a^q+ _q C _{q - 1} a^{q -1 } b^{1} + _q C _{q - 2} a^{q -2 } b^{2} + \cdots +b^q
+  \end{align*}
+  となるが、任意の二項係数$\dbinom{q}{i}$は$0<i<q$で$q$の倍数であるため$qa=0$より、
+  \begin{align}
+    \label{00}
+    \displaystyle
+    (a+b)^q=a^q+ b^q
+  \end{align}
+  が成り立つ。
+  ここで、オイラーの規準は、素体$\mathbb{Z}_q$上で
+  \begin{align*}
+    \displaystyle
+    \frac{p}{q} = p^q - \frac{1}{2}
+  \end{align*}
+  となることに注意する。
+  \item[B.]乗法群$F^{\ast}=F\backslash \{0\}$は大きさ$q^{p-1} -1$の巡回群である。
+  フェルマーの小定理によると$p$は$q^{p-1} -1$の約数であるため、位数$p$の元$\zeta \in F(\zeta^ p = 1)$が存在し、$F^{\ast}$の部分群$\displaystyle \{\zeta,\zeta^2, \ldots, \zeta^p =1\}$を生成する。$\displaystyle \forall \zeta^i(i\neq p)$もまた生成元であることに注意する。
+
+  したがって$x^p -1=(x-\zeta)(x-\zeta^2)\cdots(x-\zeta^p)$と多項式分解を得る。
+\end{description}
+ここでガウス和について考える。ガウス和を以下とする。
+\begin{align}
+  \label{01}
+  \displaystyle
+  G :=\sum_{i=1}^{p-1} (\frac{i}{p}) \zeta^i \in F,
+\end{align}
+ここで$\displaystyle  (\frac{i}{p})$はルジャンドル記号である。ここで証明のために、$G^q$に関する$2$つの説明を提示しそれらが等しいことを示す。\\
+\begin{description}
+  \item[1.]式 $(\ref{00})$より
+  \begin{align*}
+    \displaystyle
+    G^q = \sum_{i = 1}^{p -1} (\frac{i}{p})^q \zeta^{iq}
+  \end{align*}を得る。
+  また、$q$は奇数なので$\displaystyle (\frac{i}{p})^q = (\frac{i}{p})$となるため
+  \begin{align*}
+    \displaystyle
+    G^q = \sum_{i = 1}^{p -1} (\frac{i}{p})^q \zeta^{iq}= \sum_{i = 1}^{p -1} (\frac{i}{p}) \zeta^{iq}
+  \end{align*}を得る。さらに、$\displaystyle (\frac{ab}{p}) = (\frac{a}{p})(\frac{b}{p})$より$\displaystyle (\frac{i}{p}) = (\frac{q}{p})(\frac{iq}{p})$が得られるため
+  \begin{align*}
+    \displaystyle
+    G^q = \sum_{i = 1}^{p -1} (\frac{i}{p})^q \zeta^{iq}= \sum_{i = 1}^{p -1} (\frac{i}{p}) \zeta^{iq}= (\frac{q}{p}) \sum_{i = 1}^{p -1} (\frac{iq}{p}) \zeta^{iq}
+  \end{align*}が成り立つ。ここで、$\displaystyle iq$について$p$で割った余りを考えると$i$になるので以下が成り立つ。
+  \begin{align*}
+    \displaystyle
+   (\frac{q}{p}) \sum_{i = 1}^{p -1} (\frac{iq}{p}) \zeta^{iq} = (\frac{q}{p}) \sum_{i = 1}^{p -1} (\frac{i}{p}) \zeta^{i} = (\frac{q}{p})G
+  \end{align*}つまり
+  \begin{align}
+    \label{02}
+    \displaystyle
+    G^q = \sum_{i = 1}^{p -1} (\frac{i}{p})^q \zeta^{iq}= \sum_{i = 1}^{p -1} (\frac{i}{p}) \zeta^{iq}= (\frac{q}{p}) \sum_{i = 1}^{p -1} (\frac{iq}{p}) \zeta^{iq}= (\frac{q}{p}) \sum_{i = 1}^{p -1} (\frac{i}{p}) \zeta^{i} = (\frac{q}{p})G
+  \end{align}を得る。
+  \item[2.]
+  \begin{align}
+    \label{04}
+    \displaystyle
+    G^2 = (-1)^{\frac{p-1}{2}}p
+  \end{align}
+  \begin{align}
+    \label{03}
+    \displaystyle
+    G^q = G(G^2)^{\frac{q-1}{2}} = G(-1)^{\frac{p-1}{2}\frac{q-1}{2}} p^{\frac{q-1}{2}} = G(\frac{p}{q})(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+  \end{align}
+  式$(\ref{02}) = 式(\ref{03})$より
+  \begin{align}
+    \label{05}
+    \displaystyle
+    (\frac{q}{p})G = G(\frac{p}{q})(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+  \end{align}となり、式$(\ref{04})$より$G \neq 0$なので両辺を$G$で割ると
+  \begin{align}
+    \label{06}
+    \displaystyle
+    (\frac{q}{p}) = (\frac{p}{q})(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+  \end{align}となる。両辺に$\displaystyle (\frac{p}{q})$を掛けると
+  \begin{align}
+    \label{07}
+    \displaystyle
+    (\frac{p}{q})(\frac{q}{p}) = (-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+  \end{align}が得られる。
+\end{description}
+
+
+
+\end{document}

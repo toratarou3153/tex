@@ -1,0 +1,154 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+
+\title{対策プリント}
+\begin{document}
+\date{}
+\maketitle
+\vspace{-2cm}
+\section{三角関数の合成}
+\begin{itemize}
+  \item [1]係数を見える化する
+  \item [2]単位円を用いて図に表す
+  \item [3]直角三角形の辺の比から角度を出す
+  \item [4]式に代入して終了
+\end{itemize}
+\begin{example}
+  $\displaystyle sin\theta$ - $cos\theta$の合成
+\end{example}
+$step1$ 係数の見える化・・・それぞれの係数を$()$などで囲い分かるようにしておく
+\begin{align}
+  \label{}
+  \displaystyle
+  1 \times sin\theta + (-1) \times cos\theta
+  \tag{1}
+\end{align}
+$step2$単位円を用いて図に表す・・・具体的に直角三角形を描いていく
+\begin{align}
+  \label{}
+  \displaystyle
+  &(1)の式のsin\theta の分だけ横軸上を動き点を打つ\notag\\ &その点からcos\theta の係数の分だけ縦軸上を動き点を打つ\notag\\ &原点とその2点を結び直角三角形を作る
+  \tag{2}
+\end{align}
+$step3$直角三角形の辺の比から角度を出す
+\begin{align}
+  \label{}
+  \displaystyle
+  &ほとんどの場合、\notag \\ &代表的な直角三角形(三角定規になっている三角形)なので、\notag \\ &辺の比から中心に近い角度の辺の比を出す。
+  \tag{3}
+\end{align}
+$step4$式に代入して終了
+\begin{align}
+  \label{}
+  \displaystyle
+  &斜辺をr 、中心角をラジアンで表したものを\alpha として \notag \\ &r\sin(\theta + \alpha) に代入して終了
+  \tag{4}
+\end{align}
+\section{練習問題}
+次の式を$r\sin(\theta + \alpha)$の形にしなさい
+\begin{itemize}
+  \item [1]$\displaystyle sin\theta + \sqrt{3}cos\theta$
+  \item [2]$\displaystyle -sin\theta + cos\theta$
+  \item [3]$\displaystyle sin\theta - \sqrt{3}cos\theta$
+  \item [4]$\displaystyle \sqrt{2}sin\theta + \sqrt{6}cos\theta$
+\end{itemize}
+\section{指数}
+\subsection{練習問題}
+\begin{itemize}
+  \item [(1)]クリアー$318$から$323$
+  \item できなかったら教科書$p140,p141$を見直しましょう
+  \item [(2)]$\displaystyle 2^x + 2^{-x} = 4のとき、4^x + 4^{-x},8^x + 8^{-x}$の値を求めなさい
+  \item 因数分解を使う
+  \item $\displaystyle 4^x + 4^{-x} = (2^x + 2^{-x})^2 - 2\cdot 2^x \cdot 2^{-x}$
+  \item $\displaystyle 8^x + 8^{-x} = (2^{2x} + 2^{-x})(2^x - 2\cdot 2^{x} \cdot 2^{-x} +  2^{-2x})$
+  \item [(3)]指数関数を含む方程式、不等式
+  \item $\displaystyle 4^x = 32$
+  \item $\displaystyle 27^x \leqq 81$
+  \item $\displaystyle (\frac{1}{25})^x > \frac{1}{125}$
+  \item POINT・・・底が$1$より大きいのか小さいのか
+  \item $1$より大きい場合、指数の不等号はそのまま
+  \item $1$より小さい場合、指数の不等号は逆になる
+\end{itemize}
+\section{対数}
+\subsection{練習問題}
+\begin{itemize}
+  \item[(1)]真数条件
+  \item 真数は必ず正
+  \item 真数条件は、方程式、不等式を解くときには必須
+  \item [(2)]対数の法則、性質
+  \item $\displaystyle M = a^p  \rightleftarrows log_a M (a>0,a \neq 1, M>0)$
+  \item $\displaystyle log_a a^p = p$
+  \item $\displaystyle log_a 1 = 0, \qquad log_a a = 1$
+  \item 掛け算は足し算に、足し算は掛け算に
+  \item 割り算は引き算に、引き算は割り算に
+  \item [(3)]対数関数を含む方程式、不等式
+  \item $\displaystyle log_2 x = 3$
+  \item $\displaystyle log_2 x \leqq 3$
+  \item 不等式の方は真数条件を必ず書く
+  \item [(4)]応用問題
+  \item $\displaystyle log_3 x + log_3(x-8) = 2$
+  \item $\displaystyle log_{\frac{1}{2}} (x-1) > 2$
+  \item [[1]]真数条件
+  \item [[2]]不等式を解く
+  \item [[3]]$2$つの範囲の共通範囲が答え
+\end{itemize}
+\section{常用対数}
+\begin{itemize}
+  \item [1]常用対数表
+  \item 読み方
+  \item 掛け算を常用対数を使ってできる
+  \item [2]応用
+  \item 桁数を求める問題
+  \item $\displaystyle 3^{20}は何桁か$
+  \item $\displaystyle 2^n $が$10$桁のときの$n$
+\end{itemize}
+\end{document}

@@ -1,0 +1,105 @@
+\documentclass[twocolumn, 20pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+\setlength{\columnsep}{5mm}
+
+\title{2時間数確認事項}
+\begin{document}
+\columnseprule=0.2mm
+\date{}
+\maketitle
+\subsection*{実部と虚部}
+\begin{itemize}
+  \item[(1)]$a+bi$の$a$を実部、$b$を虚部という。$bi$が虚部ではないことに注意
+  \item[(2)]多項式の分数形になっているときには、$i$がついているものとついていないものについて分ける。例えば、$\displaystyle\frac{1+\sqrt{3}i}{2} = \frac{1}{2}+\frac{\sqrt{3}}{2}$
+  \item[(3)]$a+bi = c+di\Leftrightarrow a=c ,b=d$
+  \item[(4)]$a+bi = 0 \Leftrightarrow a=0,b=0$
+\end{itemize}
+\subsection*{複素数の計算}
+\begin{itemize}
+  \item[(1)]和や積は$i$がついている項、ついていない項をそれぞれ係数だけ計算する。
+  \item[(2)]乗法については、ポイントは{\Large{$i^2 = -1$}}
+  \item[(3)]乗法は実数と虚数で掛け算できる。
+  \item[(4)]割り算のポイントは共役な複素数\\ {\Large{$a+bi,a-bi$}}
+  \item[(5)]割り算は分母の共役な複素数を{\LARGE{分母と分子両方}}にかける。$\Leftarrow$ みんな忘れがち
+\end{itemize}
+\subsection*{$2$次方程式の解}
+\begin{itemize}
+  \item[(1)]平方根:$a>0$のとき、$-a$の平方根は$\pm \sqrt{-a}$すなわち$\pm\sqrt{a}i$
+  \item[(2)] $2$次方程式$x^2 = k$の解は$x=\pm\sqrt{k}$
+  \item[(3)]$2$次方程式$ax^2+bx+c=0$の解は
+  {\Large$\displaystyle\frac{-b\pm \sqrt{b^2 - 4ac}}{2a}$}
+  \item[(4)]判別式：$D>0\Leftarrow$異なる$2$つの実数解
+  \item[(5)]判別式：$D=0\Leftarrow$重解
+  \item[(6)]判別式：$D<0\Leftarrow$異なる$2$つの虚数解
+\end{itemize}
+\newpage
+\subsection*{解と係数の関係}
+\begin{itemize}
+  \item[(1)]$2$次方程式$ax^2+bx+c=0$の$2$つの解を$\alpha,\beta$とするとき{\Large{$\displaystyle\alpha + \beta = -\frac{b}{a},\ \alpha\beta=\frac{c}{a}$}}
+  \item[(2)]$\alpha^2+\beta^2 = (\alpha + \beta)^2 - 2\alpha\beta$
+  \item[(3)]$\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha^2 \beta -3\alpha\beta^2 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha+\beta)$
+  \item[(4)]$2$次方程式の$2$つの解を\\$\alpha,\ \beta$とすると、$ax^2 + bx + c=a(x-\alpha)(x-\beta)$\\に因数分解できる。$\Rightarrow$つまり、解が2つ分かれば因数分解が可能であるということ。
+  \item[(5)]$2$数$\alpha,\ \beta$を解とする$2$次方程式の一つは$x^2 - (\alpha + \beta)x +\alpha\beta=0$
+\end{itemize}
+\subsection*{高次方程式}
+\begin{itemize}
+  \item[(1)]テーマ：$3$次以上の方程式の余りを求めたり、因数分解したい。
+  \item[(2)]{\Large{剰余の定理：整式$P(x)$を$1$次式$x-k$で割った余りは$P(k)$に等しい。}}$\Leftarrow$つまり多項式同士の複雑な割り算をしなくてもあまりだけはわかるということ。
+  \item[(3)]ある式を$1$次式で割ると余りは定数(ただの数字)
+  \item[(4)]ある式を$2$次式で割ると余りは$x$に$1$次式$(ax+b)$か定数$\Leftarrow$$a=0$のとき定数になるので$2$次式で割ったときの余りは基本的に{\LARGE{$ax+b$}}とおく。
+  \item[(5)]因数定理：\\整式$P(x)$が$1$次式$x-k$を因数にもつ。$\Leftrightarrow$ $P(k)=0$\\$\Leftarrow$つまり整式$P(x)$にある数$k$を代入して$0$になったら$P(x)= (x-k)(なんとか)$の形にできる。
+  \item[(6)]組立除法：下に足して右上に掛けてあげる。
+  \item[(7)]高次方程式を解くときは因数分解して次数を下げてあげる。そのときに因数定理を使って因数分解する。
+\end{itemize}
+
+
+
+
+\end{document}

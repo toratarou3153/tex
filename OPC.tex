@@ -1,0 +1,129 @@
+\documentclass[twocolumn, 20pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{265mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{1mm}
+\setlength{\columnsep}{5mm}
+
+\title{アンケート調査}
+\begin{document}
+\columnseprule=0.2mm
+\date{}
+\maketitle
+\subsection*{はじめに}
+このアンケートは私が大学院で行っている項目反応理論の研究に使うものです。匿名のアンケートなので名前は書かなくて大丈夫です。これは授業の成績には全く関係のないものですので正直に答えてくださるとありがたいです。
+また、目的は高校生を対象とした診断プログラムを作ることです。具体的には、簡単なアンケートを元に、受験の際に、自分に適した学部学科(今回は簡易版なので機械系か数理系)\rule[0mm]{0mm}{5mm}がわかるようになるプログラムです。性質上、これは多くの人に答えてもらうことでより正確な診断ができるようになるものなので、差支えなければお答えください。
+
+\subsection*{項目}
+\begin{itemize}
+  \item[(1)]数学は好きか
+  \item[(2)]PCを触るのは好きか
+  \item[(3)]ゲームはよくするか
+  \item[(4)]モノ作りは好きか
+  \item[(5)]細かい作業は好きか
+  \item[(6)]長時間机には座っていられるか
+  \item[(7)]$1$人で考えるのは好きか
+  \item[(8)]足は速いと思うか
+  \item[(9)]部活には入っているか
+  \item[(10)]友達は多いと思うか
+  \item[(11)]理科科目は好きか
+  \item[(12)]歌を歌うのが好きか
+  \item[(13)]学校行事は好きか
+  \item[(14)]将来結婚したいか
+  \item[(15)]大学生になったらたくさん遊びたいか
+  \item[(16)]マンガ・アニメはよく見るか
+  \item[(17)]寝るのは好きか
+  \item[(18)]一人でラーメン屋に行けますか
+  \item[(19)]暗算は得意か
+  \item[(20)]国語は苦手だが、どちらかといえば英語は得意
+\end{itemize}
+
+\subsection*{回答欄}
+\begin{tabular}{|c|c|}
+  \hline
+  (1)\rule[0mm]{0mm}{5mm}\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm} \\
+  \hline
+  (2)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (3)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (4)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (5)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (6)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (7)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (8)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (9)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (10)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (11)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (12)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (13)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (14)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (15)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (16)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (17)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (18)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (19)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+  (20)\rule[0mm]{0mm}{5mm}&\huge{はい・いいえ}\rule[0mm]{0mm}{5mm}\\
+  \hline
+\end{tabular}
+\end{document}

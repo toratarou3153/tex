@@ -1,0 +1,88 @@
+\documentclass[12pt]{jarticle}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{ascmac}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{tasks}
+\usepackage{ifthen}
+\usepackage[top=28mm, bottom=28mm, left=17mm,right=17mm]{geometry} %%%%%%%%%%%%%%設定色々%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\columnseprule}{0.5pt}
+\setlength{\columnwidth}{5mm}
+\newcommand{\tanngenn}[1]{\lhead{\framebox[176mm][l]{#1}}}
+\newenvironment{reidai}[1]{\noindent{\Large\colorbox[gray]{0.8}{基}\fcolorbox{white}{gray}{\textcolor{white}{本}}\colorbox[gray]{0.8}{例}\fcolorbox{white}{gray}{\textcolor{white}{題}}} {\large \hspace{2mm} #1 \hspace{2mm}}\hrulefill\\ \par }{\par \noindent\hrulefill\\}
+\newcommand{\sisinn}[1]{\noindent{\bf 指針} #1}
+\newcommand{\rennsyuu}{\noindent\fcolorbox{white}{gray}{\textcolor{white}{練}}\colorbox[gray]{0.8}{習}\fcolorbox{white}{gray}{\textcolor{white}{問}}\colorbox[gray]{0.8}{題}}
+\newenvironment{ouyou}[1]{\noindent{\Large\colorbox[gray]{0.8}{応}\fcolorbox{white}{gray}{\textcolor{white}{用}}\colorbox[gray]{0.8}{例}\fcolorbox{white}{gray}{\textcolor{white}{題}}} {\large \hspace{2mm} #1 \hspace{2mm}}\hrulefill\\ \par }{\par \noindent\hrulefill\\}
+\newenvironment{kaitou}{\noindent{\bf 解答} \dotfill}{\noindent}
+%%%%%%%%%%%%%%ここから本文開始%%%%%%%%%%%%%%%
+\begin{document}
+\tanngenn{複素数平面}
+\begin{reidai}{半直線のなす角} %タイトルがない場合空欄にしておく
+  \noindent $3$点O, A$(2 + \sqrt{3}i)$, B$(-1 + 3\sqrt{3}i)$について半直線OAから半直線OBまでの回転角$\theta$を求める。ただし、$- \pi < \theta \leq \pi$とする。
+  \end{reidai}
+
+  \sisinn{半直線のなす角}
+
+  B$(\beta)$, C($\gamma$)に対して、点Bを$r$倍して、$\theta$だけ回転したとき点Cに移るとすると、
+  \begin{align}
+    \displaystyle
+    \gamma = r(\cos\theta + i\sin\theta)\beta
+  \end{align}
+  となる。拡大、回転は複素数zに$r(\cos\theta + i\sin\theta)$を掛けることに対応した。回転の中心が、原点ではない場合には、回転の中心が原点に来るように平行移動してから考える。ここでA($\alpha$)を追加して考える。点Aを中心に、点Bを$r$倍にして、$\theta$だけ回転したときに、点Cに移ることとする。このときに、点Aが原点に移る平行移動によって全体を平行移動すると、
+  \begin{align}
+    \displaystyle
+    \gamma - \alpha = r(\cos\theta + i\sin\theta)(\beta - \alpha)
+  \end{align}
+  となる。ここで、点A, B, Cが分かっているときに、$\angle BAC$を求めることを考える。式($2$)の両辺を$\beta - \alpha$で割ると、
+  \begin{align}
+    \displaystyle
+    \frac{\gamma - \alpha}{\beta - \alpha} = r(\cos\theta + i\sin\theta)
+  \end{align}となる。$\theta$は左辺の偏角であることがわかる。また、左辺の絶対値が半直線の長さであることがわかる。
+  \begin{boxnote}
+    \begin{itemize}
+      \item[]
+      \item[]
+      \item[]
+      \item[]
+    \end{itemize}
+  \end{boxnote}
+  \begin{itemize}
+  \item[]
+  \item[]
+  \end{itemize}
+\vspace{-2cm}
+  \begin{kaitou}
+  \begin{multicols}{2}
+  \begin{itemize}
+    \item[]
+    \item[]
+  \end{itemize}
+  \columnbreak %右ページに移動
+  \begin{itemize}
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+    \item[]
+  \end{itemize}
+  \end{multicols}
+  \end{kaitou}
+  \rennsyuu
+
+  $3$点O, A($-1 + 2i$), B($1 + 3i$)について、半直線OAから半直線OBまでの回転角$\theta$を求めなさい。ただし、$- \pi < \theta \leq \pi$とする。\\
+  \rennsyuu
+
+  $3$点A($-1 + 2i$), B($1 + 3i$), C($4 + 3i$)について、半直線ABから半直線ACまでの回転角$\theta$を求めなさい。ただし、$- \pi < \theta \leq \pi$とする。
+\end{document}

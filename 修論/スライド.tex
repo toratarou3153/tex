@@ -1,0 +1,185 @@
+\documentclass[dvipdfmx,fleqn]{beamer}
+%----------------------------------------------------------------------------------------------------
+% package
+%----------------------------------------------------------------------------------------------------
+% 数式関係
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{mathtools}
+% ハイパーリンク
+\usepackage{hyperref}
+% その他
+%\usepackage[usenames]{color}
+\usepackage{tcolorbox}
+\tcbuselibrary{raster,skins}
+\usepackage{varwidth}
+\usepackage{tikz}
+
+%------------------------------------------------------------------------------------------------
+%コマンド
+%------------------------------------------------------------------------------------------------
+% vector
+\renewcommand{\vec}[1]{\mbox{\boldmath $#1$}}
+% natural number
+\newcommand{\N}{\mathbb{N}}
+% real number
+\newcommand{\R}{\mathbb{R}}
+% Expectation
+\newcommand{\E}[1]{\mathbb{E}\left[ #1 \right] }
+% such that
+\newcommand{\st}{\quad \textrm{s.t.} \quad}
+% vector x
+\newcommand{\bx}{\mathbf{x}}
+% iid
+\newcommand{\iid}{\stackrel{iid}{\sim}}
+% Gaussian
+\newcommand{\gaussian}[2]{\mathcal{N}\left( #1,#2\right) }
+% kernel map
+\newcommand{\mapK}{{\sf K}}
+% new observed data
+\newcommand{\ndata}{{\mathbf{x}^*}}
+% diagonal
+\newcommand{\diag}{\textrm{diag~}}
+% 行列
+\newcommand{\kmatI}{{K^{[L]}}}
+\newcommand{\kmatP}{{K^{[P]}}}
+% 1のベクトル
+\newcommand{\idv}{\mathbf{1}}
+% trace
+\newcommand{\tr}{\textrm{tr}\,}
+
+%----------------------------------------------------------------------------------------------------
+% スライドの設定
+%----------------------------------------------------------------------------------------------------
+\usetheme{Singapore}
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\usepackage{minijs}
+\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[]{
+	\frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+% 色定義
+\definecolor{mstruct}{RGB}{68, 174, 234}
+% \definecolor{malert}{RGB}{223, 153, 155}
+\definecolor{malert}{RGB}{255, 76, 0}
+\definecolor{mex}{RGB}{57, 149, 82}
+% 見出しカラー
+\setbeamercolor{structure}{fg=mstruct}
+% block title color
+\setbeamercolor{block title}{fg=bstruct}
+% alert color
+\setbeamercolor{alerted text}{fg=malert}
+% 箇条書き
+\useinnertheme{circles}
+% フッダー
+\setbeamertemplate{footline}[frame number]
+
+%------------------------------------------------------------------------------------------------
+% Box
+%------------------------------------------------------------------------------------------------
+% Theorem Box
+\newtcolorbox{tblock}[1]{
+	enhanced, skin=enhancedlast jigsaw,
+	attach boxed title to top left={xshift=-4mm,yshift=-0.5mm},
+	colbacktitle=mstruct, colframe=mstruct,
+	interior style={top color=mstruct!10!white, bottom color=white},
+	boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+	underlay boxed title={
+		\fill[mstruct] (title.north west) -- (title.north east)
+		-- +(\tcboxedtitleheight-1mm,-\tcboxedtitleheight+1mm)
+		-- ([xshift=4mm,yshift=0.5mm]frame.north east) -- +(0mm,-1mm)
+		-- (title.south west) -- cycle;
+		\fill[mstruct!45!white!50!black] ([yshift=-0.5mm]frame.north west)
+		-- +(-0.4,0) -- +(0,-0.3) -- cycle;
+		\fill[mstruct!45!white!50!black] ([yshift=-0.5mm]frame.north east)
+		-- +(0,-0.3) -- +(0.4,0) -- cycle;
+	},
+	title=#1
+}
+% Definition Box
+\newtcolorbox{dblock}[1]{enhanced, skin=enhancedlast jigsaw,
+	attach boxed title to top left={xshift=-4mm,yshift=-0.5mm},
+	colbacktitle=malert, colframe=malert,
+	interior style={top color=malert!10!white, bottom color=white},
+	boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+	underlay boxed title={
+		\fill[malert] (title.north west) -- (title.north east)
+		-- +(\tcboxedtitleheight-1mm,-\tcboxedtitleheight+1mm)
+		-- ([xshift=4mm,yshift=0.5mm]frame.north east) -- +(0mm,-1mm)
+		-- (title.south west) -- cycle;
+		\fill[malert!45!white!50!black] ([yshift=-0.5mm]frame.north west)
+		-- +(-0.4,0) -- +(0,-0.3) -- cycle;
+		\fill[malert!45!white!50!black] ([yshift=-0.5mm]frame.north east)
+		-- +(0,-0.3) -- +(0.4,0) -- cycle;
+	},
+	title=#1
+}
+% subbox
+\newtcolorbox{subbox}[1]{
+	empty,
+	coltitle=mstruct, fonttitle=\bfseries,
+	borderline horizontal={0.5mm}{0pt}{mstruct},
+	title=#1
+	titlerule style={
+		mstruct,
+		arrows={Hooks[arc=270]-Hooks[arc=270]}
+	}
+}
+%------------------------------------------------------------------------------------------------
+% title
+%------------------------------------------------------------------------------------------------
+\title{項目反応理論を用いた受験者およびテストの評価}
+\author{西郷虎太郎}
+\institute{熊本大学大学院自然科学教育部博士前期課程\\機械数理工学専攻数理工学教育プログラム}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{序章}
+		現代において何をするにも評価というものは付きものである。その評価に関する一つの測定方法として項目反応理論が存在している。これは従来の採点、評価方法とは大きく違うものであり見えない潜在的なところまで測定できるかもしれないというものである。主にTOEICや共通試験といった大規模で行われる試験の採点に用いられることが多い。まずは、従来の採点方法との違いを説明する。従来のテストは、簡潔に言うと先に配点が決められておりそれをもとに合計得点が決まるといったものだ。しかし、これでは次のような課題に直面する。試験の点数が同じ2人を考える。一方は難易度の低い問題ばかりを正解している。他方は、難易度が低い問題はもちろん、難易度が高い問題も含めて正解している。この場合、2人の能力は等しいと言えるだろうか。また、次のような場合も考えられる。全国模試の学校平均が昨年より上がった学校がある。果たしてこの学校の学力が上がったと言えるだろうか。もしかしたら問題が簡単になっただけかもしれない。このような課題を、解決するために項目反応理論が用いられる。その理論にも続いて、多次元化を目指したものである。以下は各章の内容を紹介している。
+\end{frame}
+
+\begin{frame}{項目反応理論}
+	\begin{dblock}{準備}
+		\tcbsubtitle{テストとは}
+    \begin{itemize}
+      \item 多数の問題から構成される
+      \item[$\rightarrow$]以下、問題のことを項目とする
+      \item[$\rightarrow$]項目はテストを構成する最小単位
+    \end{itemize}
+	\end{dblock}
+\end{frame}
+
+\begin{frame}{項目反応理論}
+	\begin{dblock}{準備}
+		\tcbsubtitle{反応行列}
+    \begin{itemize}
+      \item 受験者$i(i = 1, 2, 3, \cdots, N)$の各項目$j(j = 1, 2, 3, \cdots, n)$に対する反応を正答を$1$、誤答を$0$として$u_{ij}$として表す。
+      \item[$\rightarrow$] $u_{ij} = 1$(正解のとき)
+      \item[$\rightarrow$] $u_{ij} = 0$(不正解のとき)
+      \item この$u_{ij}$を$(i,j)$成分にもつ$N\times n$行列$U$ を反応行列という
+    \end{itemize}
+	\end{dblock}
+\end{frame}
+
+\begin{frame}{項目反応理論}
+	\begin{dblock}{準備}
+		\tcbsubtitle{パラメータ}
+    \begin{itemize}
+      \item[能力値$\theta$]受験者$i$の能力値を$\theta_i$で表す。
+      \item[識別力$a$]推定したい受験者の能力値$\theta$をその項目でどのくらい正確に推定できているのかを表したパラメータである。以下より、項目$j$の識別力を$a_j$で表す。
+      \item[困難度$b$]項目$j$の難しさを表すパラメータであり、$b_j$で表現する。$2$に近いほど能力値$\theta$が高くないと正答できない難しい項目とされる。
+      \item[偶然率$c$]能力値$\theta$に関係なく偶然正答になる確率を表すパラメータである。一般的には、当て推量と呼ばれることもあるが以下では、偶然率という言葉を用いている。項目$j$の偶然率を$c_j$で表す。
+    \end{itemize}
+	\end{dblock}
+\end{frame}
+\end{document}

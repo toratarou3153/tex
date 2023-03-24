@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}はじめに}{1}{}%
+\contentsline {subsection}{\numberline {1.1}項目特性関数}{2}{}%
+\contentsline {subsection}{\numberline {1.2}正規累積モデル}{2}{}%
+\contentsline {subsection}{\numberline {1.3}ロジスティックモデル}{3}{}%
+\contentsline {section}{\numberline {2}従来のテストの評価方法}{6}{}%
+\contentsline {subsection}{\numberline {2.1}項目特性図}{6}{}%
+\contentsline {subsection}{\numberline {2.2}正答分析}{7}{}%
+\contentsline {section}{\numberline {3}能力値や項目パラメータの推定}{9}{}%
+\contentsline {subsection}{\numberline {3.1}最尤推定法}{9}{}%
+\contentsline {subsection}{\numberline {3.2}同時最尤推定法}{10}{}%
+\contentsline {subsection}{\numberline {3.3}周辺最尤推定法}{11}{}%
+\contentsline {subsection}{\numberline {3.4}ベイズ推定法}{12}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}ベイズの定理}{13}{}%
+\contentsline {subsubsection}{\numberline {3.4.2}EAP法(Expected a posteriori法)}{14}{}%
+\contentsline {subsection}{\numberline {3.5}推定値と考察}{15}{}%
+\contentsline {subsubsection}{\numberline {3.5.1}ベイズ推定}{15}{}%
+\contentsline {subsubsection}{\numberline {3.5.2}最尤推定法との比較}{18}{}%
+\contentsline {section}{\numberline {4}ロジスティックモデルの多次元化}{19}{}%
+\contentsline {section}{\numberline {5}多次元ロジスティックモデルを用いた能力値推定のための問題選定(仮)}{20}{}%
+\contentsline {subsection}{\numberline {5.1}項目パラメータと能力値の推定値}{22}{}%
+\contentsline {section}{\numberline {6}最後に}{23}{}%
+\contentsline {section}{参考文献}{23}{}%
+\contentsline {section}{付録1\hspace {3pt}第$2$章で使用した問題}{23}{}%

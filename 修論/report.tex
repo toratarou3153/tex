@@ -1,0 +1,103 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\usepackage{float}
+\usepackage{here}
+\pagestyle{plain}
+
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{「歴史に学ぶ数学」レポート}
+\begin{document}
+\date{}
+\author{210-d8551 西郷虎太郎}
+\maketitle
+\section{レポート問題$3$}
+$\mathbb{H}$上の変換$\displaystyle z \rightarrow \frac{ax+b}{cx+d}$$s.t. a, b, c, d\in \mathbb{R}, ad-bc=1$は$P$計量に関する等長変換であることを示せ。\\
+\\
+\\
+$\displaystyle w=\frac{az+b}{cz+d}$として$\displaystyle \frac{dwd\bar{w}}{w - \bar{w}} = \frac{dzd\bar{z}}{(z - \bar{z})^2}$になることを示す。
+
+\begin{align}
+  \label{}
+  \displaystyle
+  \frac{dw}{dz} = \frac{(az+b)^{\prime}(cz+b)-(az+b)(cz+d)^{\prime}}{(cz+d)^2} = \frac{dz}{(cz+d)^2}
+\end{align}
+また、
+\begin{align}
+  \label{}
+  \displaystyle
+  \frac{d\bar{w}}{dz} = \frac{d\bar{z}}{(c\bar{z} + d)^{\prime}}
+\end{align}
+
+ここで、$w - \bar{w}$を考えると,
+\begin{align}
+  \label{}
+  \displaystyle
+  w - \bar{w} = \frac{(az+b)(c\bar{z}+b)-(a\bar{z}+b)(cz+d)}{(cz+d)(c\bar{z}+d)} = \frac{z - \bar{z}}{(cz+d)(c\bar{z}+d)}
+\end{align}
+よって
+\begin{align}
+  \label{}
+  \displaystyle
+  (左辺) = \frac{dwd\bar{w}}{w - \bar{w}}= \frac{dzd\bar{z}}{(z - \bar{z})^2} = (右辺)
+\end{align}
+\newpage
+\section{レポート問題$4$}
+斜線で示された部分の面積を求めなさい。
+\\
+\\
+求める部分の面積を$\boldsymbol{S}$とすると
+\begin{align*}
+  \label{}
+  \displaystyle
+  \boldsymbol{S} = \int_D \frac{1}{y^2}dxdy &= \int_{-1}^1 dx \int_{\sqrt{1 - x^2}}^\infty \frac{1}{y^2} dy \\ &= \int_{-1}^1 \lim_{a \to \infty} \int_{\sqrt{1 - x^2}}^a \frac{1}{y^2} dy \\ &= \int_{-1}^1 \lim_{a \to \infty} \{-\frac{1}{a} - (-\frac{1}{\sqrt{1 - x^2}})\}dx  \\ &= \int_{-1}^1 \frac{1}{\sqrt{1 - x^2}}dx \\ ここで x = \sin{\theta} と置くと \frac{dx}{d\theta} = \cos{\theta}より\\
+  &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \frac{1}{\cos{\theta}}\cos{\theta} d\theta \\ &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} d\theta = \frac{\pi}{2} + \frac{\pi}{2} = \pi
+\end{align*}
+よって$\boldsymbol{S} = \pi$
+\end{document}

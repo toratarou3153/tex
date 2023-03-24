@@ -1,0 +1,117 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{複素数と方程式}
+\date{$2022年4月12日$}
+\begin{document}
+\maketitle
+\author{名前:}
+\section{複素数と方程式}
+次のような実数$x,y$を求めなさい。
+\begin{itemize}
+  \item[(1)]  $\displaystyle (x -3) + (x + y)i = 0$\\
+  \\
+  $x = 3,y=-3$
+  \\
+  \item[(2)] $(3x + y) + (y +3)i = 0$
+  \\
+  \\
+  $x = 1,y=-3$
+  \\
+  \item[(3)] $(x + 2y) + 2yi = 5 + 4i$
+  \\
+  \\
+  $x = 1,y=2$
+  \\
+  \item[(4)] $\displaystyle (x - 2y) + (2x - 3y)i = 4 + 7i$
+  \\
+  \\
+  $x = 2,y=-1$
+  \\
+  \item[(5)] $\displaystyle (2 + i)x+ (3 - 2i)y = -9 + 20i$
+  \\
+  \\
+  $x = 6,y=-7$
+  \\
+  \item[(6)] $\displaystyle (4 + 3i)x + (1 + 2i)y + 5 = 0$
+  \\
+  \\
+  $x = -2,y=3$
+\end{itemize}
+
+\newpage
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ $\displaystyle (4 + 3i)x + (1 + 2i)y + 5 = 0$の解説:
+
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ 展開して$i$についてまとめなおすと
+\begin{align*}
+  \displaystyle
+  & 4x + 3ix +y +2iy +5 = 0&\\
+  & (4x + y + 5) + (3x + 2y)i = 0&
+\end{align*}
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $x,y$は実数なので$(4x + y + 5)$と$(3x + 2y)$も実数となる。
+
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ 右辺が$0$なので、$(4x + y + 5)= 0$、$(3x + 2y) = 0$となる。
+
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ これを解くと$x = -2,y = 3$となる。
+\\
+\\
+\begin{align}
+  \displaystyle
+  3x^2 -7x + 5 &=0\\
+  判別式D &= (-7)^2 - 4 \cdot 3 \cdot 5\\
+  &= -11 < 0\\
+  よって、異なる&2つの虚数解をもつ。
+\end{align}
+\\
+\\
+
+
+\end{document}

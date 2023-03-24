@@ -1,0 +1,137 @@
+\documentclass[20pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\usepackage{float}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm}f 証明: \,}}
+\def\solution{{\vspace{-0.3cm}f 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{項目反応理論}
+\begin{document}
+\maketitle
+\section{多次元項目反応理論}
+\subsection{被験者の特性を線形結合で表現}
+$2$パラメータで考える。
+
+$k$次元の特性を測定する多次元項目反応モデルにおいて、$j$個の項目に対する反応が特性値を所与とすると互いに独立のとき、特性値を所与とした尤度は
+\begin{align}
+  \label{01}
+  \displaystyle
+    L(u_1,u_2,\cdots,u_j|\theta = (\theta_1,\cdots,\theta_K)^{t})=\prod_j^J P_j(\theta)^{u_j} Q_j(\theta)^{(1 - u_j)}
+  \tag{1}
+\end{align}
+ただし、$u_j$は項目$j$に対して正答するか誤答するかを表す確率変数であり、$\theta_k$は特性$k$についての特性値である。
+
+ここで、特性値$\theta$の分布を$p(\theta)$とおくと、周辺尤度$L(u_1,u_2,\cdots,u_j)$は
+\begin{align}
+  \label{02}
+  \displaystyle
+    L(u_1,u_2,\cdots,u_j) = \int L(u_1,u_2,\cdots,u_j|\theta)p(\theta) d \theta
+  \tag{2}
+\end{align}
+またここで、$P_j(\theta)$は$\theta$を所与とした場合の正答確率である。これを$2$パラメータのロジスティックモデルで表現すると
+\begin{align}
+  \label{03}
+  \displaystyle
+    P_j(\theta) = \frac{\exp D (\sum\limits_{k = 1}^{K} w_{jk} \theta_k + b_j)}{1 + \exp D (\sum\limits_{k = 1}^{K} w_{jk} \theta_k + b_j)}
+  \tag{3}
+\end{align}である。ここで、$w_{jk}$は第$j$項目の第$k$特性の識別力パラメータであり、$b_j$は第$j$項目の困難度パラメータ、$D=1.8$である。
+
+\subsection{アルゴリズム}
+被験者：$i = 1,2,3,4$
+
+項目：$j = 1,2,3,4,5$
+
+能力パラメータ：$\theta_{jk}=(\theta_{j1},\theta_{j2})$
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|} \hline
+     & A & B & C & D \\ \hline
+    1 & 1 & 0 & 0 & 0 \\ \hline
+    2 & 0 & 1 & 0 & 0 \\ \hline
+    3 & 0 & 0 & 1 & 0 \\ \hline
+    4 & 0 & 0 & 0 & 1 \\ \hline
+    5 & 1 & 1 & 1 & 1 \\ \hline
+  \end{tabular}
+  \caption{反応データ}
+\end{figure}
+
+困難度：$b_j = (-2, -1, 0, 1, 2)$
+
+項目ごとの能力パラメータの識別力:
+\begin{align}
+  \label{04}
+  \displaystyle
+    a_{jk} =
+    \begin{pmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22} \\
+      a_{31} & a_{32} \\
+      a_{41} & a_{42} \\
+      a_{51} & a_{52} \\
+    \end{pmatrix}
+  \tag{4}
+\end{align}
+
+$2$パラメータのロジスティックモデルを次の式に仮定する。
+\begin{align}
+  \label{05}
+  \displaystyle
+    P_j (\theta) = \frac{\exp\{D(\sum\limits_{k = 1}^{K} a_{jk}\theta_jk + b_j) \}}{1 + \exp\{D(\sum\limits_{k = 1}^{K} a_{jk}\theta_jk + b_j)\}}
+  \tag{5}
+\end{align}
+
+例えば、項目$j=1$に被験者$i=1$が正解する確率は,
+\begin{align*}
+  \label{06}
+  \displaystyle
+  P_j (\theta) &= \frac{\exp\{(-1.7)(\sum\limits_{k = 1}^{2} a_{jk}\theta_jk + b_1) \}}{1 + \exp\{(-1.7)(\sum\limits_{k = 1}^{2} a_{jk}\theta_jk + b_1)\}}\\
+  &= \frac{\exp\{(-1.7)(a_{11} \theta_{11} + a_{12}\theta_{12} + b_1) \}}{1 + \exp\{(-1.7)(a_{11} \theta_{11} + a_{12}\theta_{12} + b_1)\}}
+  \tag{6}
+\end{align*}
+となる。これを用いて反応行列から正答のときは$P_j(\theta)$,誤答のときは$1 - P_j(\theta)$として、それぞれの尤度関数を求めていく。例えば能力値を推定する場合は$\theta$が変数となる。$\theta$は今回$2$種類を考えているので尤度を$\theta_jk$で偏微分してから最尤法で最大となる$\theta$の組を求めていく。
+\end{document}

@@ -1,0 +1,188 @@
+\documentclass[12pt]{jarticle}
+\usepackage{a4wide}
+\usepackage{amsmath}%数学記号
+\usepackage{amssymb}%数学記号
+\usepackage{epsfig}%図
+\usepackage{latexsym}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{multicol}
+\usepackage{ascmac}
+\usepackage{systeme}
+\usepackage{amsmath,cases}
+\usepackage{mathrsfs}
+\pagestyle{plain}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\newtheorem{exercise}[theorem]{例題}
+\newtheorem{problem}[theorem]{問}
+\newtheorem{algorithm}[theorem]{アルゴリズム}
+\newtheorem{remark}[theorem]{注意}
+
+\def\qed{{\hfill$\square$}}
+\def\proof{{\vspace{-0.3cm} 証明: \,}}
+\def\solution{{\vspace{-0.3cm} 解: \,}}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\F{{\Bbb F}}
+\def\D{{\mathcal D}}
+\def\mod{{\mathrm{mod\,\,}}}
+\def\GL{{\mathrm{GL}}}
+\def\GF{{\mathrm{GF}}}
+\def\H{{\mathcal{H}}}
+
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{240mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\evensidemargin}{-5mm}
+\setlength{\topmargin}{-10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{10mm}
+
+\title{Brown運動}
+\begin{document}
+\maketitle
+\section{Brown運動}
+\subsection{構成}
+$\displaystyle B_t$をブラウン運動とする。
+時刻を$\displaystyle t$として$\displaystyle t = 0$(始点)の時、$\displaystyle B_t = 0$として、 $\displaystyle t = 1$(終点)の時、$\displaystyle B_t = 1$とする。一番単純なブラウン運動が生成された。
+
+ブラウン運動を一般化して考える。$\displaystyle \{B_t,\mathscr{F};t \geq 0\}$をブラウン運動とする。ただし、$\displaystyle 0 \leq s < t < \infty$。また、$\displaystyle \theta = \frac{t+s}{2}$とし$\displaystyle B_s = x,B_t = z$を仮定したとき、$\displaystyle B_\theta$は期待値$\displaystyle \mu = \frac{x+z}{2}$、分散$\displaystyle \sigma^2 = \frac{t - s}{4}$の標準正規分布に従う。これを確認するために、$\displaystyle B_s,B_\theta - B_s,B_t - B_\theta $の増加を考えて、確率密度関数を導いてみる。
+\begin{align*}
+  \label{01}
+  \displaystyle P[B_s \in dx ,B_\theta \in dy, B_t \in dz] &= p(s;0,x)p \left(\frac{t-s}{2};x,y\right) p \left(\frac{t-s}{2};y,z\right)dx dy dz\\
+  &= p(s;0,x)p(t-s;x,z)\frac{1}{\sigma\sqrt{2\pi}} \exp\left\{- \frac{(y - \mu)^2}{2\sigma^2}\right\}dx dy dz\\
+  \tag{1}
+\end{align*}
+ここで以下の式で、式$(\ref{01})$を割ると
+\begin{align*}
+  \label{02}
+  \displaystyle P[B_s \in dx,B_t \in dz] = p(s;0,x)p(t-s;x,z)dx dz
+  \tag{2}
+\end{align*}
+以下の式を得る。
+\begin{align*}
+  \label{03}
+  \displaystyle P[B_{\frac{t+s}{2}} \in dy|B_s = x,B_t = z]= \frac{1}{\sigma\sqrt{2\pi}}\exp\left\{- \frac{(y - \mu)^2}{2\sigma^2}\right\}dy
+  \tag{3}
+\end{align*}
+この$\displaystyle B_{\frac{t+s}{2}}$の式の形より、有限区間$[0,1]$上で、生成することができることがわかる。区間$[0,1]$上での単純な線形補完によるブラウン運動の生成の確認は、全ての$t \geq 0$においてブラウン運動を生成することができる確認につながる。
+\subsection{証明}
+この構成を可能にするために、まずは標準正規分布に従う変数の可算集合$\displaystyle \{{\mathscr{\xi}_k}^{(n)};k\in I(n),n = 0,1,\dots\}$
+から考えよう。ここにおける$\displaystyle I(n)$とは$\displaystyle 0から2^n$までの奇数の集合である。各$0$以上の$ \displaystyle n$について、$\displaystyle B^{(n)} = \left\{{B^{(n)}_t} ;0 \leq t \leq 1\right\}$をブラウン運動と定める。ここで、$n \geq 1$に対して、$\displaystyle {B^{(n)}_{\frac{k}{2^{n-1}}}}$と$\displaystyle {B^{(n-1)}_{\frac{k}{2^{n-1}}}}$を同じと定める。そうすることで
+、各$n$について$\displaystyle {B^{(n)}_{\frac{k}{2^{n}}}}$について考えればよいことになる。次に、
+\begin{align*}
+  \label{04}
+  \displaystyle B^{(0)}_0 = 0, \ \ B^{(0)}_1 = \xi^{(0)}_1
+  \tag{4}
+\end{align*}
+と定める。これにより$\displaystyle {B^{(n)}_{\frac{k}{2^{n}}}}$をいかの式で定義することができる。
+\begin{align*}
+  \label{05}
+  \displaystyle {B^{(n)}_{\frac{k}{2^{n}}}}\equiv {B^{(n)}_{\frac{t + s}{2}}} \triangleq \mu + \sigma \xi^{(n)}_k.
+  \tag{5}
+\end{align*}
+次に、$\displaystyle B^{(n)}_t$は連続関数$\displaystyle B_t$にほとんど確実に$\displaystyle t$に関して一様収束して$\displaystyle \{B_t,\mathscr{F}^B;0 \geq t \geq 1\}$はブラウン運動になることを示そう。
+
+はじめは、$B^{(n)}_t$に別の便利な表記を与えよう。ハール関数を次のように定める。$H^{(0)}_1 (t) = 1,0\leq t \leq 1そして、n\geq 1,k\in I(n)$に対して、\\
+\begin{equation}
+\displaystyle H^{(n)}_k = \left\{
+\begin{array}{lll}
+\displaystyle
+2^{\frac{n -1}{2}} & (\frac{k-1}{2^n} \leq t \leq \frac{k}{2^n})\\
+-2^{\frac{n -1}{2}} & (\frac{k}{2^n} \leq t \leq \frac{k + 1}{2^n})\\
+0 & (それ以外) \tag{6}
+\end{array}
+\right.
+\end{equation}次に、シャウダー関数を定義する。
+\begin{align*}
+  \label{07}
+  \displaystyle S^{(n)}_k (t) = \int^{t}_0 H^{(n)}_k (u) du \ \ \ 0\leq t \leq 1,n\geq 0,k\in I(n)
+  \tag{7}
+\end{align*}
+$n$に関して帰納的に考えると、
+\begin{align*}
+  \label{08}
+  \displaystyle B^{(n)}_t (\omega) = \sum^{n}_{m = 1} \sum_{k \in I(m)} \xi^{(m)}_k (\omega) S^{(m)}_k (t)\ \ \ 0\leq t \leq 1,n\geq 0
+  \tag{8}
+\end{align*}
+と書ける。
+\begin{lemma}
+  $n \rightarrow \infty$のとき、$\{B^{(n)}_t;o\leq t \leq 1,n\geq 0\}$は、ほとんど確実に$\omega \in \Omega$に関して$\{B_t;o\leq t \leq 1\}$に一様収束する。
+\end{lemma}
+\begin{proof}
+  $b_n = max_{k \in I(n)} |\xi^{(n)}_k|$と定義する。$x > 0$に対して、
+  \begin{align*}
+    \label{09}
+    \displaystyle P[|\xi^{(n)}_k| > x] &= \sqrt{\frac{2}{\pi}}\int^{\infty}_x e^{-\frac{u^2}{2}}du \\
+    &\geq \sqrt{\frac{2}{\pi}}\int^{\infty}_x \frac{u}{x}e^{-\frac{u^2}{2}}du = \sqrt{\frac{2}{\pi}} \frac{e^{-\frac{x^2}{2}}}{x}
+    \tag{9}
+  \end{align*}
+  である。これより、
+\begin{align}
+  \label{10}
+  \displaystyle
+  P[b_n>n] = P[\bigcup_{k \in I_n}{\{|\xi^{(n)}_k| > n\}}] \leq 2^n P[|\xi^{(n)}_1| > n] \leq \sqrt{\frac{2}{\pi}} \frac{2^n e^{-\frac{n^2}{2}}}{n},n\geq 1
+  \tag{10}
+\end{align}となる。$\sum^{\infty}_{n = 1} \frac{2^n e^{-\frac{n^2}{2}}}{n} < \infty$であるから、$Borel-Cantelli$の補題より、$P(\tilde{\Omega}) = 1$となる適当な集合$\tilde{\Omega}$が存在して、各$\omega \in \tilde{\Omega}$に対して、整数$n(\omega)$を選んで、全ての$n \geq n(\omega)$に対して$b_n (\omega) \leq n$をみたすようにできてる。しかし、
+\begin{align}
+  \label{11}
+  \displaystyle
+  \sum^{\infty}_{n = n(\omega)} \sum_{k \in I(n)} |\xi^{(n)}_k S^{(n)}_k (t)|\leq \sum^{\infty}_{n = n(\omega)} n 2^{\frac{-n+1}{2}} < \infty
+  \tag{11}
+\end{align}であり、したがって、$\omega \in \tilde{\Omega}$に対して、$B^{(n)}_t (\omega)$は極限$B_t (\omega)$に$t$に関して一様収束する。\qed
+\end{proof}
+
+ここで、内積について定義しておく。内積$\displaystyle <f,g> = \int^1_0 f(t)g(t) dt$のもとで$\displaystyle L^2 [0,1]$は$Hilbert$空間であり、$Haar$関数$\displaystyle \{H^{(N)}_k;k\in I(n),n \geq 0\}$は完全正規系を作る。$Parseval$の等式
+\begin{align}
+  \label{13}
+  \displaystyle
+  <f,g> = \sum^{\infty}_{n = 0} \sum_{k \in I(n)} <f,H^{(n)}_{k}><g,H^{(n)}_{k}>\tag{12}\\
+  f = 1_{[0,1]},g = {[0,1]}を適応させると\notag\\
+  \sum^{\infty}_{n = 0} \sum_{k \in I(n)} S^{(n)}_k (t) S^{(n)}_k (s) = s \wedge t \tag{13}
+\end{align}
+\begin{theorem}
+$\displaystyle B_t = \lim_{n \rightarrow \infty} B^{(n)}_t$とすると、$\displaystyle \{B_t,\mathscr{F}^B_t;0 \leq t \leq 1\}$はブラウン運動になる
+\end{theorem}
+\begin{proof}
+  証明するに際して、$\displaystyle 0 = t_0 < t_1 < \cdots <t_n \leq 1$に対して、増分$\displaystyle \{ B_{t_{j}} - B_{t_{j - 1}} \}^{n}_{j = 1}$が独立で、期待値$\displaystyle 0$、分散$\displaystyle t_j - t_{j - 1}$になっていることを示す。そのために、$\displaystyle \lambda_i \in \mathbb{R},j = 1,\cdots ,nそしてi = \sqrt{-1}$に対して、
+  \begin{align}
+    \label{14}
+    \displaystyle
+    E\left[\exp\left\{i \sum^{n}_{j = 1} \lambda_j(B_{t_{j}} - B_{t_{j - 1}}) \right\}\right] = \prod^{n}_{j = 1} \exp\left\{ -\frac{1}{2}\lambda^2_j(t_j - t_{j-1})\right\}
+    \tag{14}
+  \end{align}
+$\lambda_{n + 1}= 0$として、独立性と標準正規性を用いると、
+\begin{align}
+  \label{15}
+  \displaystyle
+  E\left[\exp\left\{ -i\sum^{n}_{j = 1}(\lambda_{j + 1} - \lambda_j) B^{(M)}_{t_j}\right\}\right] &= E\left[\exp\left\{-i\sum^{M}_{m = 0} \sum_{k \in I(m)}\xi^{(m)}\sum^n_{j = 1}(\lambda_{j + 1} - \lambda_j) S^{(m)}_{k}(t_j)\right\}\right]\notag\\ &= \prod^{M}_{m = 0} \prod_{k \in I(m)} E\left[\exp \left\{-i \xi^{(m)}_k \sum^{n}_{j = 1}(\lambda_{j + 1} - \lambda_j) S^{(m)}_{k}(t_j)\right\}\right]\notag\\ &= \prod^{M}_{m = 0} \prod_{k \in I(m)}\exp\left[-\frac{1}{2}\left\{(\lambda_{j + 1} - \lambda_j) S^{(m)}_{k}(t_j)\right\}^2\right] \notag \\ &= \exp\left[-\frac{1}{2} \sum^{n}_{j = 1} \sum^{n}_{i = 1} (\lambda_{j + 1} - \lambda_j)(\lambda_{j + 1} - \lambda_j)\sum^{M}_{m = 0}\sum_{k \in I(m)}S^{(m)}_{k}(t_j)S^{(m)}_{k}(t_j)\right]\notag\\
+  \tag{15}
+\end{align}
+ここで、$M \rightarrow \infty$と式$(13)$を用いると、
+\begin{align*}
+  \label{16}
+  \displaystyle
+  &E\left[\exp\left\{i \sum_{j = 1}^n \lambda_j (B_{t_j} - B{t_{j-1}})\right\}\right] \\ &= E\left[\exp\left\{i\left(\lambda_1(B_{t_1} - B_{t_0}) + \lambda_2(B_{t_2} - B_{t_1}) + \cdots + \lambda_n(B_{t_n} - B_{t_{n-1}})\right)\right\}\right]\\ &= E\left[\exp \left\{ -i \sum_{j = 1}^n (\lambda_{j+1} - \lambda_j)B_{t_j} \right\}\right](\because B_{t_0}は0なので消える) \\ &= \exp\left\{-\sum_{j = 1}^{n-1} \sum_{i = j + 1}^n (\lambda_{j+1} - \lambda_j)(\lambda_{i+1} - \lambda_i)t_j - \frac{1}{2}\sum_{j=1}^n (\lambda_{j+1} - \lambda_j)^2 t_j\right\} \\ &=\exp\left\{-\sum_{j =1}^{n-1}(\lambda_{j+1} - \lambda_j)(-\lambda_{j+1})t_j - \frac{1}{2}\sum_{j=1}^n (\lambda_{j+1} - \lambda_j)^2t_j\right\}\\ &= \exp\left\{-\sum_{j=1}^{n-1} (\lambda_{j+1} - \lambda_j)(-\lambda_{j+1})t_j-\frac{1}{2}\sum_{j=1}^{n-1}(\lambda_{j+1} - \lambda_j)^2-\frac{1}{2}(\lambda_{n+1}-\lambda_n)^2 t_n\right\}\\ &=\exp\left\{\frac{1}{2}\sum_{j=1}^{n-1} \left\{2(\lambda_{j+1} - \lambda_j)(\lambda_{j+1}) - (\lambda_{j+1} - \lambda_j)^2\right\}t_j-\frac{1}{2}(\lambda_{n+1}-\lambda_n)^2 t_n\right\}\\ &= \exp\left\{\frac{1}{2}\sum_{j=1}^{n-1}\left\{2(\lambda_{j+1})^2 - 2(\lambda_{j+1} \lambda_j) -(\lambda_{j+1})^2 + 2(\lambda_{j+1} \lambda_j) - (\lambda_j)^2\right\}t_j-\frac{1}{2}(\lambda_n)^2  t_n\right\}(\because \lambda_{n+1} = 0)\\ &= \exp\left\{\frac{1}{2}\sum_{j =1}^{n-1}({\lambda_{j+1}}^2 - {\lambda_{j}}^2)t_j - \frac{1}{2}{\lambda_n}^2 t_n\right\} \\ &= \exp\left\{\frac{1}{2}({\lambda_2}^2 - {\lambda_1}^2) t_1 + \frac{1}{2}({\lambda_3}^2 - {\lambda_2}^2) t_2 + \cdots + \frac{1}{2}({\lambda_n}^2 - {\lambda_{n -1}}^2) t_{n - 1} - \frac{1}{2}{\lambda_n}^2 t_n\right\}\\ &= \prod_{j=1}^{n} \exp\left\{-\frac{1}{2} {\lambda_j}^2(t_j - t_{j-1})\right\}
+  \tag{16}
+\end{align*}
+\qed
+\end{proof}
+
+これにより証明された。
+
+
+
+
+\end{document}
